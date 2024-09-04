@@ -153,7 +153,7 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 Copy the content and use that as password / secret key. And run that again to generate another secure key.
 
 ## How To Use It - Alternative With Copier
-
+-
 This repository also supports generating a new project using [Copier](https://copier.readthedocs.io).
 
 It will copy all the files, ask you configuration questions, and update the `.env` files with your answers.
