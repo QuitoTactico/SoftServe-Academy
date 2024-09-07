@@ -1,21 +1,44 @@
 MEDIA_TYPE_CHOICES = [
-    ('video', 'Video'),
-    ('audio', 'Audio'),
-    ('text', 'Text'),
+    ('Video', 'Video'),
+    ('Audio', 'Audio'),
+    ('Text', 'Text'),
 ]
 
 CONTENT_TYPE_CHOICES = [
-    ('guides', 'Guides'),
-    ('documentation', 'Documentation'),
-    ('introduction', 'Introduction'),
-    ('summary', 'Summary'),
-    ('article', 'Article'),
-    ('quiz', 'Quiz'),
-    ('podcast', 'Podcast'),
+    ('Guides', 'Guides'),
+    ('Documentation', 'Documentation'),
+    ('Introduction', 'Introduction'),
+    ('Summary', 'Summary'),
+    ('Article', 'Article'),
+    ('Quiz', 'Quiz'),
+    ('Podcast', 'Podcast'),
 ]
     
 LEARNING_TYPE_CHOICES = [
-    ('autodidact', 'Autodidact'),
-    ('guided', 'Guided'),
-    ('challenges', 'Challenges'),
+    ('Autodidact', 'Autodidact'),
+    ('Guided', 'Guided'),
+    ('Challenges', 'Challenges'),
+]
+
+SKILL_TYPE_CHOICES = [
+    ('Programming Language', 'Programming Language'),
+    ('Library', 'Library'),
+    ('Database', 'Database'),
+    ('Deployment', 'Deployment'),
+    ('Cloud', 'Cloud'),
+    ('Framework', 'Framework'),
+    ('Information Systems', 'Information Systems'),
+    ('Low-Code', 'Low-Code'),
+    ('No-Code', 'No-Code'),
+    ('Office Software', 'Office Software'),
+]
+
+LANGUAGE_CHOICES = [
+    ('es', 'Spanish'),
+    ('en', 'English'),
+    ('ru', 'Russian'),   
+    ('pt', 'Portuguese'),
+    ('zh', 'Chinese'),
+    ('hi', 'Hindi'),
+    ('ja', 'Japanese'),
 ]

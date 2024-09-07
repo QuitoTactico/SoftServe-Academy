@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home',
     'user',
     'preference',
+    'skill',
     'learning_route',
     'learning_resource',
 ]
