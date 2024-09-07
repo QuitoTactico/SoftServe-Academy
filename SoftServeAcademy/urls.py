@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 from home import views as homeViews
 from user import views as userViews
 from preference import views as preferenceViews
@@ -54,3 +57,5 @@ urlpatterns = [
     path('learning_resource/create/', learningResourceViews.create, name='learning_resource_create'), 
     path('learning_resource/<int:id>/', learningResourceViews.detail, name='learning_resource_detail'), # MVP!!!
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
