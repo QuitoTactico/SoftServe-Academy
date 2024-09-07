@@ -1,0 +1,180 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    dl,
+    ol,
+    ul {
+        margin-top: 0;
+        margin-bottom: 0rem;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #5cd3a7, #4ca0f7);
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: fit-content;
+    height: 70px;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.logo span {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 20px;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 2px 12px;
+}
+
+nav ul li a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+nav ul li .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    cursor: pointer;
+}
+
+nav ul li .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+nav ul li .dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+nav ul li:hover .dropdown-content {
+    display: block;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.auth-buttons .login-btn {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.5rem;
+}
+
+.auth-buttons .login-btn:hover {
+    color: #0f5bd3;
+}
+
+.auth-buttons .get-started-btn {
+    text-decoration: none;
+    background-color: #1a73e8;
+    color: #fff;
+    padding: 8px 24px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 1.3rem;
+}
+
+.auth-buttons .get-started-btn:hover {
+    background-color: #0f5bd3;
+}
+
+/* Botón de hamburguesa */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Media Queries para responsive */
+@media (max-width: 768px) {
+    .logo span {
+        font-size: 1.4rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #5cd3a7;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease-in-out;
+    }
+
+    /* si hace falta, se cambia la height para mostrar más elementos*/
+
+    nav ul.active {
+        height: 200px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .auth-buttons {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo span {
+        font-size: 1.2rem;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
+    }
+}
