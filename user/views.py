@@ -1,13 +1,13 @@
 from django.shortcuts import render
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'user.html')
 
 def login(request):
-    return render(request, 'login.html')
+    return render(request, 'user_login.html')
 
 def logout(request):
-    return render(request, 'logout.html')
+    return render(request, 'user_logout.html')
 
 def register(request):
-    return render(request, 'register.html')
+    return render(request, 'user_register.html')

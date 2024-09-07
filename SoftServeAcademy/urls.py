@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
 from home import views as homeViews
 from user import views as userViews
 from preference import views as preferenceViews
@@ -25,7 +26,9 @@ from learning_resource import views as learningResourceViews
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # Lo que no sea marcado como MVP, será manejado desde el admin de Django, o no es escecial
+    # Anything not marked as MVP will be handled from the Django admin or is not essential
+    # When using href={{ url 'name' }} in templates, use the name parameter specified here as the third argument
+    # Please use the form {{ url 'learning_resource_create' }} instead of raw string URLs like "/learning_resource/create"
 
     # Home
     path('', homeViews.home, name='home'),
@@ -39,15 +42,15 @@ urlpatterns = [
     path('register/', userViews.register, name='register'), # MVP
 
     # Preferences
-    path('preference/create/', preferenceViews.create, name='preference_create'), # MVP
+    path('preference/create/', preferenceViews.create, name='preference_create'), # MVP!!!
     path('preference/<int:id>/', preferenceViews.detail, name='preference_detail'), # MVP
 
     # Learning Route
     path('learning_route/', learningRouteViews.home, name='learning_route'), # MVP
-    path('learning_route/<int:id>/', learningRouteViews.detail, name='learning_route_detail'), # MVP
+    path('learning_route/<int:id>/', learningRouteViews.detail, name='learning_route_detail'), # MVP!!!
 
     # Learning Resource
     path('learning_resource/', learningResourceViews.home, name='learning_resource'),
     path('learning_resource/create/', learningResourceViews.create, name='learning_resource_create'), 
-    path('learning_resource/<int:id>/', learningResourceViews.detail, name='learning_resource_detail'), # MVP
+    path('learning_resource/<int:id>/', learningResourceViews.detail, name='learning_resource_detail'), # MVP!!!
 ]
