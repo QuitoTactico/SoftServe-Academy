@@ -1,0 +1,108 @@
+/* Estilos generales para el footer */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-inline: 50px;
+    padding: 0 20px;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+}
+
+.footer-left img {
+    height: 90px;
+    margin-right: 10px;
+}
+
+.footer-left p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.footer-right ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin-right: 60px;
+}
+
+.footer-right ul li {
+    margin: 0 30px;
+}
+
+.footer-right ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.footer-right .social-media {
+    margin-top: 10px;
+}
+
+.footer-right .social-media a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-left: 15px;
+    text-decoration: none;
+    background-color: #1a73e8;
+    padding: 5px 10px;
+    border-radius: 100%;
+}
+
+.footer-right .social-media a:hover {
+    color: #0f5bd3;
+}
+
+/* Media Queries para responsive */
+@media (max-width: 938px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-right {
+        align-items: center;
+    }
+
+    .footer-right ul {
+        flex-direction: column;
+    }
+
+    .footer-right ul li {
+        margin: 15px 0;
+    }
+
+    .social-media {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .footer-left p,
+    .footer-right ul li a,
+    .footer-right .social-media a {
+        font-size: 1rem;
+    }
+
+    .footer-left img {
+        height: 30px;
+    }
+}

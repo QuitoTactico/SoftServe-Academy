@@ -132,7 +132,7 @@ nav ul li:hover .dropdown-content {
 }
 
 /* Media Queries para responsive */
-@media (max-width: 768px) {
+@media (max-width: 938px) {
     .logo span {
         font-size: 1.4rem;
     }

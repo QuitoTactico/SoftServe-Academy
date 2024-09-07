@@ -6,10 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SoftServe Academy</title>
-    <link rel="icon" href="{% static 'images/softserve-icon.svg' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/2.svg' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
@@ -50,9 +49,28 @@
         {% endblock %}
     </div>
 
-    <footer class="bg-light text-center py-3 text-muted">
-        <p>Footer</p>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="{% static 'images/2.svg' %}" alt="Logo">
+                <p>Copyright ©2024 Softserve | EAFIT</p>
+            </div>
+            <div class="footer-right">
+                <ul>
+                    <li><a href="#">Soft<b>serve</b></a></li>
+                    <li><a href="#"><b>EAFIT</b></a></li>
+                    <li><a href="#"><b>Academy</b></a></li>
+                </ul>
+                <div class="social-media">
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
     </footer>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
