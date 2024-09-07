@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'user',
+    'preference',
     'learning_route',
     'learning_resource',
 ]
