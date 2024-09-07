@@ -19,6 +19,6 @@ from .models import LearningResource
 
 @admin.register(LearningResource)
 class LearningResourceAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'mediaType', 'contentType', 'link', 'details', 'duration', 'language', 'originalPlatform', 'originalAuthor', 'generalLevel']
+    list_display = ['id', 'name', 'mediaType', 'contentType', 'link', 'duration', 'language', 'originalPlatform', 'originalAuthor', 'generalLevel']
     search_fields = ['id', 'name', 'mediaType', 'contentType', 'link', 'details', 'duration', 'language', 'originalPlatform', 'originalAuthor', 'generalLevel']
     list_filter = ['id', 'name', 'mediaType', 'contentType', 'link', 'details', 'duration', 'language', 'originalPlatform', 'originalAuthor', 'generalLevel']
