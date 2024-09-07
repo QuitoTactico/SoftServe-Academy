@@ -16,9 +16,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from home import views as homeViews
 from user import views as userViews
+from learning_route import views as learningRouteViews
+from learning_resource import views as learningResourceViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', userViews.home, name='home'),
+
+    # Home
+    path('', homeViews.home, name='home'),
+    path('about/', homeViews.about, name='about'),
+    path('contact/', homeViews.contact, name='contact'),
+
+    # User
+    path('login/', userViews.login, name='login'),
+    path('logout/', userViews.logout, name='logout'),
+    path('register/', userViews.register, name='register'),
+
+    # Learning Route
+    path('learning_route/', learningRouteViews.home, name='learning_route_list'),
+    path('learning_route/<int:id>/', learningRouteViews.detail, name='learning_route_detail'),
+
+    # Learning Resource
+    path('learning_resource/', learningResourceViews.home, name='learning_resource_list'),
+    path('learning_resource/create/', learningResourceViews.create, name='learning_resource_create'), # por ahora será el sqlite admin
+    path('learning_resource/<int:id>/', learningResourceViews.detail, name='learning_resource_detail'),
 ]
