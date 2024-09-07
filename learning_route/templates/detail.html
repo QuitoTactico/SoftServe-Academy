@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    LITERALMENTE LA VISTA MÁS IMPORTANTE, esto es lo que más importa
+    <br>
+    es la vista detallada de cualquiera de las rutas del usuario
+    <br>
+    desde acá se ven los recursos que componen la ruta de aprendizaje
+    <br>
+    están en orden, así que deben de aparecer en lista
+    <br>
+    el "componente item de lista" puede tener dos formas, cuando el recurso fue completado (se verá como gris o algo así) y cuando no (se verá como quieran)
+    <br>
+    esta vista no la creó Pablo, así que OJO con ella, comiencen por esta por favor
+    <br>
+    podrán acceder a todo con learning_route.attribute (entre doble llave)
+    <br>
+    y a los recursos con for learning_resource in learning_route.learning_resources y luego acceder a los atributos con learning_resource.attribute
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    desde acá se ven todas las rutas de aprendizaje del usuario
+    <br>
+    al usuario se le genera una por cada targetSkill que tenga
+    <br>
+    así que podrá tener varias rutas de aprendizaje, como Python nivel 3, Java nivel 5, etc
+    <br>
+    no tienen orden, así que pueden estar en cuadrícula o lista, da igual
+    <br>
+    hagan un for tipo for learning_route in learning_routes y luego accedan a los atributos con learning_route.attribute.
+{% endblock %}

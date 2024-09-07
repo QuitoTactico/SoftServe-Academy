@@ -39,11 +39,11 @@ urlpatterns = [
     path('register/', userViews.register, name='register'), # MVP
 
     # Preferences
-    path('preferences/create/', preferenceViews.create, name='preferences_create'), # MVP
-    path('preferences/<int:id>/', preferenceViews.detail, name='preferences_detail'), # MVP
+    path('preference/create/', preferenceViews.create, name='preference_create'), # MVP
+    path('preference/<int:id>/', preferenceViews.detail, name='preference_detail'), # MVP
 
     # Learning Route
-    path('learning_route/', learningRouteViews.home, name='learning_route'),
+    path('learning_route/', learningRouteViews.home, name='learning_route'), # MVP
     path('learning_route/<int:id>/', learningRouteViews.detail, name='learning_route_detail'), # MVP
 
     # Learning Resource
