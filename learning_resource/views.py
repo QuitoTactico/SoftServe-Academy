@@ -47,4 +47,4 @@ def detail(request, id: int):
         return render(request, 'learning_resource_detail.html',
                     {'learning_resource': learning_resource})
     except LearningResource.DoesNotExist:
-        return render(request, '404.html', status=404)
+        return redirect('not_found')

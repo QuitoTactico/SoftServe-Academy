@@ -5,4 +5,13 @@
     acá no tienen orden, así que ya verán si usan una lista para reutilizar lo de learning_route_detail, o hacen cuadrícula
     <br>
     por ahora se usará el admin de Django, se hará algo más bonito en futuros sprints
+    <hr>
+
+    {% for learning_resource in learning_resources %}
+        <a href="{% url 'learning_resource_detail' learning_resource.id %}">
+            {{ learning_resource }}
+        </a>
+        <br>
+    {% endfor %}
+
 {% endblock %}

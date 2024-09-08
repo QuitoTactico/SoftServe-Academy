@@ -54,4 +54,4 @@ class LearningResource(models.Model):
     reviews = models.ManyToManyField('Review', related_name='learning_resources_review', blank=True)
 
     def __str__(self):
-        return f'{self.name} ({self.language} {self.media_type})'
+        return f'{self.name} ({self.language.upper()}) ({self.media_type})'

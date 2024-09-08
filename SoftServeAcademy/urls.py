@@ -37,6 +37,7 @@ urlpatterns = [
     path('', homeViews.home, name='home'),
     path('about/', homeViews.about, name='about'),
     path('contact/', homeViews.contact, name='contact'),
+    path('not_found/', homeViews.not_found, name='not_found'),
 
     # User
     path('user/', userViews.home, name='user'), # MVP
