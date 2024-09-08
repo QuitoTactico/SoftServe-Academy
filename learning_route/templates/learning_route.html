@@ -1,12 +1,48 @@
 {% extends "base.html" %}
+{% load static %}
+{% block title %}LearningRoute{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/learningroute.css' %}">
+{% endblock %}
+
 {% block content %}
-    desde acá se ven todas las rutas de aprendizaje del usuario
-    <br>
-    al usuario se le genera una por cada targetSkill que tenga
-    <br>
-    así que podrá tener varias rutas de aprendizaje, como Python nivel 3, Java nivel 5, etc
-    <br>
-    no tienen orden, así que pueden estar en cuadrícula o lista, da igual
-    <br>
-    hagan un for tipo for learning_route in learning_routes y luego accedan a los atributos con learning_route.attribute.
+<div class="card-container">
+    <a href="{% url 'learning_route_detail' 1 %}" class="card-link">
+        <div class="card">
+            <img src="{% static 'images/2.svg' %}" alt="Card Image">
+            <div class="card-content">
+                <h3>Route 1</h3>
+                <p>Level: 1</p>
+            </div>
+        </div>
+    </a>
+    <a href="{% url 'learning_route_detail' 2 %}" class="card-link">
+        <div class="card">
+            <img src="{% static 'images/2.svg' %}" alt="Card Image">
+            <div class="card-content">
+                <h3>Route 2</h3>
+                <p>Level: 2</p>
+            </div>
+        </div>
+    </a>
+    <a href="{% url 'learning_route_detail' 3 %}" class="card-link">
+        <div class="card">
+            <img src="{% static 'images/2.svg' %}" alt="Card Image">
+            <div class="card-content">
+                <h3>Route 3</h3>
+                <p>Level: 3</p>
+            </div>
+        </div>
+    </a>
+    <a href="{% url 'learning_route_detail' 4 %}" class="card-link">
+        <div class="card">
+            <img src="{% static 'images/2.svg' %}" alt="Card Image">
+            <div class="card-content">
+                <h3>Route 4</h3>
+                <p>Level: 4</p>
+            </div>
+        </div>
+    </a>
+</div>
 {% endblock %}
