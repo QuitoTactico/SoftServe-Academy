@@ -37,7 +37,11 @@ urlpatterns = [
     path('', homeViews.home, name='home'),
     path('about/', homeViews.about, name='about'),
     path('contact/', homeViews.contact, name='contact'),
+    
+    # Errors. They are in home because every app can be redirected to this.
     path('not_found/', homeViews.not_found, name='not_found'),
+    path('not_logged_in/', homeViews.not_logged_in, name='not_logged_in'),
+    path('user_does_not_exist/', homeViews.user_does_not_exist, name='user_does_not_exist'),
 
     # User
     path('user/', userViews.home, name='user'), # MVP

@@ -30,7 +30,7 @@ class Review(models.Model):
 # language: str
 # original_platform: str
 # original_author: str
-# content_manager: ContentManager
+# (UNUSED) content_manager: ContentManager 
 # general_level: int
 # learning_skills: resourceLearningSkill[]
 # required_skills: resourceRequiredSkill[]
