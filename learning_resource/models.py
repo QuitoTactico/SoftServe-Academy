@@ -20,6 +20,7 @@ from enums.enums import MEDIA_TYPE_CHOICES, CONTENT_TYPE_CHOICES, LANGUAGE_CHOIC
 # reviews: Review[]
 
 class LearningResource(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     media_type = models.CharField(max_length=100, choices=MEDIA_TYPE_CHOICES)
     content_type = models.CharField(max_length=100, choices=CONTENT_TYPE_CHOICES)
