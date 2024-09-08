@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from .forms import RegisterForm, LoginForm
 from .models import User
 
 def home(request):
@@ -15,20 +16,40 @@ def home(request):
 
 def login(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        user = authenticate(request, username=email, password=password)
-        if user is not None:
-            auth_login(request, user)
-            request.session['user_id'] = user.id  # Guardar el ID del usuario en la sesión
-            return redirect('home')
-        else:
-            # Manejar error de autenticación
-            return render(request, 'user_login.html', {'error': 'Credenciales inválidas'})
-    return render(request, 'user_login.html')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=email, password=password)
+            if user is not None:
+                auth_login(request, user)
+                request.session['user_id'] = user.id  # Save the user id in the session
+                return redirect('user')  # Happy path
+            else:
+                # Auth error
+                return render(request, 'user_login.html', {'form': form, 'error': 'Invalid credentials'})
+    else:
+        form = LoginForm()
+    return render(request, 'user_login.html', {'form': form})
 
+
+# It sends you to the login too, but deleting the session
 def logout(request):
-    return render(request, 'user_logout.html')
+    auth_logout(request)
+    return redirect('login')
 
 def register(request):
-    return render(request, 'user_register.html')
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            auth_login(request, user)
+            request.session['user_id'] = user.id
+            return redirect('user')
+        else:
+            return render(request, 'user_register.html', {'form': form})
+    else:
+        form = RegisterForm()
+    return render(request, 'user_register.html', {'form': form})

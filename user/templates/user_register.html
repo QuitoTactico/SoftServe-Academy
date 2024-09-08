@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-    register de usuario
-    <br>
-    por ahora no sé si es el mismo para los gestores de contenido, por eso el nombre y la ruta
-    <br>
-    si entre usuario y gestor de contenido se comparte, dónde se pondría el archivo?
+    <h2>User Register</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+    {% if form.errors %}
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li style="color: red;">{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li style="color: red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
