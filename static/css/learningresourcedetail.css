@@ -1,3 +1,4 @@
+/* Estilos generales */
 * {
     margin: 0;
     padding: 0;
@@ -25,33 +26,29 @@ body {
     color: #000;
 }
 
+.course-header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    text-align: center;
+    color: #333;
+}
+
 .course-content {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-.course-image {
-    position: relative;
-    width: 45%;
+.course-column {
+    width: 48%;
 }
 
-.course-image img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.course-info {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
+.course-rating ul,
 .course-details ul {
     list-style: none;
 }
 
+.course-rating li,
 .course-details li {
     margin-bottom: 10px;
     font-size: 1.5rem;
@@ -67,28 +64,33 @@ body {
     cursor: pointer;
     font-size: 1.2rem;
     align-self: flex-start;
+    width: 100%;
 }
 
 .course-rating {
-    text-align: center;
     margin-top: 10px;
     font-size: 1.2rem;
     color: #000;
 }
 
-.details {
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
     margin-top: 20px;
+    border-radius: 10px;
 }
 
-.details h3 {
-    font-size: 1.5rem;
-    color: #000;
-}
-
-.details p {
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #333;
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .review-section {
@@ -97,10 +99,12 @@ body {
 
 .review-section textarea {
     width: 100%;
-    height: 100px;
+    max-height: 150px;
     padding: 10px;
     margin-bottom: 10px;
     font-size: 1rem;
+    resize: vertical;
+    field-sizing: content;
 }
 
 .review-rating p {
@@ -109,11 +113,22 @@ body {
 }
 
 .review-section button {
-    background-color: #1a73e8;
+    background: linear-gradient(to right, #5cd3a7, #4ca0f7);
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+}
+
+.review-section .review {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.review-section h3 {
+    margin-top: 20px;
 }
