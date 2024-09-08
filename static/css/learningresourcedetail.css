@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #5cd3a7, #4ca0f7);
+}
+
+.container-resource {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.course-header h1 {
+    font-size: 2rem;
+    margin-top: 20px;
+    text-align: center;
+    color: #000;
+}
+
+.course-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.course-image {
+    position: relative;
+    width: 45%;
+}
+
+.course-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.course-info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.course-details ul {
+    list-style: none;
+}
+
+.course-details li {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.start-now {
+    background-color: #1a73e8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    align-self: flex-start;
+}
+
+.course-rating {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #000;
+}
+
+.details {
+    margin-top: 20px;
+}
+
+.details h3 {
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.details p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.review-section {
+    margin-top: 30px;
+}
+
+.review-section textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.review-rating p {
+    font-size: 1.2rem;
+    color: #f1c40f;
+}
+
+.review-section button {
+    background-color: #1a73e8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}

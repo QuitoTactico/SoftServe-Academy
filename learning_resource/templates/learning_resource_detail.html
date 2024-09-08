@@ -1,8 +1,63 @@
 {% extends "base.html" %}
+{% load static %}
+{% block title %}Learning Route Details{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/learningresourcedetail.css' %}">
+{% endblock %}
+
 {% block content %}
-    detalle de cada recurso
-    <br>
-    desde acá se verá el link (lo más importante), y todo lo demás del recurso
-    <br>
-    podrán acceder a todo con learning_resource.attribute (entre doble llave)
+<div class="container-resource">
+    <!-- Course Information Section -->
+    <div class="course-header">
+        <h1>Resource content</h1>
+    </div>
+
+    <div class="course-content">
+        <!-- Image with Play Button -->
+        <div class="course-image">
+            <img src="{% static 'images/2.svg' %}" alt="Course Image">
+            <div class="course-rating">
+                <p>⭐ ⭐ ⭐ ⭐ ⭐ (4.3/5)</p>
+            </div>
+        </div>
+
+        <!-- Course Details and Start Button -->
+        <div class="course-info">
+            <div class="course-details">
+                <ul>
+                    <li><strong>By:</strong> Si</li>
+                    <li><strong>Uploaded on:</strong> SI</li>
+                    <li><strong>Duration:</strong> 2 Hours</li>
+                    <li><strong>Language:</strong> English</li>
+                    <li><strong>Tags:</strong> Full-Stack Development</li>
+                </ul>
+            </div>
+            <button class="start-now">Start Now</button>
+        </div>
+
+        <!-- Course Rating -->
+
+    </div>
+
+    <!-- Details Section -->
+    <div class="details">
+        <h3>Details</h3>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque deserunt natus iure accusantium sequi,
+            maiores ex sunt, quas in corrupti molestiae facere voluptatibus autem reprehenderit unde vitae iusto itaque!
+            Consequatur.
+        </p>
+    </div>
+
+    <!-- Review Section -->
+    <div class="review-section">
+        <h3>Write A Review</h3>
+        <textarea placeholder="Type Something..."></textarea>
+        <div class="review-rating">
+            <p>⭐ ⭐ ⭐ ⭐ ⭐</p>
+        </div>
+        <button>Submit Review</button>
+    </div>
+</div>
 {% endblock %}
