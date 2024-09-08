@@ -51,6 +51,7 @@ urlpatterns = [
     # Learning Route
     path('learning_route/', learningRouteViews.home, name='learning_route'), # MVP
     path('learning_route/<int:id>/', learningRouteViews.detail, name='learning_route_detail'), # MVP!!!
+    
     # Learning Resource
     path('learning_resource/', learningResourceViews.home, name='learning_resource'),
     path('learning_resource/create/', learningResourceViews.create, name='learning_resource_create'), 

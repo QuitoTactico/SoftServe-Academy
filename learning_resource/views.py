@@ -17,7 +17,7 @@ class LearningResourceForm(forms.ModelForm):
         #    'language': forms.Select(attrs={'class': 'form-control'}),
         #    'original_platform': forms.TextInput(attrs={'class': 'form-control'}),
         #    'original_author': forms.TextInput(attrs={'class': 'form-control'}),
-        #    'content_manager': forms.Select(attrs={'class': 'form-control'}),
+        ##   'content_manager': forms.Select(attrs={'class': 'form-control'}),
         #    'general_level': forms.NumberInput(attrs={'class': 'form-control'}),
         #    'learning_skills': forms.SelectMultiple(attrs={'class': 'form-control'}),
         #    'required_skills': forms.SelectMultiple(attrs={'class': 'form-control'}),
@@ -25,18 +25,26 @@ class LearningResourceForm(forms.ModelForm):
         #}
 
 def home(request):
-    return render(request, 'learning_resource.html')
+    learning_resources = LearningResource.objects.all()
+    return render(request, 'learning_resource.html', 
+                  {'learning_resources': learning_resources})
 
 def create(request):
     if request.method == 'POST':
         form = LearningResourceForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirige a una URL de éxito
+            return render(request, 'learning_resource.html', 
+                          {'success': True}) # Redirige a una URL de éxito
     else:
         form = LearningResourceForm()
-    return render(request, 'learning_resource_create.html', {'form': form})
+        return render(request, 'learning_resource_create.html', 
+                    {'form': form})
 
 def detail(request, id: int):
-    # id es el id del recurso específico. por ahora no se usa.
-    return render(request, 'learning_resource_detail.html')
+    try:
+        learning_resource = LearningResource.objects.get(pk=id)
+        return render(request, 'learning_resource_detail.html',
+                    {'learning_resource': learning_resource})
+    except LearningResource.DoesNotExist:
+        return render(request, '404.html', status=404)
