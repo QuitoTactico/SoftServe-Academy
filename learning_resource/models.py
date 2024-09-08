@@ -21,18 +21,18 @@ from enums.enums import MEDIA_TYPE_CHOICES, CONTENT_TYPE_CHOICES, LANGUAGE_CHOIC
 
 class LearningResource(models.Model):
     name = models.CharField(max_length=100)
-    mediaType = models.CharField(max_length=100, choices=MEDIA_TYPE_CHOICES)
-    contentType = models.CharField(max_length=100, choices=CONTENT_TYPE_CHOICES)
+    media_type = models.CharField(max_length=100, choices=MEDIA_TYPE_CHOICES)
+    content_type = models.CharField(max_length=100, choices=CONTENT_TYPE_CHOICES)
     link = models.CharField(max_length=200)
     details = models.TextField(blank=True)
     duration = models.IntegerField(validators=[MinValueValidator(1)])
     language = models.CharField(max_length=20, choices=LANGUAGE_CHOICES)
-    originalPlatform = models.CharField(max_length=100, blank=True)
-    originalAuthor = models.CharField(max_length=100, blank=True)
-    # contentManager = models.ForeignKey(ContentManager, on_delete=models.CASCADE)
-    generalLevel = models.IntegerField(validators=[MinValueValidator(1)])
-    learningSkills = models.ManyToManyField(SkillLevel, related_name='learning_resources')
-    requiredSkills = models.ManyToManyField(SkillLevel, related_name='required_resources', blank=True)
+    original_platform = models.CharField(max_length=100, blank=True)
+    original_author = models.CharField(max_length=100, blank=True)
+    # content_manager = models.ForeignKey(ContentManager, on_delete=models.CASCADE)
+    general_level = models.IntegerField(validators=[MinValueValidator(1)])
+    learning_skills = models.ManyToManyField(SkillLevel, related_name='learning_resources_learning')
+    required_skills = models.ManyToManyField(SkillLevel, related_name='learning_resources_required', blank=True)
     # reviews = models.ManyToManyField(Review, related_name='learning_resources')
 
     def __str__(self):

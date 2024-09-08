@@ -8,7 +8,7 @@ from enums.enums import SKILL_TYPE_CHOICES
 
 class Skill(models.Model):
     name = models.CharField(max_length=100)
-    skillType = models.CharField(max_length=100, choices=SKILL_TYPE_CHOICES)
+    skill_type = models.CharField(max_length=100, choices=SKILL_TYPE_CHOICES)
     image = models.ImageField(upload_to='skill/images/', null=True, blank=True)
 
     def __str__(self):

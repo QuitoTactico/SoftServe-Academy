@@ -9,7 +9,7 @@ from learning_resource.models import LearningResource
 # completed: bool
 # time_spent: int
 class LearningRouteResource(models.Model):
-    LearningRoute = models.ForeignKey('LearningRoute', on_delete=models.CASCADE)
+    #Learning_route = models.ForeignKey('LearningRoute', on_delete=models.CASCADE)
     learning_resource = models.ForeignKey(LearningResource, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
     time_spent = models.IntegerField(validators=[MinValueValidator(0)], blank=True)
@@ -24,7 +24,8 @@ class LearningRouteResource(models.Model):
 class LearningRoute(models.Model):
     skillLevel = models.ForeignKey(SkillLevel, on_delete=models.CASCADE)
     duration = models.IntegerField(validators=[MinValueValidator(1)])
-    learning_resources = models.ManyToManyField(LearningResource, through='LearningRouteResource')
+    #learning_resources = models.ManyToManyField(LearningResource, through='LearningRouteResource')
+    learning_resources = models.ManyToManyField(LearningRouteResource, related_name='learning_route')
     actual_resource_index = models.IntegerField(default=0)
     completed = models.BooleanField(default=False)
     time_spent = models.IntegerField(validators=[MinValueValidator(0)], blank=True)
