@@ -3,13 +3,12 @@ from .models import LearningRoute, LearningRouteResource
 
 @admin.register(LearningRoute)
 class LearningRouteAdmin(admin.ModelAdmin):
-    list_display = ('id', 'skill_level', 'duration', 'completed', 'time_spent')
-    list_filter = ('skill_level', 'completed')
-    search_fields = ('id', 'skill_level', 'duration', 'completed')
+    list_display = ['id', 'skill_level', 'duration', 'completed', 'time_spent']
+    list_filter = ['skill_level__skill__name', 'completed']
+    search_fields = ['id', 'skill_level', 'duration', 'completed']
 
 @admin.register(LearningRouteResource)
 class LearningRouteResourceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'learning_resource', 'completed', 'time_spent')
-    list_filter = ('learning_route', 'completed')
-    search_fields = ('id', 'learning_route', 'learning_resource', 'completed')
-    ordering = ('learning_route', 'completed', 'time_spent')
+    list_display = ['id', 'learning_resource', 'completed', 'time_spent']
+    list_filter = ['completed', 'learning_resource__required_skills__skill__name']
+    search_fields = ['id', 'completed']
