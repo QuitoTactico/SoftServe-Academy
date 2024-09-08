@@ -3,14 +3,14 @@ from .models import Skill, SkillLevel
 
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'skillType')
-    list_filter = ('skillType',)
-    search_fields = ('id', 'name', 'skillType')
-    ordering = ('skillType', 'id',)
+    list_display = ('id', 'name', 'skill_type')
+    list_filter = ('skill_type',)
+    search_fields = ('id', 'name', 'skill_type')
+    ordering = ('skill_type', 'id',)
 
 @admin.register(SkillLevel)
 class SkillLevelAdmin(admin.ModelAdmin):
     list_display = ('id', 'skill', 'level')
     list_filter = ('skill', 'level')
     search_fields = ('id', 'skill', 'level')
-    ordering = ('skill', 'level', 'id',)
+    ordering = ('skill', 'level', 'id')

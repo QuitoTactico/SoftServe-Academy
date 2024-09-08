@@ -3,6 +3,6 @@ from .models import *
 
 @admin.register(Preference)
 class PreferenceAdmin(admin.ModelAdmin):
-    list_display = ['id', 'mediaType', 'contentType', 'learningType', 'timePerWeek', 'timePerSession']
-    list_filter = ['id', 'mediaType', 'contentType', 'learningType', 'timePerWeek', 'timePerSession']
-    search_fields = ['id', 'mediaType', 'contentType', 'learningType']
+    list_display = ['id', 'media_type', 'content_type', 'learning_type', 'time_per_week', 'time_per_session']
+    list_filter = ['media_type', 'content_type', 'learning_type', 'time_per_week', 'time_per_session']
+    search_fields = ['id', 'media_type', 'content_type', 'learning_type']
