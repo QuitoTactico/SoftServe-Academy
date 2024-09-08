@@ -7,15 +7,15 @@ def home(request):
     if user_id:
         try:
             user = get_object_or_404(User, id=user_id)
-            resources = user.learning_routes.all()  # Obtener los recursos de aprendizaje del usuario
+            learning_routes = user.learning_routes.all()  # Obtener los recursos de aprendizaje del usuario
         except:
             return redirect('user_does_not_exist')
     else:
-        resources = LearningRoute.objects.none()  # No hay usuario en la sesión, devolver un queryset vacío
+        learning_routes = LearningRoute.objects.none()  # No hay usuario en la sesión, devolver un queryset vacío
         return redirect('not_logged_in')
     
-    return render(request, 'user.html', 
-                  {'resources': resources})
+    return render(request, 'learning_route.html', 
+                  {'learning_routes': learning_routes})
 
 
 def detail(request, id: int):

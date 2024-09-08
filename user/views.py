@@ -32,7 +32,6 @@ def login(request):
         form = LoginForm()
     return render(request, 'user_login.html', {'form': form})
 
-
 # It sends you to the login too, but deleting the session
 def logout(request):
     auth_logout(request)
