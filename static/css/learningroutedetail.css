@@ -1,0 +1,79 @@
+.route-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+.route-title {
+    font-size: 2rem;
+    color: #1a73e8;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.table-list-group {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border: 1px solid #ddd;
+}
+
+.table-list-group th,
+.table-list-group td {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: left;
+    vertical-align: top;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.table-list-group th {
+    background-color: #f1f1f1;
+    color: #1a73e8;
+    font-weight: bold;
+}
+
+/* Estilos para la lista */
+.list-group {
+    list-style-type: none;
+    padding-left: 0;
+    z-index: 1;
+}
+
+.list-group-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 15px;
+    font-size: 18px;
+    text-align: left;
+    color: #333;
+}
+
+.list-group-item.disabled {
+    color: #ccc;
+    pointer-events: none;
+}
+
+.list-group-item:hover {
+    background-color: #f9f9f9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .table-list-group {
+        width: 100%;
+    }
+
+    .table-list-group th,
+    .table-list-group td {
+        padding: 15px;
+    }
+
+    .list-group-item {
+        font-size: 16px;
+        padding: 10px;
+    }
+}

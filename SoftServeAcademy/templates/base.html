@@ -16,62 +16,64 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="{% static 'images/2.svg' %}" alt="Logo">
-            <span>Softserve Academy</span>
-        </div>
-        <nav>
-            <ul id="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li class="dropdown">
-                    <a href="#">Routes</a>
-                    <div class="dropdown-content">
-                        <a>Route 1</a>
-                        <a>Route 2</a>
-                    </div>
-                </li>
-                <li><a href="">Pricing</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <a href="" class="login-btn">Login</a>
-            <a href="" class="get-started-btn">Get Started</a>
-        </div>
-        <!-- Botón de menú de hamburguesa -->
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class="material-icons">dehaze</i>
-        </div>
-    </header>
-
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-left">
+    <div class="wrapper">
+        <header>
+            <div class="logo">
                 <img src="{% static 'images/2.svg' %}" alt="Logo">
-                <p>Copyright ©2024 Softserve | EAFIT</p>
+                <span>Softserve Academy</span>
             </div>
-            <div class="footer-right">
-                <ul>
-                    <li><a href="#">Soft<b>serve</b></a></li>
-                    <li><a href="#"><b>EAFIT</b></a></li>
-                    <li><a href="#"><b>Academy</b></a></li>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li class="dropdown">
+                        <a href="#">Routes</a>
+                        <div class="dropdown-content">
+                            <a>Route 1</a>
+                            <a>Route 2</a>
+                        </div>
+                    </li>
+                    <li><a href="">Pricing</a></li>
                 </ul>
-                <div class="social-media">
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-youtube"></i></a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="" class="login-btn">Login</a>
+                <a href="" class="get-started-btn">Get Started</a>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="material-icons">dehaze</i>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="container">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-left">
+                    <img src="{% static 'images/2.svg' %}" alt="Logo">
+                    <p>Copyright ©2024 Softserve | EAFIT</p>
+                </div>
+                <div class="footer-right">
+                    <ul>
+                        <li><a href="#">Soft<b>serve</b></a></li>
+                        <li><a href="#"><b>EAFIT</b></a></li>
+                        <li><a href="#"><b>Academy</b></a></li>
+                    </ul>
+                    <div class="social-media">
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-
+        </footer>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

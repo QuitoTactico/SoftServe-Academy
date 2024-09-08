@@ -3,13 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    dl,
-    ol,
-    ul {
-        margin-top: 0;
-        margin-bottom: 0rem;
-    }
 }
 
 body {
@@ -23,6 +16,7 @@ header {
     padding: 10px 20px;
     background: linear-gradient(to right, #5cd3a7, #4ca0f7);
     position: relative;
+    z-index: 2;
 }
 
 .logo {
@@ -147,9 +141,8 @@ nav ul li:hover .dropdown-content {
         height: 0;
         overflow: hidden;
         transition: height 0.3s ease-in-out;
+        z-index: 2;
     }
-
-    /* si hace falta, se cambia la height para mostrar más elementos*/
 
     nav ul.active {
         height: 200px;
