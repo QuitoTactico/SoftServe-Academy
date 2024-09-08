@@ -4,19 +4,19 @@ from skill.models import SkillLevel
 from enums.enums import MEDIA_TYPE_CHOICES, CONTENT_TYPE_CHOICES, LANGUAGE_CHOICES
 
 # id: int
-# name: string
-# mediaType: enum
-# contentType: enum
-# link: string
-# details: string
+# name: str
+# media_type: str
+# content_type: str
+# link: str
+# details: str
 # duration: int
-# language: enum
-# originalPlatform: string
-# originalAuthor: string
-# contentManager: ContentManager
-# generalLevel: int
-# learningSkills: resourceLearningSkill[]
-# requiredSkills: resourceRequiredSkill[] 
+# language: str
+# original_platform: str
+# original_author: str
+# content_manager: ContentManager
+# general_level: int
+# learning_skills: resourceLearningSkill[]
+# required_skills: resourceRequiredSkill[]
 # reviews: Review[]
 
 class LearningResource(models.Model):

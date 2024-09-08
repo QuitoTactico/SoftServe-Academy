@@ -16,13 +16,13 @@ class LearningRouteResource(models.Model):
 
 
 # id: int
-# skillLevel: SkillLevel
+# skill_level: SkillLevel
 # duration: int
 # learning_resources: learningRouteResource[]
 # actual_resource_index: int
 # completed: bool
 class LearningRoute(models.Model):
-    skillLevel = models.ForeignKey(SkillLevel, on_delete=models.CASCADE)
+    skill_level = models.ForeignKey(SkillLevel, on_delete=models.CASCADE)
     duration = models.IntegerField(validators=[MinValueValidator(1)])
     #learning_resources = models.ManyToManyField(LearningResource, through='LearningRouteResource')
     learning_resources = models.ManyToManyField(LearningRouteResource, related_name='learning_route')
