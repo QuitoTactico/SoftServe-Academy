@@ -3,9 +3,10 @@ from .models import LearningRoute, LearningRouteResource
 
 @admin.register(LearningRoute)
 class LearningRouteAdmin(admin.ModelAdmin):
-    list_display = ['id', 'skill_level', 'duration', 'completed', 'time_spent']
-    list_filter = ['skill_level__skill__name', 'completed']
+    list_display = ['id', 'skill_level', 'duration', 'actual_resource_index', 'completed', 'time_spent']
+    list_filter = ['skill_level__skill__name', 'users_route', 'completed']
     search_fields = ['id', 'skill_level', 'duration', 'completed']
+    list_display_links = ['id', 'skill_level']
 
 @admin.register(LearningRouteResource)
 class LearningRouteResourceAdmin(admin.ModelAdmin):

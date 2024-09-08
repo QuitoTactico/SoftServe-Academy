@@ -1,7 +1,24 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from skill.models import SkillLevel
+#from user.models import User
 from enums.enums import MEDIA_TYPE_CHOICES, CONTENT_TYPE_CHOICES, LANGUAGE_CHOICES
+
+# id: int
+# rate: int
+# created_at: datetime
+# comment: str
+# user: User
+
+class Review(models.Model):
+    id = models.AutoField(primary_key=True)
+    rate = models.IntegerField(validators=[MinValueValidator(1), MinValueValidator(5)])
+    created_at = models.DateTimeField(auto_now_add=True)
+    comment = models.TextField(blank=True)
+    user = models.ForeignKey('user.User', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.name + ' - ' + str(self.rate) + ' - ' + self.created_at.strftime('%Y-%m-%d %H:%M:%S')
 
 # id: int
 # name: str
@@ -34,7 +51,7 @@ class LearningResource(models.Model):
     general_level = models.IntegerField(validators=[MinValueValidator(1)])
     learning_skills = models.ManyToManyField(SkillLevel, related_name='learning_resources_learning')
     required_skills = models.ManyToManyField(SkillLevel, related_name='learning_resources_required', blank=True)
-    # reviews = models.ManyToManyField(Review, related_name='learning_resources')
+    reviews = models.ManyToManyField('Review', related_name='learning_resources_review', blank=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} ({self.language} {self.media_type})'
