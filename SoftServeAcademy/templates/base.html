@@ -39,6 +39,16 @@
                     </li>
                     {% endif %}
                     <li><a href="{% url 'contact' %}">Contact</a></li>
+                    {% if user.is_superuser %}
+                    <li class="dropdown">
+                        <a href="{% url 'admin:index' %}">Admin</a>
+                        <div class="dropdown-content">
+                            <a href="{% url 'learning_resource' %}">View Resources</a>
+                            <a href="{% url 'learning_resource_create' %}">Create Resource</a>
+                            <a href="#">Create Skill</a>
+                        </div>
+                    </li>
+                    {% endif %}
                 </ul>
             </nav>
             <div class="auth-buttons">
@@ -76,15 +86,15 @@
                 </div>
                 <div class="footer-right">
                     <ul>
-                        <li><a href="#">Soft<b>serve</b></a></li>
-                        <li><a href="#"><b>EAFIT</b></a></li>
-                        <li><a href="#"><b>Academy</b></a></li>
+                        <li><a href="https://career.softserveinc.com/es/about/colombia">Soft<b>Serve</b></a></li>
+                        <li><a href="https://www.eafit.edu.co/"><b>EAFIT</b></a></li>
+                        <li><a href="https://github.com/QuitoTactico/SoftServe-Academy"><b>GitHub</b></a></li>
                     </ul>
                     <div class="social-media">
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/softserve_people/"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/SoftServeColombia/"><i class="fa fa-facebook"></i></a>
+                        <a href="https://x.com/SoftServeInc"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@SoftServeInc"><i class="fa fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
