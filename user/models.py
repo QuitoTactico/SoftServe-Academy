@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from preference.models import Preference
 from skill.models import SkillLevel
 from learning_route.models import LearningRoute
@@ -29,7 +29,7 @@ class UserManager(BaseUserManager):
 # target_skills: SkillLevel[]
 # learning_routes: LearningRoute[]
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
@@ -51,3 +51,9 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return f'[{self.id}] {self.name}'
+    
+    def has_perm(self, perm, obj=None):
+        return self.is_superuser
+
+    def has_module_perms(self, app_label):
+        return self.is_superuser
