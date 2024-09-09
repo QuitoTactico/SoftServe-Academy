@@ -20,8 +20,9 @@
     <div class="wrapper">
         <header>
             <div class="logo">
-                <img src="{% static 'images/2.svg' %}" alt="Logo">
-                <span>Softserve Academy</span>
+
+                <a href="{% url 'home' %}"><img src="{% static 'images/2.svg' %}" alt="Logo"></a>
+                <a href="{% url 'home' %}"><span>Softserve Academy</span></a>
             </div>
             <nav>
                 <ul id="nav-links">
@@ -32,7 +33,7 @@
                         <a href="{% url 'learning_route' %}">Routes</a>
                         <div class="dropdown-content">
                             {% for learning_route in user.learning_routes.all %}
-                            <a href="{% url 'learning_route_detail' learning_route.id %}">{{ learning_route.name }}</a>
+                            <a href="{% url 'learning_route_detail' learning_route.id %}">{{ learning_route }}</a>
                             {% endfor %}
                         </div>
                     </li>
@@ -49,7 +50,7 @@
                     <img src="{% static 'images/default-user.png' %}" alt="Default User Photo" class="user-image">
                     {% endif %}
                 </a>
-                <a href="{% url 'logout' %}" class="get-started-btn">Logout</a>
+                <a href="{% url 'logout' %}" class="get-logout-btn">Logout</a>
                 {% else %}
                 <a href="{% url 'login' %}" class="login-btn">Login</a>
                 <a href="{% url 'register' %}" class="get-started-btn">Get Started</a>

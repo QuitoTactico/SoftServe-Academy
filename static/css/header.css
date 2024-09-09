@@ -31,10 +31,16 @@ header {
     margin-left: 20px;
 }
 
-.logo span {
+.logo a span {
     font-size: 1.7rem;
     font-weight: bold;
     color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logo a:hover {
+    text-decoration: none;
 }
 
 nav ul {
@@ -111,6 +117,20 @@ nav ul li:hover .dropdown-content {
     border-radius: 5px;
     margin-left: 10px;
     font-size: 1.3rem;
+}
+
+.auth-buttons .get-logout-btn {
+    text-decoration: none;
+    background-color: #e8241a;
+    color: #fff;
+    padding: 8px 24px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 1.3rem;
+}
+
+.auth-buttons .get-logout-btn:hover {
+    background-color: #d30f0f;
 }
 
 .auth-buttons .get-started-btn:hover {
