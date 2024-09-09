@@ -25,7 +25,7 @@
         </div>
 
         <div class="learning-preferences">
-            <h2><a href="{% url " preference_create" %}">Learning Preferences <i class="fa fa-pencil"></i></a></h2>
+            <h2><a href="{% url "preference_create" %}">Learning Preferences <i class="fa fa-pencil"></i></a></h2>
             {% if user.preference %}
             <!-- THESE THREE WILL CHANGE TO ALLOW MORE THAN ONE.
                 IF THERE'S AN ERROR: "USER DOESN'T EXIST", 
@@ -37,7 +37,7 @@
             <p><strong>Available Learning Time Per Week: </strong>{{ user.preference.time_per_week }} minutes</p>
             <p><strong>Available Learning Time Per Session: </strong>{{ user.preference.time_per_session }} minutes</p>
             {% else %}
-            <p><a href="{% url " preference_create" %}">Please set your preferences to generate your learning
+            <p><a href="{% url "preference_create" %}">Please set your preferences to generate your learning
                     routes.</a></p>
             {% endif %}
         </div>
@@ -85,7 +85,7 @@
 </div>
 
 <div class="learning-route">
-    <a href="{% url " learning_route" %}">
+    <a href="{% url "learning_route" %}">
         <button>Go to your learning routes</button>
     </a>
 </div>
