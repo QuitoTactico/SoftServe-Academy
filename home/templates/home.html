@@ -1,4 +1,36 @@
 {% extends "base.html" %}
+{% load static %}
+{% block title %}Learning Route Details{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
 {% block content %}
-    home general
+<section class="hero">
+    <div class="hero-content">
+        <h1>Studying Online is now much easier...</h1>
+        <p>Softserve Academy is an interesting platform that will teach you in a more interactive way</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">Join for free</a>
+            <a href="#" class="btn btn-secondary">Get Started</a>
+        </div>
+        <div class="info-cards">
+            <div class="info-card">
+                <span class="icon">&#128197;</span> <!-- Puedes reemplazar este icono -->
+                <p>250k Assisted Student</p>
+            </div>
+            <div class="info-card">
+                <span class="icon">&#9989;</span> <!-- Puedes reemplazar este icono -->
+                <p>Improve <br> Track your progress</p>
+            </div>
+        </div>
+        <div class="course-card">
+            <p>Python learning course <br> Trending topic!</p>
+            <a href="#" class="btn btn-blue">Join Now</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="{% static 'images/softserve-icon.svg' %}" alt="Student holding books">
+    </div>
+</section>
 {% endblock %}

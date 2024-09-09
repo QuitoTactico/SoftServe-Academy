@@ -24,6 +24,7 @@ footer {
     background-color: #000;
     color: #fff;
     padding: 20px 0;
+    width: 100%;
 }
 
 .footer-container {
@@ -121,6 +122,12 @@ footer {
     .footer-right ul li a,
     .footer-right .social-media a {
         font-size: 1rem;
+    }
+
+    footer {
+        width: 100%;
+        height: auto;
+        margin: 0;
     }
 
     .footer-left img {
