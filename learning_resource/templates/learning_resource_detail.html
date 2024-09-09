@@ -12,7 +12,9 @@
     <div class="course-header">
         <h1>{{ learning_resource.name }}</h1>
         <p>{{ learning_resource.details }}</p>
-        <button class="start-now">Open Content</button>
+        <a href="{{ learning_resource.link }}">
+            <button class="start-now">Open Content</button>
+        </a>
     </div>
 
 
@@ -21,12 +23,23 @@
         <div class="course-column">
             <div class="course-rating">
                 <ul>
-                    <li><strong>Name</strong> {{ learning_resource.name }}</li>
-                    <li><strong>Media type</strong> {{ learning_resource.media_type }}</li>
-                    <li><strong>Original creator</strong> {{ learning_resource.original_author }}</li>
-                    <li><strong>Duration</strong> {{ learning_resource.duration }}</li>
-                    <li><strong>Required Skills</strong> No puede ser increíble</li>
-
+                    <li><strong>Name:</strong> {{ learning_resource.name }}</li>
+                    <li><strong>Media type:</strong> {{ learning_resource.media_type }}</li>
+                    {% if learning_resource.original_author %}
+                        <li><strong>Original author:</strong> {{ learning_resource.original_author }}</li>
+                    {% else %}
+                        <li><strong>Unknown original author</strong></li>
+                    {% endif %}
+                    <li><strong>Duration:</strong> {{ learning_resource.duration }}</li>
+                    {% if learning_resource.required_skills.all %}
+                        <li><strong>Required skills:</strong></li>
+                        {% for skill_level in learning_resource.required_skills.all  %}
+                            <li>➤ {{ skill_level.skill.name }} - Level {{ skill_level.level }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li><strong>Does not require skills</strong></li>
+                    {% endif %}
+                    
                 </ul>
             </div>
         </div>
@@ -35,11 +48,14 @@
         <div class="course-column">
             <div class="course-details">
                 <ul>
-                    <li><strong>Language</strong> {{ learning_resource.language }}</li>
-                    <li><strong>Content type</strong> {{ learning_resource.content_type }}</li>
-                    <li><strong>Original platform</strong> {{ learning_resource.original_platform }}</li>
-                    <li><strong>General level</strong> {{ learning_resource.general_level }}</li>
-                    <li><strong>Learning Skills</strong> No puede ser increíble part2</li>
+                    <li><strong>Language:</strong> {{ learning_resource.language|upper }}</li>
+                    <li><strong>Content type:</strong> {{ learning_resource.content_type }}</li>
+                    <li><strong>Original platform:</strong> {{ learning_resource.original_platform }}</li>
+                    <li><strong>General level:</strong> {{ learning_resource.general_level }}</li>
+                    <li><strong>Learning skills:</strong></li>
+                    {% for skill_level in learning_resource.learning_skills.all  %}
+                        <li>➤ {{ skill_level.skill.name }} - Level {{ skill_level.level }}</li>
+                    {% endfor %}
                 </ul>
             </div>
 
