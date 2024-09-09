@@ -1,9 +1,11 @@
 from django.db import models
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from skill.models import SkillLevel
 from learning_resource.models import LearningResource
 
 # id: int
+# index: int
+# level: int
 # LearningRoute: LearningRoute
 # learning_resource: LearningResource
 # completed: bool
@@ -11,6 +13,8 @@ from learning_resource.models import LearningResource
 
 class LearningRouteResource(models.Model):
     id = models.AutoField(primary_key=True)
+    index = models.IntegerField(validators=[MinValueValidator(0)], default=0)
+    level = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], default=1)
     learning_resource = models.ForeignKey(LearningResource, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
     time_spent = models.IntegerField(validators=[MinValueValidator(0)], default=0)
