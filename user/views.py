@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, LoginForm
 from .models import User
 
+@login_required
 def home(request):
     user_id = request.session.get('user_id')
     if user_id:
@@ -12,7 +14,7 @@ def home(request):
         except:
             return redirect('user_does_not_exist')
     else:
-        return redirect('not_logged_in')
+        return redirect('not_logged_in') # Not necessary now, because of the login_required decorator
 
 def login(request):
     if request.method == 'POST':
