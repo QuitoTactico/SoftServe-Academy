@@ -5,9 +5,9 @@ from enums.enums import MEDIA_TYPE_CHOICES, CONTENT_TYPE_CHOICES, LEARNING_TYPE_
 # id: int
 # media_type: enum = Text | Video | Audio
 # content_type: enum =  Guides | Documentation | Introduction | Summary | Article | Quiz | Podcast
+# learning_type: enum = Autodidact | Guided | Challenges
 # time_per_week: int
 # time_per_session: int
-# autodidact_or_guided: Bool
 
 class Preference(models.Model):
     id = models.AutoField(primary_key=True)
@@ -16,3 +16,8 @@ class Preference(models.Model):
     learning_type = models.CharField(max_length=100, choices=LEARNING_TYPE_CHOICES)
     time_per_week = models.IntegerField(validators=[MinValueValidator(1)])
     time_per_session = models.IntegerField(validators=[MinValueValidator(1)])
+
+'''
+MEDIA_TYPE, CONTENT_TYPE AND LEARNING_TYPE WILL CHANGE TO ALLOW MORE THAN ONE.
+IF THERE'S AN ERROR LIKE "USER DOESN'T EXIST" OR A BAD ROUTE CREATION, IT'S BECAUSE OF THIS
+'''
