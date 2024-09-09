@@ -75,7 +75,7 @@ body {
 
 .spotify-container {
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 26.7%;
     /* 16:9 aspect ratio */
     height: 0;
     overflow: hidden;

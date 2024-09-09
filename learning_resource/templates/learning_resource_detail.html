@@ -15,16 +15,16 @@
 
         <!-- Optional Video Container -->
 
-        {% if learning_resource.media_type == "Video" %}
+        {% if learning_resource.media_type %}
         <div class="video-container">
             <iframe width="95%" src="{{ learning_resource.link }}"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        {% elif learning_resource.media_type %}
+        {% elif learning_resource.media_type == "Audio" %}
         <div class="spotify-container">
-            <iframe src="https://open.spotify.com/embed/track/7GhIk7Il098yCjg4BQjzvb" width="95%"
+            <iframe src="{{ learning_resource.link }}" width="95%"
                 frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
         {% endif %}
