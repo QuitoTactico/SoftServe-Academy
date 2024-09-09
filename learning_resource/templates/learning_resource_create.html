@@ -6,9 +6,12 @@
     por ahora se usará el admin de Django, se hará algo más bonito en futuros sprints
     <hr>
     -->
+    <br>
+    <h1>Learning Resorce creation</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Create Resource</button>
+        <button type="submit" class="btn btn-primary">Create Resource</button>
     </form>
+    <br>
 {% endblock %}

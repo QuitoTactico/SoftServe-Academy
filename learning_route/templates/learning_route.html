@@ -8,15 +8,18 @@
 
 {% block content %}
 <div class="card-container">
-    <a href="{% url 'learning_route_detail' 1 %}" class="card-link">
+    {% for learning_route in learning_routes %}
+    <a href="{% url 'learning_route_detail' learning_route.id %}" class="card-link">
         <div class="card">
             <img src="{% static 'images/2.svg' %}" alt="Card Image">
             <div class="card-content">
-                <h3>Route 1</h3>
-                <p>Level: 1</p>
+                <h3>{{ learning_route.name }}</h3>
+                <p>Level {{ learning_route.skill_level.level }}</p>
             </div>
         </div>
     </a>
+    {% endfor %}
+
     <a href="{% url 'learning_route_detail' 2 %}" class="card-link">
         <div class="card">
             <img src="{% static 'images/2.svg' %}" alt="Card Image">

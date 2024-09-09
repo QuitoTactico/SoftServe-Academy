@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import LearningRoute
 from user.models import User
 
+@login_required
 def home(request):
     user_id = request.session.get('user_id')
     if user_id:

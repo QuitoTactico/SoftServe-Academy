@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required, user_passes_test
+from user.models import User
 from .models import LearningResource
 from .forms import LearningResourceForm
 
@@ -7,6 +9,8 @@ def home(request):
     return render(request, 'learning_resource.html', 
                   {'learning_resources': learning_resources})
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def create(request):
     if request.method == 'POST':
         form = LearningResourceForm(request.POST)
