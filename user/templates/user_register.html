@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+    <br>
     <h2>User Register</h2>
     <form method="post">
         {% csrf_token %}
@@ -18,4 +19,5 @@
             {% endfor %}
         </ul>
     {% endif %}
+    <br>
 {% endblock %}
