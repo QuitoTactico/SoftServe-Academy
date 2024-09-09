@@ -30,8 +30,8 @@
                         <li class="dropdown">
                             <a href="{% url 'learning_route' %}">Routes</a>
                             <div class="dropdown-content">
-                                {% for learning_route in user.learning_routes %}
-                                    <a href="{% url 'learning_route' learning_route.id %}">{{ learning_route.name }}</a>
+                                {% for learning_route in user.learning_routes.all %}
+                                    <a href="{% url 'learning_route_detail' learning_route.id %}">{{ learning_route.name }}</a>
                                 {% endfor %}
                             </div>
                         </li>
@@ -48,7 +48,7 @@
                             <img src="{% static 'images/default-user.png' %}" alt="Default User Photo" class="user-photo">
                         {% endif %}
                     </a>
-                    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+                    <a href="{% url 'logout' %}" class="get-started-btn">Logout</a>
                 {% else %}
                     <a href="{% url 'login' %}" class="login-btn">Login</a>
                     <a href="{% url 'register' %}" class="get-started-btn">Get Started</a>
