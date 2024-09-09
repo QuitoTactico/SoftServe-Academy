@@ -1,4 +1,9 @@
 /* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;

@@ -1,5 +1,71 @@
 {% extends "base.html" %}
+{% load static %}
+{% block title %}Learning Route Details{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/user.css' %}">
+{% endblock %}
 {% block content %}
-    home de usuario, información general sobre él y un link que lo lleve a sus preferencias.
-    por ahora no hay edit de preferencias, toca crearlas desde cero cada vez
+
+<div class="header">
+    <h1>The game</h1>
+</div>
+
+<!-- Nueva estructura para colocar la imagen ocupando más espacio -->
+<div class="main-content">
+    <div class="info">
+        <div class="account-info">
+            <h2>Account Info</h2>
+            <p><strong>Name:</strong> Esteban Vergara</p>
+            <p><strong>Email:</strong> esteban@gmail.com</p>
+        </div>
+
+        <div class="learning-preferences">
+            <h2>Learning Preferences<a href="https://www.facebook.com/SoftServeColombia/"><i
+                        class="fa fa-pencil"></i></a></h2>
+            <p><strong>Preferred Content Type:</strong> <a href="#">Guides</a> <a href="#">Article</a> <a
+                    href="#">Podcast</a></p>
+            <p><strong>Learning Style:</strong> Autodidact, Guided</p>
+            <p><strong>Available Learning Time Per Week:</strong> 5 Hours</p>
+            <p><strong>Education Level:</strong> Intermediate</p>
+        </div>
+    </div>
+    <img class="profile-pic" src="{% static 'images/default-user.png' %}" alt="Profile Picture">
+</div>
+
+<!-- Sección de habilidades -->
+<div class="skills">
+    <h2>Current Skills<a href="https://www.facebook.com/SoftServeColombia/"><i class="fa fa-pencil"></i></a></h2>
+    <div class="skill-set">
+        <div class="skill"><img src="{% static 'images/default-user.png' %}" alt="Python"> <span><b>Python</b></span>
+            <span>Level 4</span>
+        </div>
+        <div class="skill"><img src="{% static 'images/default-user.png' %}" alt="Python"> <span><b>Python</b></span>
+            <span>Level 4</span>
+        </div>
+        <div class="skill"><img src="{% static 'images/default-user.png' %}" alt="Python"> <span><b>Python</b></span>
+            <span>Level 4</span>
+        </div>
+    </div>
+</div>
+
+<h2 class="title-target">Target Skills<a href="https://www.facebook.com/SoftServeColombia/"><i
+            class="fa fa-pencil"></i></a></h2>
+<div class="skill-set">
+    <div class="skill"><img src="{% static 'images/default-user.png' %}" alt="Databases"> <span><b>Databases</b></span>
+        <span>Level 4</span>
+    </div>
+    <div class="skill"><img src="{% static 'images/default-user.png' %}" alt="Russian"> <span><b>Russian</b></span>
+        <span>Level 4</span>
+    </div>
+    <div class="skill"><img src="{% static 'images/default-user.png' %}" alt="Portuguese">
+        <span><b>Portuguese</b></span>
+        <span>Level 4</span>
+    </div>
+</div>
+
+<div class="learning-route">
+    <button>Go to your learning route</button>
+</div>
+
 {% endblock %}
