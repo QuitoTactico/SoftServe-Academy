@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from user.models import User
+from learning_route.models import LearningRouteResource
 from .models import LearningResource
 from .forms import LearningResourceForm
 
@@ -23,10 +24,19 @@ def create(request):
         return render(request, 'learning_resource_create.html', 
                     {'form': form})
 
-def detail(request, id: int):
+# Second parameter is optional, to mark the resource as completed
+def detail(request, id: int, route_resource_id: int = None):
     try:
         learning_resource = LearningResource.objects.get(pk=id)
+        
+        if route_resource_id:
+            route_resource = LearningRouteResource.objects.get(id=route_resource_id)
+            route_resource.set_completed()
+        else:
+            route_resource = None
+
         return render(request, 'learning_resource_detail.html',
                     {'learning_resource': learning_resource})
     except LearningResource.DoesNotExist:
         return redirect('not_found')
+    

@@ -32,7 +32,6 @@ def detail(request, id: int):
 
     learning_route_resources = learning_route.learning_route_resources.all()
     target_skill_level = learning_route.skill_level.level
-    #target_skill_name = learning_route.skill_level.skill.name
 
     ''' # Horrific
     learning_resources_by_level = []
@@ -57,9 +56,6 @@ def detail(request, id: int):
             learning_resources_by_level.append(
                 {'level': i,
                  'resources': resources_actual_level})
-    
-    print(learning_resources_by_level)
-
 
     return render(request, 'learning_route_detail.html',
                   {'learning_route': learning_route,

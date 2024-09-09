@@ -21,6 +21,10 @@ class LearningRouteResource(models.Model):
 
     def __str__(self):
         return '[' + str(self.id) + '] ' + self.learning_resource.name + (' (Completed)' if self.completed else '')
+    
+    def set_completed(self):
+        self.completed = True
+        self.save()
 
 
 # id: int

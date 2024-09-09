@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="route-container">
-    <h2 class="route-title"><strong>{{ learning_route.skill_level.skill.name }}</strong> learning route (level {{ learning_route.skill_level.level }})</h2>
+    <h2 class="route-title"><img height="65" src="{{ learning_route.skill_level.skill.image.url }}" alt="learning route image"> <strong>{{ learning_route.skill_level.skill.name }} </strong> learning route (level {{ learning_route.skill_level.level }})</h2>
 
     {% for level_resources in learning_route_resources_by_level %}
     <table class="table-list-group">
@@ -22,7 +22,7 @@
                 <td>
                     <ul class="list-group">
                         {% for learning_route_resource in level_resources.resources %}
-                        <a href="{% url 'learning_resource_detail' learning_route_resource.learning_resource.id %}"  target="_blank">
+                        <a href="{% url 'learning_resource_detail' learning_route_resource.learning_resource.id learning_route_resource.id %}"  target="_blank">
                             {% if learning_route_resource.completed %}
                                 <li class="list-group-item disabled">{{ learning_route_resource.learning_resource.name }}</li>
                             {% else %}

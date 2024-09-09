@@ -61,6 +61,7 @@ urlpatterns = [
     path('learning_resource/', learningResourceViews.home, name='learning_resource'),
     path('learning_resource/create/', learningResourceViews.create, name='learning_resource_create'), 
     path('learning_resource/<int:id>/', learningResourceViews.detail, name='learning_resource_detail'), # MVP!!!
+    path('learning_resource/<int:id>/<int:route_resource_id>/', learningResourceViews.detail, name='learning_resource_detail'), # MVP!!!
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
