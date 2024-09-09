@@ -12,7 +12,24 @@
     <div class="course-header">
         <h1>{{ learning_resource.name }}</h1>
         <p>{{ learning_resource.details }}</p>
-        <a href="{{ learning_resource.link }}">
+
+        <!-- Optional Video Container -->
+
+        {% if learning_resource.media_type == "Video" %}
+        <div class="video-container">
+            <iframe width="95%" src="{{ learning_resource.link }}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        {% elif learning_resource.media_type %}
+        <div class="spotify-container">
+            <iframe src="https://open.spotify.com/embed/track/7GhIk7Il098yCjg4BQjzvb" width="95%"
+                frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+        {% endif %}
+
+        <a href="{{ learning_resource.link }}" target="_blank">
             <button class="start-now">Open Content</button>
         </a>
     </div>
@@ -28,16 +45,16 @@
                     {% if learning_resource.original_author %}
                         <li><strong>Original author:</strong> {{ learning_resource.original_author }}</li>
                     {% else %}
-                        <li><strong>Unknown original author</strong></li>
+                        <li><strong>Unknown original author.</strong></li>
                     {% endif %}
-                    <li><strong>Duration:</strong> {{ learning_resource.duration }}</li>
+                    <li><strong>Duration:</strong> {{ learning_resource.duration }} minutes</li>
                     {% if learning_resource.required_skills.all %}
                         <li><strong>Required skills:</strong></li>
                         {% for skill_level in learning_resource.required_skills.all  %}
                             <li>➤ {{ skill_level.skill.name }} - Level {{ skill_level.level }}</li>
                         {% endfor %}
                     {% else %}
-                        <li><strong>Does not require skills</strong></li>
+                        <li><strong>Does not require skills.</strong></li>
                     {% endif %}
                     
                 </ul>
