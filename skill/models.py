@@ -3,6 +3,18 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from enums.enums import SKILL_TYPE_CHOICES
 
 # id: int
+# skill: Skill
+# level: int
+
+class SkillLevel(models.Model):
+    id = models.AutoField(primary_key=True)
+    skill = models.ForeignKey('Skill', on_delete=models.CASCADE)
+    level = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+
+    def __str__(self):
+        return self.skill.name + ' - ' + str(self.level)
+    
+# id: int
 # name: str
 # skill_type: enum = Programming Language | Library | Database | Deployment | Cloud | Framework | Information Systems | Low-Code | No-Code | Office Software
 # image: Image
@@ -16,14 +28,8 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
     
-# id: int
-# skill: Skill
-# level: int
-
-class SkillLevel(models.Model):
-    id = models.AutoField(primary_key=True)
-    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
-    level = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
-
-    def __str__(self):
-        return self.skill.name + ' - ' + str(self.level)
+    # Save the skill and create the 5 skill levels for it
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        for level in range(1, 6):
+            SkillLevel.objects.get_or_create(skill=self, level=level)
