@@ -51,6 +51,7 @@ urlpatterns = [
     path('register/', userViews.register, name='register'), # MVP
     path('update_current_skills/', userViews.update_current_skills, name='update_current_skills'),
     path('update_target_skills/', userViews.update_target_skills, name='update_target_skills'),
+    path('update_profile/', userViews.update_profile, name='update_profile'),
 
     # Preferences
     path('preference/create/', preferenceViews.create, name='preference_create'), # MVP!!!

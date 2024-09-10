@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
-from .forms import RegisterForm, LoginForm, CurrentSkillsForm, TargetSkillsForm
+from .forms import RegisterForm, LoginForm, CurrentSkillsForm, TargetSkillsForm, ProfileUpdateForm
 from .models import User
 
 @login_required
@@ -77,3 +77,14 @@ def update_target_skills(request):
     else:
         form = TargetSkillsForm(instance=request.user)
     return render(request, 'update_target_skills.html', {'form': form})
+
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('user')
+    else:
+        form = ProfileUpdateForm(instance=request.user)
+    return render(request, 'update_profile.html', {'form': form})
