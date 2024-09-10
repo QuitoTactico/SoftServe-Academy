@@ -21,7 +21,13 @@
         </a>
         {% endfor %}
     {% else %}
-        <h3>You don't have any route generated. Please set your target skills on your <a href="{% url 'user' %}">user interface</a>.</h3>
+        {% if user.target_skills.all and user.preference %}
+            <a href="{% url 'learning_route_generate' %}">
+                <button class="start-now">Generate Learning Routes</button>
+            </a>
+        {% else %}
+            <h3>You don't have any route generated. Please set your target skills on your <a href="{% url 'user' %}">user interface</a>.</h3>
+        {% endif %}
     {% endif %}
 </div>
 {% endblock %}
