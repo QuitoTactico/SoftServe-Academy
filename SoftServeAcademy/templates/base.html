@@ -38,7 +38,7 @@
                         </div>
                     </li>
                     {% endif %}
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'pricing' %}">Pricing</a></li>
                     {% if user.is_superuser %}
                     <li class="dropdown">
                         <a href="{% url 'admin:index' %}">Admin</a>
@@ -70,13 +70,11 @@
                 <i class="material-icons">dehaze</i>
             </div>
         </header>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
 
-        <main class="content">
-            <div class="container">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </main>
 
         <footer>
             <div class="footer-container">

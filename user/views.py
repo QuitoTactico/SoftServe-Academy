@@ -8,11 +8,8 @@ from .models import User
 def home(request):
     user_id = request.session.get('user_id')
     if user_id:
-        try:
-            user = get_object_or_404(User, id=user_id)
-            return render(request, 'user.html', {'user': user}) # Happy path
-        except:
-            return redirect('user_does_not_exist')
+        user = get_object_or_404(User, id=user_id)
+        return render(request, 'user.html', {'user': user}) # Happy path
     else:
         return redirect('not_logged_in') # Not necessary now, because of the login_required decorator
 

@@ -1,5 +1,91 @@
 {% extends "base.html" %}
+{% load static %}
+{% block title %}User details{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/user.css' %}">
+{% endblock %}
 {% block content %}
-    home de usuario, información general sobre él y un link que lo lleve a sus preferencias.
-    por ahora no hay edit de preferencias, toca crearlas desde cero cada vez
+
+<div class="header">
+    <h1>{{ user.name }}'s profile
+        {% if user.is_superuser %}
+        <p><strong>[SUPERUSER]</strong></p>
+        {% endif %}
+    </h1>
+</div>
+
+<!-- Nueva estructura para colocar la imagen ocupando más espacio -->
+<div class="main-content">
+    <div class="info">
+        <div class="account-info">
+            <h2><a href="#">Account Info <i class="fa fa-pencil"></i></a></h2>
+            <p><strong>Name:</strong> {{ user.name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+        </div>
+
+        <div class="learning-preferences">
+            <h2><a href="{% url "preference_create" %}">Learning Preferences <i class="fa fa-pencil"></i></a></h2>
+            {% if user.preference %}
+            <!-- THESE THREE WILL CHANGE TO ALLOW MORE THAN ONE.
+                IF THERE'S AN ERROR: "USER DOESN'T EXIST", 
+                IT'S BECAUSE OF THIS -->
+            <p><strong>Favourite Media: </strong>{{ user.preference.media_type }}</p>
+            <p><strong>Favourite Content: </strong>{{ user.preference.content_type }}</p>
+            <p><strong>Learning Style: </strong>{{ user.preference.learning_type }}</p>
+
+            <p><strong>Available Learning Time Per Week: </strong>{{ user.preference.time_per_week }} minutes</p>
+            <p><strong>Available Learning Time Per Session: </strong>{{ user.preference.time_per_session }} minutes</p>
+            {% else %}
+            <p><a href="{% url "preference_create" %}">Please set your preferences to generate your learning
+                    routes.</a></p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if user.image %}
+    <img class="profile-pic" src="{{ user.image.url }}" alt="Profile Picture">
+    {% else %}
+    <img class="profile-pic" src="{% static 'images/default-user.png' %}" alt="Profile Picture">
+    {% endif %}
+</div>
+
+<!-- Sección de habilidades -->
+<div class="skills">
+    <h2><a href="#">Current Skills <i class="fa fa-pencil"></i></a></h2>
+    <div class="skill-set">
+        {% if user.current_skills.all %}
+        {% for skill_level in user.current_skills.all %}
+        <div class="skill"><img src="{{ skill_level.skill.image.url }}"> <span><b>{{ skill_level.skill.name }}</b></span>
+            <span>Level {{ skill_level.level }}</span>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p><a href="#">You don't have current skills. Create some!</a></p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Sección de objetivos -->
+<div class="skills">
+    <h2><a href="#">Target Skills <i class="fa fa-pencil"></i></a></h2>
+    <div class="skill-set">
+        {% if user.target_skills.all %}
+        {% for skill_level in user.target_skills.all %}
+        <div class="skill"><img src="{{ skill_level.skill.image.url }}"> <span><b>{{ skill_level.skill.name }}</b></span>
+            <span>Level {{ skill_level.level }}</span>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p><a href="#">Please set your target skills to generate their learning routes.</a></p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="learning-route">
+    <a href="{% url "learning_route" %}">
+        <button>Go to your learning routes</button>
+    </a>
+</div>
+
 {% endblock %}

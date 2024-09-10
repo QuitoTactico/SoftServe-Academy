@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}pricing{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pricing.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="png">
+    <img src="{% static 'images/pricing.jpg' %}" alt="pricing">
+</div>
+
+{% endblock %}
