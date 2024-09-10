@@ -72,7 +72,7 @@ def generate(request):
 
     # Get the user's target_skills that do not yet have a learning route created
     target_skills_without_route = user.target_skills.exclude(
-        id__in=user.learning_routes.values_list('skill_level__skill_id', flat=True)
+        id__in=user.learning_routes.values_list('skill_level_id', flat=True)
     )
 
     # Generar una ruta de aprendizaje para cada target_skill sin ruta
