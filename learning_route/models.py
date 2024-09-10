@@ -58,7 +58,7 @@ class LearningRoute(models.Model):
         learning_route.save()
 
         learning_resources = LearningResource.objects.filter(
-            skill=skill_level.skill,
+            learning_skills__skill=skill_level.skill,
             general_level__lte=skill_level.level
             # If you wanna use other order or filter, 
             # comment from here to the next comments and use what you want
@@ -68,13 +68,15 @@ class LearningRoute(models.Model):
             required_skill_level=Subquery(
                 SkillLevel.objects.filter(
                     skill=skill_level.skill,
-                    required_skills__learningresource=OuterRef('pk')
+                    #required_skills__learningresource=OuterRef('pk')
+                    learning_resources_required__id=OuterRef('pk')
                 ).values('level')[:1]
             ),
             learning_skill_level=Subquery(
                 SkillLevel.objects.filter(
                     skill=skill_level.skill,
-                    learning_skills__learningresource=OuterRef('pk')
+                    #learning_skills__learningresource=OuterRef('pk')
+                    learning_resources_learning__id=OuterRef('pk')
                 ).values('level')[:1]
             )
         ).order_by('general_level', 'required_skill_level', 'learning_skill_level')

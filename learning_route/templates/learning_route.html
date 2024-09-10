@@ -7,27 +7,27 @@
 {% endblock %}
 
 {% block content %}
-<div class="card-container">
-    {% if learning_routes %}
+{% if user.target_skills.all and user.preference %}
+    <br>
+    <a href="{% url 'learning_route_generate' %}">
+        <button class="start-now">Generate Learning Routes</button>
+    </a>
+    <div class="card-container">
         {% for learning_route in learning_routes %}
-        <a href="{% url 'learning_route_detail' learning_route.id %}" class="card-link">
-            <div class="card">
-                <img src="{{ learning_route.skill_level.skill.image.url }}" alt="Card Image">
-                <div class="card-content">
-                    <h3>{{ learning_route.skill_level.skill.name }}</h3>
-                    <p>Level {{ learning_route.skill_level.level }}</p>
+            <a href="{% url 'learning_route_detail' learning_route.id %}" class="card-link">
+                <div class="card">
+                    <img src="{{ learning_route.skill_level.skill.image.url }}" alt="Card Image">
+                    <div class="card-content">
+                        <h3>{{ learning_route.skill_level.skill.name }}</h3>
+                        <p>Level {{ learning_route.skill_level.level }}</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-        {% endfor %}
-    {% else %}
-        {% if user.target_skills.all and user.preference %}
-            <a href="{% url 'learning_route_generate' %}">
-                <button class="start-now">Generate Learning Routes</button>
             </a>
-        {% else %}
-            <h3>You don't have any route generated. Please set your target skills on your <a href="{% url 'user' %}">user interface</a>.</h3>
-        {% endif %}
-    {% endif %}
-</div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="card-container">
+        <h3>You don't have any route generated. Please set your target skills on your <a href="{% url 'user' %}">user interface</a>.</h3>
+    </div>
+{% endif %}
 {% endblock %}
