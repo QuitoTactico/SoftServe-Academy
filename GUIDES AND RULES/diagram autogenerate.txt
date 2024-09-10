@@ -4,5 +4,18 @@
 (run)           winget install graphviz         
 (add to path)   C:\Program Files\Graphviz\bin
 (restart)
+
+# horizontal diagram
+
 (run)           python manage.py graph_models home learning_resource learning_route preference skill user --dot --disable-sort-fields --arrow-shape diamond --rankdir LR -o  SoftServeAcademy_models.dot
 (run)           dot SoftServeAcademy_models.dot -Tpng -o SoftServeAcademy_models.png  
+
+# square diagram
+
+(run)           python manage.py graph_models home learning_resource learning_route preference skill user --dot --disable-sort-fields --arrow-shape diamond -o  SoftServeAcademy_models.dot
+(run)           dot SoftServeAcademy_models.dot -Tpng -o SoftServeAcademy_models.png
+
+# vertical diagram
+
+(run)           python manage.py graph_models home learning_resource learning_route preference skill user --dot --disable-sort-fields --arrow-shape diamond --rankdir TB --exclude-models Permission,Group -o SoftServeAcademy_models.dot
+(run)           dot SoftServeAcademy_models.dot -Tpng -o SoftServeAcademy_models.png
