@@ -52,7 +52,7 @@
 
 <!-- Sección de habilidades -->
 <div class="skills">
-    <h2><a href="#">Current Skills <i class="fa fa-pencil"></i></a></h2>
+    <h2><a href="{% url "update_current_skills" %}">Current Skills <i class="fa fa-pencil"></i></a></h2>
     <div class="skill-set">
         {% if user.current_skills.all %}
         {% for skill_level in user.current_skills.all %}
@@ -61,14 +61,14 @@
         </div>
         {% endfor %}
         {% else %}
-        <p><a href="#">You don't have current skills. Create some!</a></p>
+        <p><a href="{% url "update_current_skills" %}">You don't have current skills. Create some!</a></p>
         {% endif %}
     </div>
 </div>
 
 <!-- Sección de objetivos -->
 <div class="skills">
-    <h2><a href="#">Target Skills <i class="fa fa-pencil"></i></a></h2>
+    <h2><a href="{% url "update_target_skills" %}">Target Skills <i class="fa fa-pencil"></i></a></h2>
     <div class="skill-set">
         {% if user.target_skills.all %}
         {% for skill_level in user.target_skills.all %}
@@ -77,7 +77,7 @@
         </div>
         {% endfor %}
         {% else %}
-        <p><a href="#">Please set your target skills to generate their learning routes.</a></p>
+        <p><a href="{% url "update_target_skills" %}">Please set your target skills to generate their learning routes.</a></p>
         {% endif %}
     </div>
 </div>

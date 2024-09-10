@@ -1,5 +1,6 @@
 from django import forms
 from .models import User
+from skill.models import SkillLevel
 
 class LoginForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
@@ -24,3 +25,27 @@ class RegisterForm(forms.ModelForm):
 
         if password != confirm_password:
             raise forms.ValidationError("The passwords do not match")
+
+class CurrentSkillsForm(forms.ModelForm):
+    current_skills = forms.ModelMultipleChoiceField(
+        queryset=SkillLevel.objects.all(),
+        widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
+        required=False,
+        label="Current Skills"
+    )
+
+    class Meta:
+        model = User
+        fields = ['current_skills']
+
+class TargetSkillsForm(forms.ModelForm):
+    target_skills = forms.ModelMultipleChoiceField(
+        queryset=SkillLevel.objects.all(),
+        widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
+        required=False,
+        label="Target Skills"
+    )
+
+    class Meta:
+        model = User
+        fields = ['target_skills']

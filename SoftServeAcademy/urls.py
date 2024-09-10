@@ -25,6 +25,7 @@ from user import views as userViews
 from preference import views as preferenceViews
 from learning_route import views as learningRouteViews
 from learning_resource import views as learningResourceViews
+from skill import views as skillViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,6 +49,8 @@ urlpatterns = [
     path('login/', userViews.login, name='login'),
     path('logout/', userViews.logout, name='logout'),
     path('register/', userViews.register, name='register'), # MVP
+    path('update_current_skills/', userViews.update_current_skills, name='update_current_skills'),
+    path('update_target_skills/', userViews.update_target_skills, name='update_target_skills'),
 
     # Preferences
     path('preference/create/', preferenceViews.create, name='preference_create'), # MVP!!!
@@ -62,6 +65,10 @@ urlpatterns = [
     path('learning_resource/create/', learningResourceViews.create, name='learning_resource_create'), 
     path('learning_resource/<int:id>/', learningResourceViews.detail, name='learning_resource_detail'), # MVP!!!
     path('learning_resource/<int:id>/<int:route_resource_id>/', learningResourceViews.detail, name='learning_resource_detail'), # MVP!!!
+
+    # Skill
+    path('skill/', skillViews.home, name='skill'),
+    path('skill/create/', skillViews.create, name='skill_create'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

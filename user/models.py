@@ -52,6 +52,20 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return f'[{self.id}] {self.name}'
     
+    def save(self, *args, **kwargs):
+        # Filter current_skills to keep only the highest level of each skill
+        if self.pk:  # Ensure this is not a new instance
+            self.current_skills.set(self._get_highest_levels(self.current_skills.all()))
+            self.target_skills.set(self._get_highest_levels(self.target_skills.all()))
+        super().save(*args, **kwargs)
+
+    def _get_highest_levels(self, skills):
+        highest_levels = {}
+        for skill in skills:
+            if skill.skill not in highest_levels or skill.level > highest_levels[skill.skill].level:
+                highest_levels[skill.skill] = skill
+        return highest_levels.values()
+    
     def has_perm(self, perm, obj=None):
         return self.is_superuser
 
