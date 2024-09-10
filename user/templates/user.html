@@ -56,8 +56,7 @@
     <div class="skill-set">
         {% if user.current_skills.all %}
         {% for skill_level in user.current_skills.all %}
-        <div class="skill"><img src="{{ skill_level.skill.image.url }}"> <span><b>{{ skill_level.skill.name
-                    }}</b></span>
+        <div class="skill"><img src="{{ skill_level.skill.image.url }}"> <span><b>{{ skill_level.skill.name }}</b></span>
             <span>Level {{ skill_level.level }}</span>
         </div>
         {% endfor %}
@@ -73,8 +72,7 @@
     <div class="skill-set">
         {% if user.target_skills.all %}
         {% for skill_level in user.target_skills.all %}
-        <div class="skill"><img src="{{ skill_level.skill.image.url }}"> <span><b>{{ skill_level.skill.name
-                    }}</b></span>
+        <div class="skill"><img src="{{ skill_level.skill.image.url }}"> <span><b>{{ skill_level.skill.name }}</b></span>
             <span>Level {{ skill_level.level }}</span>
         </div>
         {% endfor %}
