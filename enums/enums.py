@@ -35,8 +35,8 @@ SKILL_TYPE_CHOICES = [
 
 LANGUAGE_CHOICES = [
     ('es', 'Spanish'),
-    ('en', 'English'),
-    ('ru', 'Russian'),   
+    ('en', 'English'),   
+    ('uk', 'Ukrainian'),   
     ('pt', 'Portuguese'),
     ('zh', 'Chinese'),
     ('hi', 'Hindi'),
