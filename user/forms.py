@@ -49,3 +49,12 @@ class TargetSkillsForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['target_skills']
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['name', 'image']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your name'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+        }

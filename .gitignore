@@ -3,3 +3,4 @@
 *pycache*
 db_backup
 *.log
+*.dot

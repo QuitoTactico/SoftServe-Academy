@@ -19,7 +19,7 @@
 <div class="main-content">
     <div class="info">
         <div class="account-info">
-            <h2><a href="#">Account Info <i class="fa fa-pencil"></i></a></h2>
+            <h2><a href="{% url "update_profile" %}">Account Info <i class="fa fa-pencil"></i></a></h2>
             <p><strong>Name:</strong> {{ user.name }}</p>
             <p><strong>Email:</strong> {{ user.email }}</p>
         </div>

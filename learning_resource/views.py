@@ -16,9 +16,9 @@ def create(request):
     if request.method == 'POST':
         form = LearningResourceForm(request.POST)
         if form.is_valid():
-            form.save()
-            return render(request, 'learning_resource.html', 
-                          {'success': True}) # Redirige a una URL de éxito
+            resource = form.save()  # Guardar el objeto y obtener la instancia
+            resource.save()  # Llamar explícitamente al método save sobrescrito
+            return redirect('learning_resource')
     else:
         form = LearningResourceForm()
         return render(request, 'learning_resource_create.html', 
