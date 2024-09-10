@@ -55,3 +55,17 @@ class LearningResource(models.Model):
 
     def __str__(self):
         return f'{self.name} ({self.language.upper()}) ({self.media_type})'
+    
+    def save(self, *args, **kwargs):
+        # Filter learning_skills and required_skills to keep only the highest level of each skill
+        if self.pk:  # Ensure this is not a new instance
+            self.learning_skills.set(self._get_highest_levels(self.learning_skills.all()))
+            self.required_skills.set(self._get_highest_levels(self.required_skills.all()))
+        super().save(*args, **kwargs)
+
+    def _get_highest_levels(self, skills):
+        highest_levels = {}
+        for skill in skills:
+            if skill.skill not in highest_levels or skill.level > highest_levels[skill.skill].level:
+                highest_levels[skill.skill] = skill
+        return highest_levels.values()
