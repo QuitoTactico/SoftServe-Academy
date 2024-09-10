@@ -73,7 +73,8 @@ class LearningRoute(models.Model):
 
             # FROM HERE <---
         ).annotate(
-            # Does two consults to save them it in the instace search
+            # Does two consults (skillLevel filtering) to save them it in the instace search
+            # We need the target skillLevel of the resource (required and learning), to get their level
             # Then, we can use that in the final order_by
             required_skill_level=Subquery(
                 SkillLevel.objects.filter(

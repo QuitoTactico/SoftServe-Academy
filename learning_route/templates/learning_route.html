@@ -27,7 +27,11 @@
     </div>
 {% else %}
     <div class="card-container">
-        <h3>You don't have any route generated. Please set your target skills on your <a href="{% url 'user' %}">user interface</a>.</h3>
+        <h3>
+            You don't have any route generated. 
+            <br>
+            Please set your <strong>preferences</strong> and <strong>target skills</strong> on your <strong><a href="{% url 'user' %}">user interface</a></strong>.
+        </h3>
     </div>
 {% endif %}
 {% endblock %}

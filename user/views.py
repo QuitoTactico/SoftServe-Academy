@@ -34,7 +34,7 @@ def login(request):
 # It sends you to the login too, but deleting the session
 def logout(request):
     auth_logout(request)
-    return redirect('login')
+    return redirect('home')
 
 def register(request):
     if request.method == 'POST':
