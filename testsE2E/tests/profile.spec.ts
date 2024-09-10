@@ -4,9 +4,9 @@ test.beforeEach(async ({ page }) => {
     await page.goto('http://127.0.0.1:8000/');
     await page.getByRole('link', { name: 'Login' }).click();
     await page.getByLabel('Email:').click();
-    await page.getByLabel('Email:').fill('user1@email.com');
+    await page.getByLabel('Email:').fill('teteban0917@gmail.com');
     await page.getByLabel('Password:').click();
-    await page.getByLabel('Password:').fill('12345');
+    await page.getByLabel('Password:').fill('Teteban0917');
     await page.getByRole('button', { name: 'Login' }).click();
 });
 
@@ -33,12 +33,23 @@ test.describe('profileSetup', () => {
         await page.getByRole('button', { name: 'Save Preferences' }).click();
     });
 
-    test('current skill', async ({ page }) => {
+    test('update info', async ({ page }) => {
+        await page.getByRole('link', { name: 'Account Info' }).click();
+        await page.getByPlaceholder('Enter your name').click();
+        await page.getByPlaceholder('Enter your name').fill('sdfasdf');
+        await page.getByRole('button', { name: 'Update Profile' }).click();
+    });
 
+    test('current skill', async ({ page }) => {
+        await page.getByRole('link', { name: 'Current Skills' }).click();
+        await page.getByLabel('Current Skills:').selectOption(['1', '2', '4', '10', '13', '14', '20']);
+        await page.getByRole('button', { name: 'Update Current Skills' }).click();
     });
 
     test('target skill', async ({ page }) => {
-
+        await page.getByRole('link', { name: 'Target Skills' }).click();
+        await page.getByLabel('Target Skills:').selectOption(['6', '7', '10', '15', '18']);
+        await page.getByRole('button', { name: 'Update Target Skills' }).click();
     });
 
 });
