@@ -6,8 +6,8 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-def contact(request):
-    return render(request, 'contact.html')
+def pricing(request):
+    return render(request, 'pricing.html')
 
 def not_found(request):
     return render(request, 'not_found.html')
