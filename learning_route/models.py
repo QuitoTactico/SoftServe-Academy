@@ -59,10 +59,12 @@ class LearningRoute(models.Model):
 
         learning_resources = LearningResource.objects.filter(
             skill=skill_level.skill,
-            level__lte=skill_level.level
+            general_level__lte=skill_level.level
             # If you wanna use other order or filter, 
             # comment from here to the next comments and use what you want
-        ).annotate(   
+        ).annotate(
+            # Does two consults to save them it in the instace search
+            # Then, we can use that in the final order_by
             required_skill_level=Subquery(
                 SkillLevel.objects.filter(
                     skill=skill_level.skill,
@@ -76,16 +78,16 @@ class LearningRoute(models.Model):
                 ).values('level')[:1]
             )
         ).order_by('general_level', 'required_skill_level', 'learning_skill_level')
-        #).order_by('general_level', 'required_skills__level', 'learning_skills__level')
         #).order_by('general_level')
-        #).order_by('level', 'required_skills', 'learning_skills')
+        #).order_by('general_level', 'required_skills__level', 'learning_skills__level')  # NO
+        #).order_by('level', 'required_skills', 'learning_skills')  # NO
 
 
         # Create LearningRouteResource instances and add them to the learning route
         for index, resource in enumerate(learning_resources):
             route_resource = LearningRouteResource.objects.create(
                 index=index,
-                level=resource.level,
+                level=resource.general_level,
                 learning_resource=resource
             )
             learning_route.learning_route_resources.add(route_resource)
