@@ -52,38 +52,46 @@ class LearningRoute(models.Model):
         self.completed = True
         self.save()
 
+    # This method alone is basically the core of all the project. 
+    # Used on learning_routes/views.py generate()
     @classmethod
-    def generate(cls, user, skill_level: SkillLevel):
-        learning_route = cls(skill_level=skill_level, duration=0)
+    def generate(cls, user, user_target_skill: SkillLevel):
+        learning_route = cls(skill_level=user_target_skill, duration=0)
         learning_route.save()
 
+        # If you wanna use other order or filter:
+        # Comment from "FROM HERE", to "TO HERE", and use the order you want
         learning_resources = LearningResource.objects.filter(
-            learning_skills__skill=skill_level.skill,
-            general_level__lte=skill_level.level
-            # If you wanna use other order or filter, 
-            # comment from here to the next comments and use what you want
+            learning_skills__skill=user_target_skill.skill,
+            general_level__lte=user_target_skill.level,
+
+            # These ones are about the user preferences
+            media_type=user.preference.media_type,
+            content_type=user.preference.content_type,
+            duration_lte=user.preference.time_per_session,
+            # Maybe adding another attribute like user.preference.is_strict to filter less would be nice
+
+            # FROM HERE <---
         ).annotate(
             # Does two consults to save them it in the instace search
             # Then, we can use that in the final order_by
             required_skill_level=Subquery(
                 SkillLevel.objects.filter(
-                    skill=skill_level.skill,
-                    #required_skills__learningresource=OuterRef('pk')
-                    learning_resources_required__id=OuterRef('pk')
-                ).values('level')[:1]
+                    learning_resources_required__id=OuterRef('pk'), # SkillLevel required Reverse FK == Resource
+                    skill=user_target_skill.skill                   # SkillLevel skill == User Target Skill
+                ).values('level')[:1]                               # Get the level and saves it on required_skill_level
             ),
             learning_skill_level=Subquery(
                 SkillLevel.objects.filter(
-                    skill=skill_level.skill,
-                    #learning_skills__learningresource=OuterRef('pk')
-                    learning_resources_learning__id=OuterRef('pk')
-                ).values('level')[:1]
+                    learning_resources_learning__id=OuterRef('pk'), # SkillLevel learning Reverse FK == Resource
+                    skill=user_target_skill.skill                   # SkillLevel skill == User Target Skill
+                ).values('level')[:1]                               # Get the level and saves it on learning_skill_level
             )
         ).order_by('general_level', 'required_skill_level', 'learning_skill_level')
+            # TO HERE <---
         #).order_by('general_level')
-        #).order_by('general_level', 'required_skills__level', 'learning_skills__level')  # NO
-        #).order_by('level', 'required_skills', 'learning_skills')  # NO
-
+        #).order_by('general_level', 'required_skills__level', 'learning_skills__level')  # DON'T USE THIS
+        #).order_by('level', 'required_skills', 'learning_skills')  # DON'T USE THIS    
 
         # Create LearningRouteResource instances and add them to the learning route
         for index, resource in enumerate(learning_resources):
@@ -98,4 +106,5 @@ class LearningRoute(models.Model):
         learning_route.duration = sum(resource.duration for resource in learning_resources)
         learning_route.save()
 
+        # Returns it to be added on the user's learning routes
         return learning_route
