@@ -61,3 +61,25 @@ def detail(request, id: int):
                   {'learning_route': learning_route,
                    'learning_route_resources_by_level': learning_resources_by_level
                    })
+
+@login_required
+def generate(request):
+    user_id = request.session.get('user_id')
+    if user_id:
+        user = get_object_or_404(User, id=user_id)
+    else:
+        return redirect('not_logged_in')
+
+    # Get the user's target_skills that do not yet have a learning route created
+    target_skills_without_route = user.target_skills.exclude(
+        id__in=user.learning_routes.values_list('skill_level_id', flat=True)
+    )
+
+    # Generar una ruta de aprendizaje para cada target_skill sin ruta
+    for target_skill in target_skills_without_route:
+        learning_route = LearningRoute.generate(user, target_skill)
+        user.learning_routes.add(learning_route)
+        
+    user.save()
+
+    return redirect('learning_route')

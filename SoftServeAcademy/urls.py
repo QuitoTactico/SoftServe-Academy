@@ -49,9 +49,9 @@ urlpatterns = [
     path('login/', userViews.login, name='login'),
     path('logout/', userViews.logout, name='logout'),
     path('register/', userViews.register, name='register'), # MVP
-    path('update_current_skills/', userViews.update_current_skills, name='update_current_skills'),
-    path('update_target_skills/', userViews.update_target_skills, name='update_target_skills'),
-    path('update_profile/', userViews.update_profile, name='update_profile'),
+    path('user/update_current_skills/', userViews.update_current_skills, name='update_current_skills'),
+    path('user/update_target_skills/', userViews.update_target_skills, name='update_target_skills'),
+    path('user/update_profile/', userViews.update_profile, name='update_profile'),
 
     # Preferences
     path('preference/create/', preferenceViews.create, name='preference_create'), # MVP!!!
@@ -59,6 +59,7 @@ urlpatterns = [
 
     # Learning Route
     path('learning_route/', learningRouteViews.home, name='learning_route'), # MVP
+    path('learning_route/generate/', learningRouteViews.generate, name='learning_route_generate'), # MVP!!!
     path('learning_route/<int:id>/', learningRouteViews.detail, name='learning_route_detail'), # MVP!!!
     
     # Learning Resource
