@@ -21,33 +21,22 @@ jobs:
           libvpx7 \
           libevent-2.1-7 \
           libopus0 \
-          libgstallocators-1.0-0 \
-          libgstapp-1.0-0 \
-          libgstpbutils-1.0-0 \
-          libgstaudio-1.0-0 \
-          libgstgl-1.0-0 \
-          libgsttag-1.0-0 \
-          libgstvideo-1.0-0 \
-          libgstcodecparsers-1.0-0 \
-          libgstfft-1.0-0 \
+          gstreamer1.0-plugins-base \
+          gstreamer1.0-plugins-good \
+          gstreamer1.0-plugins-ugly \
+          gstreamer1.0-libav \
+          gstreamer1.0-tools \
+          gstreamer1.0-x \
+          gstreamer1.0-gl \
+          gstreamer1.0-alsa \
+          gstreamer1.0-pulseaudio \
+          gstreamer1.0-plugins-bad \
           libharfbuzz-icu0 \
           libhyphen0 \
           libmanette-0.2-0 \
-          libflite1 \
-          libflite-usenglish1 \
-          libflite-cmu-grapheme-lang1 \
-          libflite-cmu-grapheme-lex1 \
-          libflite-cmu-indic-lang1 \
-          libflite-cmu-indic-lex1 \
-          libflite-cmulex1 \
-          libflite-cmu-time-awb1 \
-          libflite-cmu-us-awb1 \
-          libflite-cmu-us-kal16-1 \
-          libflite-cmu-us-kal1 \
-          libflite-cmu-us-rms1 \
-          libflite-cmu-us-slt1 \
-          libgles2-mesa \
-          libx264-161
+          flite \
+          mesa-utils \
+          libx264-dev || true  # Ignorar errores de paquetes faltantes
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -86,20 +75,4 @@ jobs:
     
     - name: Configure Git user
       run: |
-        git config --local user.name "github-actions"
-        git config --local user.email "github-actions@github.com"
-    
-    - name: Commit and push Playwright test report
-      run: |
-        git add tests/
-        git commit -m "Add Playwright test report"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Upload Playwright test report as artifact
-      if: always() # Se sube siempre, tanto en éxito como en fallo
-      uses: actions/upload-artifact@v3
-      with:
-        name: playwright-report
-        path: testsE2E/playwright-report
+        git config --local user.name "github
