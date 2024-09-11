@@ -67,7 +67,7 @@ class LearningRoute(models.Model):
 
             # These ones are about the user preferences
             media_type=user.preference.media_type,
-            content_type=user.preference.content_type,
+            #content_type=user.preference.content_type,
             duration__lte=user.preference.time_per_session,
             # Maybe adding another attribute like user.preference.is_strict to filter less would be nice
 

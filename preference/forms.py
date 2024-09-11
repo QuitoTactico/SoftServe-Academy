@@ -6,9 +6,13 @@ class PreferenceForm(forms.ModelForm):
         model = Preference
         fields = ['media_type', 'content_type', 'learning_type', 'time_per_week', 'time_per_session']
         widgets = {
-            'media_type': forms.Select(attrs={'class': 'form-control'}), #ModelMultipleChoiceField
-            'content_type': forms.Select(attrs={'class': 'form-control'}), #ModelMultipleChoiceField
-            'learning_type': forms.Select(attrs={'class': 'form-control'}), #ModelMultipleChoiceField
+            'media_type': forms.Select(attrs={'class': 'form-control'}), # ModelMultipleChoiceField
+            'content_type': forms.Select(attrs={'class': 'form-control'}), # ModelMultipleChoiceField
+            'learning_type': forms.Select(attrs={'class': 'form-control'}), # ModelMultipleChoiceField
             'time_per_week': forms.NumberInput(attrs={'class': 'form-control'}),
             'time_per_session': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
+        labels = {
+            'time_per_week': 'Time per Week (Minutes)',
+            'time_per_session': 'Time per Session (Minutes)',
         }
