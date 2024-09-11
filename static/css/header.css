@@ -181,7 +181,8 @@ nav ul li:hover .dropdown-content {
     }
 
     nav ul.active {
-        height: 210px;
+        height: fit-content;
+        padding-bottom: 10px;
     }
 
     nav ul li {
