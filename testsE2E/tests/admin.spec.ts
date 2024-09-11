@@ -46,7 +46,7 @@ test.describe('Admin tests', () => {
 		await page.getByLabel('Duration:').click();
 		await page.getByLabel('Duration:').fill('123');
 
-		const LANGUAJES = ['en', 'es', 'ru', 'pt', 'zh', 'hi', 'ja']
+		const LANGUAJES = ['en', 'es', 'pt', 'zh', 'hi', 'ja']
 		await page.getByLabel('Language:').selectOption(LANGUAJES[Math.floor(Math.random() * LANGUAJES.length)]);
 
 		await page.getByLabel('Original platform:').click();

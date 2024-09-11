@@ -24,11 +24,11 @@ test.describe('profileSetup', () => {
         const LEARNIGN_TYPE = ['Autodidact', 'Guided', 'Challenges'];
         await page.getByLabel('Learning type:').selectOption(LEARNIGN_TYPE[Math.floor(Math.random() * LEARNIGN_TYPE.length)]);
 
-        await page.getByLabel('Time per week:').click();
-        await page.getByLabel('Time per week:').fill(Math.floor(Math.random() * 10).toString());
+        await page.getByLabel('Time per Week (Minutes):').click();
+        await page.getByLabel('Time per Week (Minutes):').fill(Math.floor(Math.random() * 600).toString());
 
-        await page.getByLabel('Time per session:').click();
-        await page.getByLabel('Time per session:').fill(Math.floor(Math.random() * 10).toString());
+        await page.getByLabel('Time per Session (Minutes):').click();
+        await page.getByLabel('Time per Session (Minutes):').fill(Math.floor(Math.random() * 600).toString());
 
         await page.getByRole('button', { name: 'Save Preferences' }).click();
     });
@@ -41,7 +41,7 @@ test.describe('profileSetup', () => {
     });
 
     test('current skill', async ({ page }) => {
-        await page.getByRole('link', { name: 'Current Skills' }).click();
+        await page.getByRole('link', { name: 'Current Skills', exact: true }).click();
         await page.getByLabel('Current Skills:').selectOption(['1', '2', '4', '10', '13', '14', '20']);
         await page.getByRole('button', { name: 'Update Current Skills' }).click();
     });
@@ -51,5 +51,5 @@ test.describe('profileSetup', () => {
         await page.getByLabel('Target Skills:').selectOption(['6', '7', '10', '15', '18']);
         await page.getByRole('button', { name: 'Update Target Skills' }).click();
     });
-
+    
 });
