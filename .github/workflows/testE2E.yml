@@ -38,7 +38,6 @@ jobs:
       run: python manage.py runserver 127.0.0.1:8000 &
       env:
         DJANGO_SETTINGS_MODULE: SoftServeAcademy.settings
-      working-directory: testsE2E
 
     - name: Run Playwright tests
       run: npx playwright test
