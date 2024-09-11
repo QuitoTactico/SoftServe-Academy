@@ -13,6 +13,42 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libwoff1 \
+          libvpx7 \
+          libevent-2.1-7 \
+          libopus0 \
+          libgstallocators-1.0-0 \
+          libgstapp-1.0-0 \
+          libgstpbutils-1.0-0 \
+          libgstaudio-1.0-0 \
+          libgstgl-1.0-0 \
+          libgsttag-1.0-0 \
+          libgstvideo-1.0-0 \
+          libgstcodecparsers-1.0-0 \
+          libgstfft-1.0-0 \
+          libharfbuzz-icu0 \
+          libhyphen0 \
+          libmanette-0.2-0 \
+          libflite1 \
+          libflite-usenglish1 \
+          libflite-cmu-grapheme-lang1 \
+          libflite-cmu-grapheme-lex1 \
+          libflite-cmu-indic-lang1 \
+          libflite-cmu-indic-lex1 \
+          libflite-cmulex1 \
+          libflite-cmu-time-awb1 \
+          libflite-cmu-us-awb1 \
+          libflite-cmu-us-kal16-1 \
+          libflite-cmu-us-kal1 \
+          libflite-cmu-us-rms1 \
+          libflite-cmu-us-slt1 \
+          libgles2-mesa \
+          libx264-161
+
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
