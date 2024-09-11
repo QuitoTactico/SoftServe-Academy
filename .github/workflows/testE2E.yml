@@ -18,8 +18,25 @@ jobs:
       with:
         node-version: '16'
 
-    - name: Install dependencies
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install Python dependencies
+      run: pip install -r requirements.txt
+
+    - name: Install Node.js dependencies
       run: npm install
+
+    - name: Run Django migrations
+      run: python manage.py migrate
+
+    - name: Start Django server
+      run: python manage.py runserver 0.0.0.0:8000 &
+      env:
+        DJANGO_SETTINGS_MODULE: SoftServeAcademy.settings
+      working-directory: testsE2E
 
     - name: Run Playwright tests
       run: npx playwright test
