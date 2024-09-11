@@ -1,0 +1,33 @@
+name: Playwright E2E Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  e2e_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Playwright tests
+      run: npx playwright test
+      working-directory: testsE2E
+
+    - name: Upload Playwright test report
+      if: always() # Se sube siempre, tanto en éxito como en fallo
+      uses: actions/upload-artifact@v3
+      with:
+        name: playwright-report
+        path: testsE2E/playwright-report
