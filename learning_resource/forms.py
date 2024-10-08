@@ -29,8 +29,8 @@ class LearningResourceForm(forms.ModelForm):
             "original_platform": forms.TextInput(attrs={"class": "custom-input"}),
             "original_author": forms.TextInput(attrs={"class": "custom-input"}),
             "general_level": forms.NumberInput(attrs={"class": "custom-input"}),
-            "learning_skills": forms.SelectMultiple(attrs={"class": "custom-select-multiple"}),
-            "required_skills": forms.SelectMultiple(attrs={"class": "custom-select-multiple"}),
+            "required_skills": forms.SelectMultiple(attrs={"class": "form-control", "id": "id_required_skills"}),
+            "learning_skills": forms.SelectMultiple(attrs={"class": "form-control", "id": "id_learning_skills"}),
         }
 
 class ReviewForm(forms.ModelForm):

@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-{% block content %}
+{% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/learningresourceform.css' %}">
-<br>
+{% endblock %}
+{% block content %}
 <h1>Learning Resource Creation</h1>
 <form method="post">
     {% csrf_token %}
@@ -85,4 +86,13 @@
     <button type="submit" class="btn btn-primary">Create Resource</button>
 </form>
 <br>
+
+<script>
+    $(document).ready(function () {
+        $('#id_required_skills, #id_learning_skills').select2({
+            tags: true,
+            tokenSeparators: [',', ' ']
+        });
+    });
+</script>
 {% endblock %}
