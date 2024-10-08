@@ -77,13 +77,10 @@
             <label for="{{ form.learning_skills.id_for_label }}">Learning Skills:</label>
             {{ form.learning_skills }}
         </div>
-        <p>Use Ctrl+F to search for skills, and Ctrl+click to select multiple values. Only the highest level of each
-            skill
-            will be saved.</p>
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Create Resource</button>
+    <button type="submit" class="btn btn-primary form-submit">Create Resource</button>
 </form>
 <br>
 
@@ -93,6 +90,7 @@
             tags: true,
             tokenSeparators: [',', ' ']
         });
+
     });
 </script>
 {% endblock %}
