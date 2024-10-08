@@ -1,5 +1,5 @@
 from django import forms
-from .models import LearningResource
+from .models import LearningResource, Review
 
 class LearningResourceForm(forms.ModelForm):
     class Meta:
@@ -21,4 +21,26 @@ class LearningResourceForm(forms.ModelForm):
             'learning_skills': forms.SelectMultiple(attrs={'class': 'form-control'}),
             'required_skills': forms.SelectMultiple(attrs={'class': 'form-control'}),
         #   'reviews': forms.SelectMultiple(attrs={'class': 'form-control'}),
+        }
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['comment', 'rate']
+        widgets = {
+            'comment': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Type Something...',
+                'required': True
+            }),
+            'rate': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'min': 1,
+                'max': 5,
+                'required': True
+            }),
+        }
+        labels = {
+            'comment': 'Comment Something',
+            'rate': 'Rating (1-5)',
         }

@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from skill.models import SkillLevel
 #from user.models import User
 from enums.enums import MEDIA_TYPE_CHOICES, CONTENT_TYPE_CHOICES, LANGUAGE_CHOICES
@@ -12,13 +12,16 @@ from enums.enums import MEDIA_TYPE_CHOICES, CONTENT_TYPE_CHOICES, LANGUAGE_CHOIC
 
 class Review(models.Model):
     id = models.AutoField(primary_key=True)
-    rate = models.IntegerField(validators=[MinValueValidator(1), MinValueValidator(5)])
+    rate = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     created_at = models.DateTimeField(auto_now_add=True)
     comment = models.TextField(blank=True)
     user = models.ForeignKey('user.User', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.name + ' - ' + str(self.rate) + ' - ' + self.created_at.strftime('%Y-%m-%d %H:%M:%S')
+    
+    def rate_range(self):
+        return range(self.rate)
 
 # id: int
 # name: str

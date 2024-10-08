@@ -80,6 +80,7 @@
 
     <!-- Review Section -->
     <div class="review-section">
+        <!-- Past Manual Form
         <h3>Write A Review</h3>
         <textarea placeholder="Type Something..."></textarea>
         <div class="review-rating">
@@ -87,12 +88,37 @@
 
         </div>
         <button>Submit Review</button>
+        -->
+        <h3>Write A Review</h3>
+        <form method="post" action="{% url 'learning_resource_create_review' learning_resource.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ review_form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+        </form>
+
+        <!-- Past Review Section 
         <h3>Reviews</h3>
         <div class="review">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque deserunt natus iure accusantium sequi,
                 maiores ex sunt, quas in corrupti molestiae facere voluptatibus autem reprehenderit unde vitae iusto
                 itaque! Consequatur.</p>
         </div>
+        -->
+        {% if learning_resource.reviews.all %}
+        <h3>Reviews</h3>
+        {% endif %}
+        {% for review in learning_resource.reviews.all %}
+        <div class="review">
+            <h4>
+                <img src="{{ review.user.image.url }}" alt="user image" class="user-image">
+                {{ review.user.name }}
+            </h4>
+            <p>{{ review.comment }}</p>
+            <p>{% for _ in review.rate_range %}⭐{% endfor %}
+                <span class="text-muted">- {{ review.created_at }}</span>
+            </p>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

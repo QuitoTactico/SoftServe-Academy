@@ -66,6 +66,7 @@ urlpatterns = [
     path('learning_resource/', learningResourceViews.home, name='learning_resource'),
     path('learning_resource/create/', learningResourceViews.create, name='learning_resource_create'), 
     path('learning_resource/<int:id>/', learningResourceViews.detail, name='learning_resource_detail'), # MVP!!!
+    path('learning_resource/<int:id>/create_review/', learningResourceViews.create_review, name='learning_resource_create_review'),
     path('learning_resource/<int:id>/<int:route_resource_id>/', learningResourceViews.detail, name='learning_resource_detail'), # MVP!!!
 
     # Skill

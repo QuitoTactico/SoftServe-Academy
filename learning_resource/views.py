@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from user.models import User
 from learning_route.models import LearningRouteResource
 from .models import LearningResource
-from .forms import LearningResourceForm
+from .forms import LearningResourceForm, ReviewForm
 
 def home(request):
     learning_resources = LearningResource.objects.all()
@@ -35,8 +35,28 @@ def detail(request, id: int, route_resource_id: int = None):
         else:
             route_resource = None
 
+        review_form = ReviewForm()
+
         return render(request, 'learning_resource_detail.html',
-                    {'learning_resource': learning_resource})
+                    {'learning_resource': learning_resource,
+                     'review_form': review_form})
     except LearningResource.DoesNotExist:
         return redirect('not_found')
     
+@login_required
+def create_review(request, id: int):
+    try:
+        learning_resource = LearningResource.objects.get(pk=id)
+        if request.method == 'POST':
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                review = form.save(commit=False)
+                review.user = request.user
+                review.save()
+                learning_resource.reviews.add(review)
+                return redirect('learning_resource_detail', id=id)
+        else:
+            form = ReviewForm()
+        return redirect('learning_resource_detail', id=id)
+    except LearningResource.DoesNotExist:
+        return redirect('not_found')
