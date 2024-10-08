@@ -6,33 +6,33 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('preference', '0004_alter_preference_timepersession_and_more'),
+        ("preference", "0004_alter_preference_timepersession_and_more"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='preference',
-            old_name='contentType',
-            new_name='content_type',
+            model_name="preference",
+            old_name="contentType",
+            new_name="content_type",
         ),
         migrations.RenameField(
-            model_name='preference',
-            old_name='learningType',
-            new_name='learning_type',
+            model_name="preference",
+            old_name="learningType",
+            new_name="learning_type",
         ),
         migrations.RenameField(
-            model_name='preference',
-            old_name='mediaType',
-            new_name='media_type',
+            model_name="preference",
+            old_name="mediaType",
+            new_name="media_type",
         ),
         migrations.RenameField(
-            model_name='preference',
-            old_name='timePerSession',
-            new_name='time_per_session',
+            model_name="preference",
+            old_name="timePerSession",
+            new_name="time_per_session",
         ),
         migrations.RenameField(
-            model_name='preference',
-            old_name='timePerWeek',
-            new_name='time_per_week',
+            model_name="preference",
+            old_name="timePerWeek",
+            new_name="time_per_week",
         ),
     ]

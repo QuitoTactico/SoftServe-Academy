@@ -10,19 +10,25 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('learning_resource', '0001_initial'),
+        ("learning_resource", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='review',
-            name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="review",
+            name="user",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AddField(
-            model_name='learningresource',
-            name='reviews',
-            field=models.ManyToManyField(blank=True, related_name='learning_resources_review', to='learning_resource.review'),
+            model_name="learningresource",
+            name="reviews",
+            field=models.ManyToManyField(
+                blank=True,
+                related_name="learning_resources_review",
+                to="learning_resource.review",
+            ),
         ),
     ]

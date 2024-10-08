@@ -7,16 +7,40 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Skill',
+            name="Skill",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('skillType', models.CharField(choices=[('Programming Language', 'Programming Language'), ('Library', 'Library'), ('Database', 'Database'), ('Deployment', 'Deployment'), ('Cloud', 'Cloud'), ('Framework', 'Framework'), ('Information Systems', 'Information Systems'), ('Low-Code', 'Low-Code'), ('No-Code', 'No-Code'), ('Office Software', 'Office Software')], max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "skillType",
+                    models.CharField(
+                        choices=[
+                            ("Programming Language", "Programming Language"),
+                            ("Library", "Library"),
+                            ("Database", "Database"),
+                            ("Deployment", "Deployment"),
+                            ("Cloud", "Cloud"),
+                            ("Framework", "Framework"),
+                            ("Information Systems", "Information Systems"),
+                            ("Low-Code", "Low-Code"),
+                            ("No-Code", "No-Code"),
+                            ("Office Software", "Office Software"),
+                        ],
+                        max_length=100,
+                    ),
+                ),
             ],
         ),
     ]

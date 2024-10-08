@@ -7,19 +7,26 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Preference',
+            name="Preference",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('mediaType', models.CharField(max_length=100)),
-                ('contentType', models.CharField(max_length=100)),
-                ('timePerWeek', models.IntegerField()),
-                ('timePerSession', models.IntegerField()),
-                ('autodidactOrGuided', models.BooleanField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("mediaType", models.CharField(max_length=100)),
+                ("contentType", models.CharField(max_length=100)),
+                ("timePerWeek", models.IntegerField()),
+                ("timePerSession", models.IntegerField()),
+                ("autodidactOrGuided", models.BooleanField()),
             ],
         ),
     ]

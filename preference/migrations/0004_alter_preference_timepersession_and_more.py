@@ -7,18 +7,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('preference', '0003_alter_preference_contenttype_and_more'),
+        ("preference", "0003_alter_preference_contenttype_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='preference',
-            name='timePerSession',
-            field=models.IntegerField(validators=[django.core.validators.MinValueValidator(1)]),
+            model_name="preference",
+            name="timePerSession",
+            field=models.IntegerField(
+                validators=[django.core.validators.MinValueValidator(1)]
+            ),
         ),
         migrations.AlterField(
-            model_name='preference',
-            name='timePerWeek',
-            field=models.IntegerField(validators=[django.core.validators.MinValueValidator(1)]),
+            model_name="preference",
+            name="timePerWeek",
+            field=models.IntegerField(
+                validators=[django.core.validators.MinValueValidator(1)]
+            ),
         ),
     ]

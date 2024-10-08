@@ -8,21 +8,42 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('skill', '0001_initial'),
+        ("skill", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='skill',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='skill/images/'),
+            model_name="skill",
+            name="image",
+            field=models.ImageField(blank=True, null=True, upload_to="skill/images/"),
         ),
         migrations.CreateModel(
-            name='SkillLevel',
+            name="SkillLevel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('level', models.IntegerField(validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(5)])),
-                ('skill', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='skill.skill')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "level",
+                    models.IntegerField(
+                        validators=[
+                            django.core.validators.MinValueValidator(1),
+                            django.core.validators.MaxValueValidator(5),
+                        ]
+                    ),
+                ),
+                (
+                    "skill",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="skill.skill"
+                    ),
+                ),
             ],
         ),
     ]

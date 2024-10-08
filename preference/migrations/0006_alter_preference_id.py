@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('preference', '0005_rename_contenttype_preference_content_type_and_more'),
+        ("preference", "0005_rename_contenttype_preference_content_type_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='preference',
-            name='id',
+            model_name="preference",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
     ]

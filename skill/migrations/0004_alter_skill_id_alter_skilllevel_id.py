@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('skill', '0003_rename_skilltype_skill_skill_type'),
+        ("skill", "0003_rename_skilltype_skill_skill_type"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='skill',
-            name='id',
+            model_name="skill",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
         migrations.AlterField(
-            model_name='skilllevel',
-            name='id',
+            model_name="skilllevel",
+            name="id",
             field=models.AutoField(primary_key=True, serialize=False),
         ),
     ]
