@@ -1,3 +1,11 @@
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .custom-input {
     padding: 10px;
     border-radius: 8px;
@@ -11,7 +19,6 @@
 .custom-select-multiple {
     padding: 8px;
     border-radius: 8px;
-    background-color: #f8f9fa;
     font-size: 16px;
     border: 2px solid #ced4da;
     width: 100%;
