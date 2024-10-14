@@ -5,32 +5,78 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
+
 {% block content %}
 <section class="hero">
     <div class="hero-content">
         <h1>Studying Online is now much easier...</h1>
-        <p>Softserve Academy is an interesting platform that will teach you in a more interactive way</p>
+        <p>Softserve Academy is an interesting platform that will teach you in more interactive way</p>
         <div class="hero-buttons">
-            <a href="{% url "register" %}" class="btn btn-primary">Join for free</a>
-            <a href="{% url "register" %}" class="btn btn-secondary">Get Started</a>
+            <a href="{% url 'register' %}" class="btn btn-primary">Join for free</a>
         </div>
         <div class="info-cards">
             <div class="info-card">
-                <span class="icon">&#128197;</span> <!-- Puedes reemplazar este icono -->
+                <span class="icon">&#128197;</span>
                 <p>250k Assisted Student</p>
             </div>
             <div class="info-card">
-                <span class="icon">&#9989;</span> <!-- Puedes reemplazar este icono -->
+                <span class="icon">&#9989;</span>
                 <p>Improve <br> Track your progress</p>
             </div>
         </div>
         <div class="course-card">
             <p>Python learning course <br> Trending topic!</p>
-            <a href="{% url "register" %}" class="btn btn-blue">Join Now</a>
+            <a href="{% url 'register' %}" class="btn btn-blue">Join Now</a>
         </div>
     </div>
     <div class="hero-image">
-        <img src="{% static 'images/softserve-icon.svg' %}" alt="Student holding books">
+        <img src="{% static 'images/hero-image.png' %}" alt="Student holding books">
+    </div>
+</section>
+
+<section class="feature-section">
+    <div class="feature-item">
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 1</span>
+                <div class="question-icons">
+                    <span class="icon success-icon">&#10004;</span>
+                    <span class="icon error-icon">&#10008;</span>
+                </div>
+            </div>
+            <h2>What is wrong on this code?</h2>
+            <div class="image-wrapper">
+                <img src="{% static 'images/code-image.jpg' %}" alt="Code screenshot">
+            </div>
+            <div class="answer-success">
+                <span class="icon">&#128640;</span> <!-- Rocket Icon -->
+                <p>Your answer was sent successfully</p>
+            </div>
+        </div>
+    </div>
+    <div class="feature-description">
+        <h3>Documentation, <span class="highlighted">Quizzes</span>, Podcasts!</h3>
+        <p>Easily launch live assignments, quizzes, and tests.</p>
+    </div>
+</section>
+
+
+<section class="course-section">
+    <h2>Take a look and let's study!</h2>
+    <p>The best courses recommended by thousands of users worldwide...</p>
+    <div class="course-list">
+        <div class="course-item">
+            <img src="{% static 'images/web-development.webp' %}" alt="Web Development">
+            <h4>Full-Stack Web Development Bootcamp</h4>
+            <p>Learn the fundamentals of full-stack web development, including HTML, CSS, JavaScript, React, Node.js, and databases.</p>
+            <a href="{% url 'register' %}" class="btn btn-secondary">Start your learning!</a>
+        </div>
+        <div class="course-item">
+            <img src="{% static 'images/ai-image.webp' %}" alt="AI Course">
+            <h4>Introduction to Machine Learning</h4>
+            <p>Learn the basics of AI to transform data to insights</p>
+            <a href="{% url 'register' %}" class="btn btn-secondary">Join now!</a>
+        </div>
     </div>
 </section>
 {% endblock %}

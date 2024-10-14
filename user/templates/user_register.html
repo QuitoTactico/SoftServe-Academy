@@ -1,23 +1,40 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/usercreate.css' %}">
+{% endblock %}
+
 {% block content %}
-    <br>
-    <h2>User Register</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
-    {% if form.errors %}
-        <ul>
+<div class="register-container">
+    <div class="register-left">
+        <img src="{% static 'images/classroom.webp' %}" alt="Classroom Image">
+    </div>
+    <div class="register-right">
+        <div class="logo">
+            <img src="{% static 'images/2.svg' %}" alt="SoftServe Academy Logo">
+        </div>
+        <h2>Welcome back to SoftServe!</h2>
+        <div class="tabs">
+            <a href="{% url 'login' %}" class="btn-login {% if not request.path == '/register/' %}active{% endif %}">Login</a>
+            <a href="{% url 'register' %}" class="btn-register {% if request.path == '/register/' %}active{% endif %}">Register</a>
+        </div>
+        <form method="post" class="register-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        {% if form.errors %}
+        <ul class="form-errors">
             {% for field in form %}
                 {% for error in field.errors %}
-                    <li style="color: red;">{{ error }}</li>
+                    <li>{{ error }}</li>
                 {% endfor %}
             {% endfor %}
             {% for error in form.non_field_errors %}
-                <li style="color: red;">{{ error }}</li>
+                <li>{{ error }}</li>
             {% endfor %}
         </ul>
-    {% endif %}
-    <br>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
