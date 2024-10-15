@@ -1,6 +1,7 @@
 from django import forms
 from .models import LearningResource, Review
 
+
 class LearningResourceForm(forms.ModelForm):
     class Meta:
         model = LearningResource
@@ -29,9 +30,20 @@ class LearningResourceForm(forms.ModelForm):
             "original_platform": forms.TextInput(attrs={"class": "custom-input"}),
             "original_author": forms.TextInput(attrs={"class": "custom-input"}),
             "general_level": forms.NumberInput(attrs={"class": "custom-input"}),
-            "required_skills": forms.SelectMultiple(attrs={"class": "form-control custom-select-multiple", "id": "id_required_skills"}),
-            "learning_skills": forms.SelectMultiple(attrs={"class": "form-control custom-select-multiple", "id": "id_learning_skills"}),
+            "required_skills": forms.SelectMultiple(
+                attrs={
+                    "class": "form-control custom-select-multiple",
+                    "id": "id_required_skills",
+                }
+            ),
+            "learning_skills": forms.SelectMultiple(
+                attrs={
+                    "class": "form-control custom-select-multiple",
+                    "id": "id_learning_skills",
+                }
+            ),
         }
+
 
 class ReviewForm(forms.ModelForm):
     class Meta:
@@ -46,7 +58,12 @@ class ReviewForm(forms.ModelForm):
                 }
             ),
             "rate": forms.NumberInput(
-                attrs={"class": "form-control custom-input", "min": 1, "max": 5, "required": True}
+                attrs={
+                    "class": "form-control custom-input",
+                    "min": 1,
+                    "max": 5,
+                    "required": True,
+                }
             ),
         }
         labels = {
