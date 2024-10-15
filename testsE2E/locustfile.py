@@ -1,5 +1,6 @@
 from locust import HttpUser, task
 
+
 class SoftServeAcademy(HttpUser):
     @task
     def home(self):
@@ -10,4 +11,6 @@ class SoftServeAcademy(HttpUser):
         self.client.get("/learning_route")
 
     def on_start(self):
-        self.client.post("/login", json={"email":"teteban0917@gmail.com", "password":"Teteban0917"})
+        self.client.post(
+            "/login", json={"email": "teteban0917@gmail.com", "password": "Teteban0917"}
+        )
