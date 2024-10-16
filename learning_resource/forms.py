@@ -29,7 +29,9 @@ class LearningResourceForm(forms.ModelForm):
             "language": forms.Select(attrs={"class": "custom-select"}),
             "original_platform": forms.TextInput(attrs={"class": "custom-input"}),
             "original_author": forms.TextInput(attrs={"class": "custom-input"}),
-            "general_level": forms.NumberInput(attrs={"class": "custom-input"}),
+            "general_level": forms.NumberInput(
+                attrs={"class": "custom-input", "min": 1, "max": 5, "step": 1}
+            ),
             "required_skills": forms.SelectMultiple(
                 attrs={
                     "class": "form-control custom-select-multiple",
