@@ -53,7 +53,7 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Install Node.js dependencies
-      run: npm install | npx playwright install
+      run:  npm install @playwright/test | npx playwright install | npm install
       working-directory: testsE2E
 
     - name: Run Django migrations
