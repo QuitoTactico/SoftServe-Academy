@@ -99,7 +99,7 @@ def generate(request):
 
 @login_required
 def update(request, id: int):
-    '''
+    """
     user_id = request.session.get("user_id")
     if user_id:
         user = get_object_or_404(User, id=user_id)
@@ -116,4 +116,4 @@ def update(request, id: int):
     return render(
         request, "learning_route_update.html", {"learning_route": learning_route}
     )}
-    '''
+    """
