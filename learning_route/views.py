@@ -82,12 +82,10 @@ def generate(request):
     else:
         return redirect("not_logged_in")
 
-    # Get the user's target_skills that do not yet have a learning route created
     target_skills_without_route = user.target_skills.exclude(
         id__in=user.learning_routes.values_list("skill_level_id", flat=True)
     )
 
-    # Generar una ruta de aprendizaje para cada target_skill sin ruta
     for target_skill in target_skills_without_route:
         learning_route = LearningRoute.generate(user, target_skill)
         user.learning_routes.add(learning_route)
@@ -99,7 +97,7 @@ def generate(request):
 
 @login_required
 def update(request, id: int):
-    """
+    user = None
     user_id = request.session.get("user_id")
     if user_id:
         user = get_object_or_404(User, id=user_id)
@@ -110,10 +108,13 @@ def update(request, id: int):
         return redirect("not_logged_in")
 
     if request.method == "POST":
-        learning_route.update(request.POST)
-        return redirect("learning_route_detail", id=id)
+        target_skill = learning_route.skill_level
 
-    return render(
-        request, "learning_route_update.html", {"learning_route": learning_route}
-    )}
-    """
+        learning_route.delete()
+
+        new_learning_route = LearningRoute.generate(user, target_skill)
+        user.learning_routes.add(new_learning_route)
+        user.save()
+
+    learning_routes = user.learning_routes.all()
+    return render(request, "learning_route.html", {"learning_routes": learning_routes})
