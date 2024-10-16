@@ -29,6 +29,15 @@ body {
 
 .texts {
     flex: 1;
+    margin: 12px;
+    gap: 10px;
+}
+
+.form-control {
+    flex: 1;
+    margin-bottom: 12px;
+    margin-right: 12px;
+    gap: 10px;
 }
 
 .image-section {

@@ -76,6 +76,11 @@ urlpatterns = [
         name="learning_route_generate",
     ),  # MVP!!!
     path(
+        "learning_route/update/<int:id>/",
+        learningRouteViews.update,
+        name="learning_route_update",
+    ), 
+    path(
         "learning_route/<int:id>/",
         learningRouteViews.detail,
         name="learning_route_detail",
