@@ -95,3 +95,25 @@ def generate(request):
     user.save()
 
     return redirect("learning_route")
+
+
+@login_required
+def update(request, id: int):
+    """
+    user_id = request.session.get("user_id")
+    if user_id:
+        user = get_object_or_404(User, id=user_id)
+        learning_route = user.learning_routes.filter(id=id).first()
+        if not learning_route:
+            return redirect("not_found")
+    else:
+        return redirect("not_logged_in")
+
+    if request.method == "POST":
+        learning_route.update(request.POST)
+        return redirect("learning_route_detail", id=id)
+
+    return render(
+        request, "learning_route_update.html", {"learning_route": learning_route}
+    )}
+    """

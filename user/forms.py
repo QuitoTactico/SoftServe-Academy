@@ -1,6 +1,7 @@
 from django import forms
 from .models import User
 from skill.models import SkillLevel
+from django.core.exceptions import ValidationError
 
 
 class LoginForm(forms.Form):
@@ -64,10 +65,19 @@ class TargetSkillsForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ["name", "image"]
+        fields = ["name", "email", "image"]
         widgets = {
             "name": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Enter your name"}
             ),
-            "image": forms.ClearableFileInput(attrs={"class": "form-control-file"}),
+            "email": forms.EmailInput(
+                attrs={"class": "form-control", "placeholder": "Enter your email"}
+            ),
+            "image": forms.FileInput(attrs={"class": "form-control-file"}),
         }
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        if User.objects.filter(email=email).exclude(id=self.instance.id).exists():
+            raise ValidationError("This email address is already in use.")
+        return email

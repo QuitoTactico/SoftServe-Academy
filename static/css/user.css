@@ -27,13 +27,13 @@ body {
 /* Contenedor principal reorganizado */
 .main-content {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-inline: 10px;
-    /* Para alinear los contenedores en la parte superior */
-    /* Espacio entre la imagen y la información */
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
     margin-bottom: 20px;
 }
+
 
 /* Imagen de perfil */
 .profile-pic {
@@ -41,41 +41,86 @@ body {
     height: 350px;
     border-radius: 50%;
     object-fit: cover;
+
 }
 
 /* Información en la sección de la izquierda */
 .info {
-    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.texts {
+    flex: 1;
 }
 
 .account-info,
 .learning-preferences {
     margin-bottom: 30px;
     font-size: 1.1em;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }
 
-.account-info a {
-    margin-left: 10px;
-    color: #333;
+.skill-button {
+    background-color: transparent;
 }
 
-.account-info a:hover {
-    color: #1a73e8;
-}
-
-.learning-preferences h2 {
+.account-info h2,
+.learning-preferences h2,
+.skill-button h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
-    margin-right: 20px;
+    color: #333;
 }
 
-.learning-preferences a {
+.account-info p,
+.learning-preferences p,
+.skill-button p {
     margin-left: 10px;
     color: #333;
 }
 
-.learning-preferences a:hover {
+.learning-preferences {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account-info p,
+.learning-preferences p,
+.skill-button p {
+    margin-left: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.account-info p:hover,
+.learning-preferences p:hover,
+.skill-button p:hover {
     color: #1a73e8;
+}
+
+.account-info {
+    width: 95%;
+    gap: 20px;
+}
+
+.learning-preferences {
+    width: 95%;
+    gap: 20px;
 }
 
 p {
@@ -85,16 +130,22 @@ p {
 
 .skills {
     margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .skills h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .skills a {
     margin-left: 10px;
     color: #333;
+    text-decoration: none;
 }
 
 .skills a:hover {
@@ -169,5 +220,21 @@ button {
 }
 
 button:hover {
-    background-color: #0033aa;
+    background-color: #edebeb;
+}
+
+button a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #0044cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: left;
+    width: 100%;
+}
+
+button a:hover {
+    background-color: #003399;
 }
