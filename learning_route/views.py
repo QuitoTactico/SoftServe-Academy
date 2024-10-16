@@ -107,14 +107,13 @@ def update(request, id: int):
     else:
         return redirect("not_logged_in")
 
-    if request.method == "POST":
-        target_skill = learning_route.skill_level
+    target_skill = learning_route.skill_level
 
-        learning_route.delete()
+    learning_route.delete()
 
-        new_learning_route = LearningRoute.generate(user, target_skill)
-        user.learning_routes.add(new_learning_route)
-        user.save()
+    new_learning_route = LearningRoute.generate(user, target_skill)
+    user.learning_routes.add(new_learning_route)
+    user.save()
 
     learning_routes = user.learning_routes.all()
     return render(request, "learning_route.html", {"learning_routes": learning_routes})
