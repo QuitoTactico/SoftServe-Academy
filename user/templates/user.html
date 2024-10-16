@@ -17,75 +17,91 @@
 
 <div class="main-content">
     <div class="info">
-        <div class="account-info">
-            <h2>Account info <a href="{% url 'update_profile' %}"><i class="fa fa-pencil"></i></a></h2>
-            <p><strong>Name:</strong> {{ user.name }}</p>
-            <p><strong>Email:</strong> {{ user.email }}</p>
-        </div>
+        <div class="texts">
+            <a href="{% url 'update_profile' %}" class="button-link">
+                <button class="account-info">
+                    <h2>Account info <i class="fa fa-pencil"></i></h2>
+                    <p><strong>Name:</strong> {{ user.name }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                </button>
+            </a>
 
-        <div class="learning-preferences">
-            <h2>Learning Preferences <a href="{% url 'preference_create' %}"><i class="fa fa-pencil"></i></a></h2>
-            {% if user.preference %}
-            <p><strong>Preferred Content Type:</strong> {{ user.preference.content_type }}</p>
-            <p><strong>Learning Style:</strong> {{ user.preference.learning_type }}</p>
-            <p><strong>Available Learning Time Per Week:</strong> {{ user.preference.time_per_week }} minutes</p>
-            <p><strong>Available Learning Time Per Session:</strong> {{ user.preference.time_per_session }} minutes</p>
-            {% else %}
-            <p><a href="{% url 'preference_create' %}">Please set your preferences to generate your learning routes.</a></p>
-            {% endif %}
+            <a href="{% url 'preference_create' %}" class="button-link">
+                <button class="learning-preferences">
+                    <h2>Learning Preferences <i class="fa fa-pencil"></i></h2>
+                    {% if user.preference %}
+                    <p><strong>Preferred Content Type:</strong> {{ user.preference.content_type }}</p>
+                    <p><strong>Learning Style:</strong> {{ user.preference.learning_type }}</p>
+                    <p><strong>Available Learning Time Per Week:</strong> {{ user.preference.time_per_week }} minutes
+                    </p>
+                    <p><strong>Available Learning Time Per Session:</strong> {{ user.preference.time_per_session }}
+                        minutes
+                    </p>
+                    {% else %}
+                    <p>Please set your preferences to generate your learning routes.</p>
+                    {% endif %}
+                </button>
+            </a>
         </div>
-    </div>
-
-    {% if user.image %}
-    <img class="profile-pic" src="{{ user.image.url }}" alt="Profile Picture">
-    {% else %}
-    <img class="profile-pic" src="{% static 'images/default-user.png' %}" alt="Profile Picture">
-    {% endif %}
-</div>
-
-<div class="skills">
-    <h2>Current Skills <a href="{% url 'update_current_skills' %}"><i class="fa fa-pencil"></i></a></h2>
-    <div class="skill-set">
-        {% if user.current_skills.all %}
-        {% for skill_level in user.current_skills.all %}
-        <div class="skill">
-            <img src="{{ skill_level.skill.image.url }}">
-            <span><b>{{ skill_level.skill.name }}</b></span>
-            <span>Level {{ skill_level.level }}</span>
-        </div>
-        {% endfor %}
+        {% if user.image %}
+        <img class="profile-pic" src="{{ user.image.url }}" alt="Profile Picture">
         {% else %}
-        <p><a href="{% url 'update_current_skills' %}">You don't have current skills. Create some!</a></p>
+        <img class="profile-pic" src="{% static 'images/default-user.png' %}" alt="Profile Picture">
         {% endif %}
     </div>
-</div>
 
-<div class="skills">
-    <h2>Target Skills <a href="{% url 'update_target_skills' %}"><i class="fa fa-pencil"></i></a></h2>
-    <div class="skill-set">
-        {% if user.target_skills.all %}
-        {% for skill_level in user.target_skills.all %}
-        <div class="skill">
-            <img src="{{ skill_level.skill.image.url }}">
-            <span><b>{{ skill_level.skill.name }}</b></span>
-        </div>
-        {% endfor %}
-        {% else %}
-        <p><a href="{% url 'update_target_skills' %}">Please set your target skills to generate their learning routes.</a></p>
-        {% endif %}
+    <div class="skills">
+        <h2>Current Skills <i class="fa fa-pencil"></i></h2>
+        <a href="{% url 'update_current_skills' %}">
+            <button class="skill-button">
+                <div class="skill-set">
+                    {% if user.current_skills.all %}
+                    {% for skill_level in user.current_skills.all %}
+                    <div class="skill">
+                        <img src="{{ skill_level.skill.image.url }}">
+                        <span><b>{{ skill_level.skill.name }}</b></span>
+                        <span>Level {{ skill_level.level }}</span>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>You don't have current skills. Create some!</p>
+                    {% endif %}
+                </div>
+            </button>
+        </a>
     </div>
-</div>
 
-<div class="learning-route">
-    <a href="{% url 'learning_route' %}">
-        <button>Go to your learning route</button>
-    </a>
-</div>
+    <div class="skills">
+        <h2>Target Skills <i class="fa fa-pencil"></i></h2>
+        <a href="{% url 'update_target_skills' %}">
+            <button class="skill-button">
+                <div class="skill-set">
+                    {% if user.target_skills.all %}
+                    {% for skill_level in user.target_skills.all %}
+                    <div class="skill">
+                        <img src="{{ skill_level.skill.image.url }}">
+                        <span><b>{{ skill_level.skill.name }}</b></span>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>Please set your target skills to generate their learning routes.</p>
+                    {% endif %}
+                </div>
+            </button>
+        </a>
+    </div>
 
-<div class="back-button">
-    <a href="{% url 'learning_route' %}">
-        <button>Back to Routes</button>
-    </a>
+    <div class="learning-route">
+        <a href="{% url 'learning_route' %}" class="button-link">
+            <button>Go to your learning route</button>
+        </a>
+    </div>
+
+    <div class="back-button">
+        <a href="{% url 'learning_route' %}" class="button-link">
+            <button>Back to Routes</button>
+        </a>
+    </div>
 </div>
 
 {% endblock %}
