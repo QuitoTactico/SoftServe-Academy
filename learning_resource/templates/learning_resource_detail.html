@@ -90,7 +90,8 @@
         <button>Submit Review</button>
         -->
         <h3>Write A Review</h3>
-        <form method="post" action="{% url 'learning_resource_create_review' learning_resource.id %}" enctype="multipart/form-data">
+        <form method="post" action="{% url 'learning_resource_create_review' learning_resource.id %}"
+            enctype="multipart/form-data">
             {% csrf_token %}
             {{ review_form.as_p }}
             <button type="submit" class="btn btn-primary">Submit Review</button>
@@ -110,7 +111,11 @@
         {% for review in learning_resource.reviews.all %}
         <div class="review">
             <h4>
-                <img src="{{ review.user.image.url }}" alt="user image" class="user-image">
+                {% if review.user.image %}
+                <img class="user-image" src="{{ review.user.image.url }}" alt="Profile Picture">
+                {% else %}
+                <img class="user-image" src="{% static 'images/default-user.png' %}" alt="Profile Picture">
+                {% endif %}
                 {{ review.user.name }}
             </h4>
             <p>{{ review.comment }}</p>
