@@ -65,7 +65,7 @@ class TargetSkillsForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ["name","email","image"]
+        fields = ["name", "email", "image"]
         widgets = {
             "name": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Enter your name"}
@@ -75,7 +75,7 @@ class ProfileUpdateForm(forms.ModelForm):
             ),
             "image": forms.FileInput(attrs={"class": "form-control-file"}),
         }
-        
+
     def clean_email(self):
         email = self.cleaned_data.get("email")
         if User.objects.filter(email=email).exclude(id=self.instance.id).exists():

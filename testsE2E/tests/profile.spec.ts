@@ -41,15 +41,21 @@ test.describe('profileSetup', () => {
     });
 
     test('current skill', async ({ page }) => {
-        await page.getByRole('link', { name: 'Current Skills', exact: true }).click();
-        await page.getByLabel('Current Skills:').selectOption(['1', '2', '4', '10', '13', '14', '20']);
+        await page.getByRole('link', { name: 'Current Skills ' }).click();
+        await page.getByRole('combobox').getByRole('list').click();
+        await page.getByRole('option', { name: 'Python - 5' }).click();
+        await page.getByRole('combobox').getByRole('list').click();
+        await page.getByRole('option', { name: 'MySQL - 5' }).click();
         await page.getByRole('button', { name: 'Update Current Skills' }).click();
     });
 
     test('target skill', async ({ page }) => {
-        await page.getByRole('link', { name: 'Target Skills' }).click();
-        await page.getByLabel('Target Skills:').selectOption(['6', '7', '10', '15', '18']);
+        await page.getByRole('link', { name: 'Target Skills ' }).click();
+        await page.getByRole('combobox').getByRole('list').click();
+        await page.getByRole('option', { name: 'Python - 5' }).click();
+        await page.getByRole('combobox').getByRole('list').click();
+        await page.getByRole('option', { name: 'C++ - 5' }).click();
         await page.getByRole('button', { name: 'Update Target Skills' }).click();
     });
-    
+
 });

@@ -23,15 +23,14 @@ test.describe('learning route', () => {
         await page.getByLabel('Time per Session (Minutes):').fill('600');
         await page.getByRole('button', { name: 'Save Preferences' }).click();
 
-        await page.getByRole('link', { name: 'Current Skills', exact: true }).click();
-        await page.getByLabel('Current Skills:').selectOption(['2']);
-        await page.getByRole('button', { name: 'Update Current Skills' }).click();
-
-        await page.getByRole('link', { name: 'Target Skills', exact: true }).click();
-        await page.getByLabel('Target Skills:').selectOption(['6']);
+        await page.getByRole('link', { name: 'Target Skills ' }).click();
+        await page.getByRole('combobox').getByRole('list').click();
+        await page.getByRole('option', { name: 'Python - 5' }).click();
+        await page.getByRole('combobox').getByRole('list').click();
+        await page.getByRole('option', { name: 'C++ - 5' }).click();
         await page.getByRole('button', { name: 'Update Target Skills' }).click();
 
-        await page.getByRole('button', { name: 'Go to your learning routes' }).click();
+        await page.getByRole('button', { name: 'Go to your learning route' }).click();
         await page.getByRole('button', { name: 'Generate Learning Routes' }).click();
         await page.getByRole('link', { name: 'Card Image Python Level' }).click();
         const page1Promise = page.waitForEvent('popup');
