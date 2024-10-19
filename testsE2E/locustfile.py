@@ -10,7 +10,20 @@ class SoftServeAcademy(HttpUser):
     def learning_route(self):
         self.client.get("/learning_route")
 
+    @task
+    def about(self):
+        self.client.get("/about")
+
+    @task
+    def pricing(self):
+        self.client.get("/pricing")
+
+    @task
+    def register(self):
+        self.client.get("/register")
+"""
     def on_start(self):
         self.client.post(
-            "/login", json={"email": "teteban0917@gmail.com", "password": "Teteban0917"}
+            "/login", data={"email": "teteban0917@gmail.com", "password": "Teteban0917"}
         )
+"""

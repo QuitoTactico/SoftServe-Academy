@@ -19,9 +19,9 @@
             </div>
             <div class="image-section">
                 {% if user.image %}
-                <img class="profile-pic" src="{{ user.image.url }}" alt="Profile Picture">
+                <img class="profile-pic img-fluid" src="{{ user.image.url }}" alt="Profile Picture">
                 {% else %}
-                <img class="profile-pic" src="{% static 'images/default-user.png' %}" alt="Profile Picture">
+                <img class="profile-pic img-fluid" src="{% static 'images/default-user.png' %}" alt="Profile Picture">
                 {% endif %}
                 {% csrf_token %}
                 {{ form.image }}

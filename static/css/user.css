@@ -37,10 +37,11 @@ body {
 
 /* Imagen de perfil */
 .profile-pic {
-    width: 350px;
-    height: 350px;
+    width: 20rem;
+    height: 20rem;
     border-radius: 50%;
     object-fit: cover;
+    display: flex;
 
 }
 
