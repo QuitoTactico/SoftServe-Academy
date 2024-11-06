@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -29,6 +29,8 @@ from learning_resource import views as learningResourceViews
 from skill import views as skillViews
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')),
+    # Include Grappelli URL configuration
     path("admin/", admin.site.urls),
     # Anything not marked as MVP will be handled from the Django admin or is not essential
     # When using href={{ url 'name' }} in templates, use the name parameter specified here as the third argument
