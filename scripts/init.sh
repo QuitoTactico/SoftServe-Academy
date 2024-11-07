@@ -25,4 +25,4 @@ python manage.py loaddata /app/scripts/data.json
 rm /app/scripts/data.json
 
 # Inicia el servidor de Django
-exec python manage.py runserver 0.0.0.0:8000
+exec python manage.py runserver 0.0.0.0:80

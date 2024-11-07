@@ -1,11 +1,11 @@
-version: '3.7'
-
 services:
   web:
     image: quitotactico/softserve-academy
     command: ["sh", "/app/scripts/init.sh"]
     depends_on:
       - db
+    ports:
+      - "80:80"
     networks:
       - django-network
 

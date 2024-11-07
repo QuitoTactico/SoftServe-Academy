@@ -4,6 +4,9 @@ FROM python:3.13
 # Define el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
+# Instala netcat
+RUN apt-get update && apt-get install -y netcat
+
 # Copia el archivo de requerimientos y lo instala
 COPY requirements.txt .
 RUN pip install -r requirements.txt
@@ -20,8 +23,8 @@ RUN mv /app/SoftServeAcademy/settings_deployment.py /app/SoftServeAcademy/settin
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Expone el puerto 8000
-EXPOSE 8000
+# Expone el puerto 80
+EXPOSE 80
 
 # Ejecuta el script de inicialización
 CMD ["sh", "/app/scripts/init.sh"]
