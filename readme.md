@@ -136,20 +136,29 @@ This creates `a container with the Django application` and another `container wi
     sudo apt install -y docker-compose-plugin
     ```
 
-2. **Copy the docker-compose.yml on your PC:**
+2. **Copy the docker-compose-swarm.yml on your PC:**
     ```bash
-    curl -L -o docker-compose.yml https://github.com/QuitoTactico/SoftServe-Academy/raw/main/docker-compose.yml
+    curl -L -o docker-compose-swarm.yml https://github.com/QuitoTactico/SoftServe-Academy/raw/main/docker-compose-swarm.yml
     ```
+
+    **(Optional)**
+    Edit the `docker-compose-swarm.yml` file and change the `replicas` value to the number of replicas you want for the Django service. Example using nano:
+    ```bash
+    sudo nano docker-compose-swarm.yml
+    ```
+
 
 3. **Run the Docker Swarm:**  
     The instance where you run this, will be the manager. It needs to have a public IP.
     ```bash
     sudo docker swarm init
+    sudo docker swarm join-token manager
     ```
 
-4. **Copy the generated token and run the command on the worker instances:**  
+4. **Copy the SECOND generated token and run that command on the worker instances:**  
     (Download docker for them too)
     ```bash
+    (Example)
     sudo docker swarm join --token <token> <manager-ip>:2377
     ```
 
@@ -163,14 +172,14 @@ This creates `a container with the Django application` and another `container wi
     ```bash
     sudo docker node ls
     sudo docker service ls
-    sudo docker service ps web
-    sudo docker service ps db
+    sudo docker service ps softserve_web
+    sudo docker service ps softserve_db
     sudo docker container ls
     ```  
     Check the logs with:  
     ```bash
-    sudo docker service logs web
-    sudo docker service logs db
+    sudo docker service logs softserve_web
+    sudo docker service logs softserve_db
     ```
     And shut down the stack with:  
     ```bash
