@@ -5,7 +5,7 @@ FROM python:3.13
 WORKDIR /app
 
 # Instala netcat
-RUN apt-get update && apt-get install -y netcat
+RUN apt-get update && apt-get install -y netcat-openbsd
 
 # Copia el archivo de requerimientos y lo instala
 COPY requirements.txt .
