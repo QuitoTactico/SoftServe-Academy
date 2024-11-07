@@ -37,44 +37,49 @@ The MVP will include the basic functionalities necessary to allow users to creat
 
 ### Installation
 
-#### (Manually, just one instance)
+### Manually, just one instance
 
-1. **Clone the repository:**
+1. ** Download git and python:**
+    ```bash
+    sudo apt-get update
+    sudo apt-get install -y git python3 python3-pip
+    ```
+
+2. **Clone the repository:**
    ```bash
    git clone https://github.com/your-username/softserve-academy.git
    cd softserve-academy
    ```
 
-2. **Create a virtual environment:**
+3. **Create a virtual environment:**
    ```bash
    python -m venv venv
    source venv/bin/activate
    ```
 
-3. **Install the dependencies:**
+4. **Install the dependencies:**
    ```bash
     pip install -r requirements.txt
     ```
 
-4. **Run the Django migrations:**
+5. **Run the Django migrations:**
     ```bash
     python manage.py migrate
     ```
 
-5. **Create a superuser:**
+6. **Create a superuser:**
     ```bash
     python manage.py createsuperuser
     ```
 
-6. **Run the development server:**
+7. **Run the development server:**
     ```bash
     python manage.py runserver
     ```
 
-7. **Access the application:**
-    Open your web browser and go to `http://localhost:8000/`
+And that's it. Open your web browser and go to `http://localhost:8000/` if you have it locally, or `http://<instance-ip>:8000/` if you have it on a remote server.
 
-#### Dockerized version
+### Dockerized, just one instance
 
 1. **Install Docker and Docker Compose:**
     ```bash
@@ -90,7 +95,7 @@ The MVP will include the basic functionalities necessary to allow users to creat
 
 2. **Copy the docker-compose.yml on your PC:**
     ```bash
-    curl -L -o docker-compose.yml https://github.com/QuitoTactico/SoftServe-Academy/raw/main/scripts/docker-compose.yml
+    curl -L -o docker-compose.yml https://github.com/QuitoTactico/SoftServe-Academy/raw/main/docker-compose.yml
     ```
 
 3. **Run the Docker Compose:**
@@ -98,7 +103,49 @@ The MVP will include the basic functionalities necessary to allow users to creat
     sudo docker compose up -d --pull always
     ```
 
-And that's it! You can now access the application opening your web browser and going to `http://localhost/`, this runs on the port 80 by default.
+And that's it! You can now access the application opening your web browser and going to `http://localhost`, or `http://<instance-ip>` if you have it externally. This runs on the port 80 by default.
+
+This creates `a container with the Django application` and another `container with the database (MySQL)`, but with the same migrations and data as the beta SQlite uploaded in this repository.
+
+#### Dockerized, multiple instances with multiple django containers
+
+1. **Install Docker and Docker Compose:**
+    ```bash
+    sudo apt-get update 
+    sudo apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common 
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - 
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" 
+    sudo apt-get update 
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+    sudo apt update
+    sudo apt install -y docker-compose-plugin
+    ```
+
+2. **Copy the docker-compose.yml on your PC:**
+    ```bash
+    curl -L -o docker-compose.yml https://github.com/QuitoTactico/SoftServe-Academy/raw/main/docker-compose.yml
+    ```
+
+3. **Run the Docker Swarm:**  
+    The instance where you run this, will be the manager. It needs to have a public IP.
+    ```bash
+    sudo docker swarm init
+    ```
+
+4. **Copy the generated token and run the command on the worker instances:**  
+    (Download docker for them too)
+    ```bash
+    sudo docker swarm join --token <token> <manager-ip>:2377
+    ```
+
+5. **Deploy the stack in the manager:**
+    ```bash
+    sudo docker stack deploy -c docker-compose.yml softserve
+    ```
+
+You can access the application opening your web browser and going to `http://<manager-ip>/`, this runs on the port 80 by default.
+
+This will create a service with `5 replicas of the Django container`, and a service with `1 replica of the database container (MySQL)`.
 
 ## Contributors
 
