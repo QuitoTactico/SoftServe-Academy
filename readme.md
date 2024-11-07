@@ -37,6 +37,8 @@ The MVP will include the basic functionalities necessary to allow users to creat
 
 ### Installation
 
+#### (Manually, just one instance)
+
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/your-username/softserve-academy.git
@@ -71,6 +73,32 @@ The MVP will include the basic functionalities necessary to allow users to creat
 
 7. **Access the application:**
     Open your web browser and go to `http://localhost:8000/`
+
+#### Dockerized version
+
+1. **Install Docker and Docker Compose:**
+    ```bash
+    sudo apt-get update 
+    sudo apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common 
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - 
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" 
+    sudo apt-get update 
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+    sudo apt update
+    sudo apt install -y docker-compose-plugin
+    ```
+
+2. **Copy the docker-compose.yml on your PC:**
+    ```bash
+    curl -L -o docker-compose.yml https://github.com/QuitoTactico/SoftServe-Academy/raw/main/scripts/docker-compose.yml
+    ```
+
+3. **Run the Docker Compose:**
+    ```bash
+    sudo docker compose up -d
+    ```
+
+And that's it! You can now access the application opening your web browser and going to `http://localhost/`, this runs on the port 80 by default.
 
 ## Contributors
 
