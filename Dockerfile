@@ -17,7 +17,6 @@ COPY . .
 # Copia los scripts y cambia el archivo de settings
 COPY scripts /app/scripts
 RUN chmod +x /app/scripts/init.sh
-RUN mv /app/SoftServeAcademy/settings_deployment.py /app/SoftServeAcademy/settings.py
 
 # Configura variables de entorno
 ENV PYTHONDONTWRITEBYTECODE 1

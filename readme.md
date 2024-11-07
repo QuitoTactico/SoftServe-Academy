@@ -95,7 +95,7 @@ The MVP will include the basic functionalities necessary to allow users to creat
 
 3. **Run the Docker Compose:**
     ```bash
-    sudo docker compose up -d
+    sudo docker compose up -d --pull always
     ```
 
 And that's it! You can now access the application opening your web browser and going to `http://localhost/`, this runs on the port 80 by default.
