@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    command: ["sh", "/app/scripts/init.sh"]
+    depends_on:
+      - db
+    networks:
+      - django-network
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 1234
+      MYSQL_DATABASE: softserve-bd  # Nombre de la base de datos
+    networks:
+      - django-network
+    volumes:
+      - db_data:/var/lib/mysql
+
+networks:
+  django-network:
+
+volumes:
+  db_data:

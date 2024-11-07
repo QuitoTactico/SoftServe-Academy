@@ -29,7 +29,7 @@ from learning_resource import views as learningResourceViews
 from skill import views as skillViews
 
 urlpatterns = [
-    path('grappelli/', include('grappelli.urls')),
+    path("grappelli/", include("grappelli.urls")),
     # Include Grappelli URL configuration
     path("admin/", admin.site.urls),
     # Anything not marked as MVP will be handled from the Django admin or is not essential

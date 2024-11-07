@@ -21,6 +21,8 @@ class SoftServeAcademy(HttpUser):
     @task
     def register(self):
         self.client.get("/register")
+
+
 """
     def on_start(self):
         self.client.post(
