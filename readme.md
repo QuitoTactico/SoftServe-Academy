@@ -103,6 +103,21 @@ And that's it. Open your web browser and go to `http://localhost:8000/` if you h
     sudo docker compose up -d --pull always
     ```
 
+4. **Extra:**  
+    You can check the status of the containers with:  
+    ```bash
+    sudo docker container ls
+    ```  
+    Check the logs with:  
+    ```bash
+    sudo docker container logs softserve_web_1
+    sudo docker container logs softserve_db_1
+    ```  
+    And shut down the containers with:  
+    ```bash
+    sudo docker compose down
+    ```
+
 And that's it! You can now access the application opening your web browser and going to `http://localhost`, or `http://<instance-ip>` if you have it externally. This runs on the port 80 by default.
 
 This creates `a container with the Django application` and another `container with the database (MySQL)`, but with the same migrations and data as the beta SQlite uploaded in this repository.
@@ -140,7 +155,30 @@ This creates `a container with the Django application` and another `container wi
 
 5. **Deploy the stack in the manager:**
     ```bash
-    sudo docker stack deploy -c docker-compose.yml softserve
+    sudo docker stack deploy -c docker-compose-swarm.yml softserve
+    ```
+
+6. **Extra:**  
+    You can check the status of the deployment with:  
+    ```bash
+    sudo docker node ls
+    sudo docker service ls
+    sudo docker service ps web
+    sudo docker service ps db
+    sudo docker container ls
+    ```  
+    Check the logs with:  
+    ```bash
+    sudo docker service logs web
+    sudo docker service logs db
+    ```
+    And shut down the stack with:  
+    ```bash
+    sudo docker stack rm softserve
+    ```
+    And leave the swarm with:  
+    ```bash
+    sudo docker swarm leave --force
     ```
 
 You can access the application opening your web browser and going to `http://<manager-ip>/`, this runs on the port 80 by default.

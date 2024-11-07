@@ -11,7 +11,7 @@ services:
     networks:
       - django-network
     deploy:
-      replicas: 1
+      replicas: 5
       restart_policy:
         condition: on-failure
 
