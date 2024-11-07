@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login
+      env:
+       DOCKER_USER: ${{secrets.DOCKERHUB_USER}}
+       DOCKER_PASS: ${{secrets.DOCKERHUB_PASS}}
+      run: |
+       docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag quitotactico/softserve-academy:latest
+    
+    - name: Docker Push
+      run: docker push quitotactico/softserve-academy
