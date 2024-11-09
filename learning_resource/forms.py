@@ -59,14 +59,7 @@ class ReviewForm(forms.ModelForm):
                     "required": True,
                 }
             ),
-            "rate": forms.NumberInput(
-                attrs={
-                    "class": "form-control custom-input",
-                    "min": 1,
-                    "max": 5,
-                    "required": True,
-                }
-            ),
+            "rate": forms.HiddenInput(),  # Cambiado de NumberInput a HiddenInput
         }
         labels = {
             "comment": "Comment Something",
