@@ -7,21 +7,18 @@ from .forms import PreferenceForm
 
 @login_required
 def create(request):
+    user = request.user  # Use the logged-in user
     if request.method == "POST":
-        form = PreferenceForm(request.POST)
+        form = PreferenceForm(request.POST, instance=user.preference)
         if form.is_valid():
-            preference = form.save(commit=False)
-            user_id = request.session.get("user_id")
-            if user_id:
-                user = User.objects.get(id=user_id)
-                preference.save()
-                user.preference = preference
-                user.save()
-                return redirect("user")
+            preference = form.save()
+            user.preference = preference
+            user.save()
+            return redirect("user")
         else:
             return render(request, "preference_create.html", {"form": form})
     else:
-        form = PreferenceForm()
+        form = PreferenceForm(instance=user.preference)
     return render(request, "preference_create.html", {"form": form})
 
 
