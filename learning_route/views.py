@@ -54,6 +54,8 @@ def detail(request, id: int):
     """
 
     learning_resources_by_level = []
+    total_resources = 0
+    completed_resources = 0
     for i in range(1, target_skill_level + 1):
         resources_actual_level = learning_route_resources.filter(level=i).order_by(
             "index"
@@ -63,6 +65,8 @@ def detail(request, id: int):
             learning_resources_by_level.append(
                 {"level": i, "resources": resources_actual_level}
             )
+            total_resources += resources_actual_level.count()
+            completed_resources += resources_actual_level.filter(completed=True).count()
 
     return render(
         request,
@@ -70,6 +74,8 @@ def detail(request, id: int):
         {
             "learning_route": learning_route,
             "learning_route_resources_by_level": learning_resources_by_level,
+            "total_resources": total_resources,
+            "completed_resources": completed_resources,
         },
     )
 

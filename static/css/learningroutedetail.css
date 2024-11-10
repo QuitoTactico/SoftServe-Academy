@@ -77,3 +77,29 @@
         padding: 10px;
     }
 }
+
+/* Progress Bar Styles */
+#progress-bar-container {
+    width: 80%;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    margin: 20px auto;
+    position: relative;
+}
+
+#progress-bar {
+    height: 20px;
+    background-color: #1a73e8;
+    width: 0%;
+    border-radius: 25px;
+    transition: width 0.5s;
+}
+
+#progress-percentage {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: #fff;
+}
