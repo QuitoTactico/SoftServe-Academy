@@ -54,6 +54,9 @@ body {
     font-size: 1.5rem;
     color: #333;
 }
+.course-column div ul li i{
+    margin-right: 10px;
+}
 
 .start-now {
     background-color: #1a73e8;
