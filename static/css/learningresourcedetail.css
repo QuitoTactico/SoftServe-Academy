@@ -182,13 +182,3 @@ body {
     color: #f1c40f;
     cursor: default;
 }
-
-.ratings-summary .rating-row .stars {
-    color: #f1c40f;
-    font-size: 1.5rem;
-}
-
-.ratings-summary .rating-row .count {
-    font-size: 1.2rem;
-    color: #333;
-}

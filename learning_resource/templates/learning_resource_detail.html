@@ -4,6 +4,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/learningresourcedetail.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 {% endblock %}
 
 {% block content %}
@@ -39,21 +40,24 @@
         <div class="course-column">
             <div class="course-rating">
                 <ul>
-                    <li><strong>Name:</strong> {{ learning_resource.name }}</li>
-                    <li><strong>Media type:</strong> {{ learning_resource.media_type }}</li>
+                    <li><i class="fas fa-book"></i><strong>Name:</strong> {{ learning_resource.name }}</li>
+                    <li><i class="fas fa-file-alt"></i><strong>Media type: </strong> {{ learning_resource.media_type }}
+                    </li>
                     {% if learning_resource.original_author %}
-                    <li><strong>Original author:</strong> {{ learning_resource.original_author }}</li>
+                    <li><i class="fas fa-user"></i><strong>Original author:</strong>
+                        {{ learning_resource.original_author }}</li>
                     {% else %}
-                    <li><strong>Unknown original author.</strong></li>
+                    <li><i class="fas fa-user-secret"></i><strong>Unknown original author.</strong></li>
                     {% endif %}
-                    <li><strong>Duration:</strong> {{ learning_resource.duration }} minutes</li>
+                    <li><i class="fas fa-clock"></i><strong>Duration:</strong> {{ learning_resource.duration }} minutes
+                    </li>
                     {% if learning_resource.required_skills.all %}
-                    <li><strong>Required skills:</strong></li>
+                    <li><i class="fas fa-tools"></i><strong>Required skills:</strong></li>
                     {% for skill_level in learning_resource.required_skills.all %}
                     <li>➤ {{ skill_level.skill.name }} - Level {{ skill_level.level }}</li>
                     {% endfor %}
                     {% else %}
-                    <li><strong>Does not require skills.</strong></li>
+                    <li><i class="fas fa-check-circle"></i><strong>Does not require skills.</strong></li>
                     {% endif %}
 
                 </ul>
@@ -64,11 +68,15 @@
         <div class="course-column">
             <div class="course-details">
                 <ul>
-                    <li><strong>Language:</strong> {{ learning_resource.language|upper }}</li>
-                    <li><strong>Content type:</strong> {{ learning_resource.content_type }}</li>
-                    <li><strong>Original platform:</strong> {{ learning_resource.original_platform }}</li>
-                    <li><strong>General level:</strong> {{ learning_resource.general_level }}</li>
-                    <li><strong>Learning skills:</strong></li>
+                    <li><i class="fas fa-language"></i><strong>Language:</strong> {{ learning_resource.language|upper }}
+                    </li>
+                    <li><i class="fas fa-file-signature"></i><strong>Content type:</strong>
+                        {{ learning_resource.content_type }}</li>
+                    <li><i class="fas fa-globe"></i><strong>Original platform:</strong> 
+                        {{ learning_resource.original_platform }}</li>
+                    <li><i class="fas fa-level-up-alt"></i><strong>General level:</strong>
+                        {{ learning_resource.general_level }}</li>
+                    <li><i class="fas fa-graduation-cap"></i><strong>Learning skills:</strong></li>
                     {% for skill_level in learning_resource.learning_skills.all %}
                     <li>➤ {{ skill_level.skill.name }} - Level {{ skill_level.level }}</li>
                     {% endfor %}
