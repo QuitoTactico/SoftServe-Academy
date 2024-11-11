@@ -1,0 +1,194 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+}
+
+.container-resource {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 10px auto;
+}
+
+.course-header h1 {
+    font-size: 2rem;
+    margin-top: 20px;
+    text-align: center;
+    color: #000;
+}
+
+.course-header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    text-align: center;
+    color: #333;
+}
+
+.course-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.course-column {
+    width: 48%;
+}
+
+.course-rating ul,
+.course-details ul {
+    list-style: none;
+}
+
+.course-rating li,
+.course-details li {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.start-now {
+    background-color: #1a73e8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    align-self: flex-start;
+    width: 100%;
+}
+
+.course-rating {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #000;
+}
+
+.spotify-container {
+    position: relative;
+    padding-bottom: 26.7%;
+    /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.spotify-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.review-section {
+    margin-top: 30px;
+}
+
+.review-section textarea {
+    width: 100%;
+    max-height: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    resize: vertical;
+    field-sizing: content;
+}
+
+.review-rating p {
+    font-size: 1.2rem;
+    color: #f1c40f;
+}
+
+.review-section button {
+    background: linear-gradient(to right, #5cd3a7, #4ca0f7);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.review-section .review {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.review-section h3 {
+    margin-top: 20px;
+}
+
+.user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row;
+    font-size: 2rem;
+}
+
+.star-rating .star {
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s;
+}
+
+.star-rating .star:hover,
+.star-rating .star.selected {
+    color: #f1c40f;
+}
+
+.review p {
+    font-size: 1.2rem;
+    color: #f1c40f;
+    cursor: default;
+}
+
+.ratings-summary .rating-row .stars {
+    color: #f1c40f;
+    font-size: 1.5rem;
+}
+
+.ratings-summary .rating-row .count {
+    font-size: 1.2rem;
+    color: #333;
+}

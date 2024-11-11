@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Learning Route Details{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/learningresourcedetail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-resource">
+    <!-- Course Information Section -->
+    <div class="course-header">
+        <h1>{{ learning_resource.name }}</h1>
+        <p>{{ learning_resource.details }}</p>
+
+        <!-- Optional Video Container -->
+
+        {% if learning_resource.media_type == "Video" %}
+        <div class="video-container">
+            <iframe width="95%" src="{{ learning_resource.link }}" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        {% elif learning_resource.media_type == "Audio" %}
+        <div class="spotify-container">
+            <iframe src="{{ learning_resource.link }}" width="95%" frameborder="0" allowtransparency="true"
+                allow="encrypted-media"></iframe>
+        </div>
+        {% endif %}
+
+        <a href="{{ learning_resource.link }}" target="_blank">
+            <button class="start-now">Open Content</button>
+        </a>
+    </div>
+
+
+    <div class="course-content">
+        <!-- Column 1: Course Rating -->
+        <div class="course-column">
+            <div class="course-rating">
+                <ul>
+                    <li><strong>Name:</strong> {{ learning_resource.name }}</li>
+                    <li><strong>Media type:</strong> {{ learning_resource.media_type }}</li>
+                    {% if learning_resource.original_author %}
+                    <li><strong>Original author:</strong> {{ learning_resource.original_author }}</li>
+                    {% else %}
+                    <li><strong>Unknown original author.</strong></li>
+                    {% endif %}
+                    <li><strong>Duration:</strong> {{ learning_resource.duration }} minutes</li>
+                    {% if learning_resource.required_skills.all %}
+                    <li><strong>Required skills:</strong></li>
+                    {% for skill_level in learning_resource.required_skills.all %}
+                    <li>➤ {{ skill_level.skill.name }} - Level {{ skill_level.level }}</li>
+                    {% endfor %}
+                    {% else %}
+                    <li><strong>Does not require skills.</strong></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- Column 2: Course Details and Start Button -->
+        <div class="course-column">
+            <div class="course-details">
+                <ul>
+                    <li><strong>Language:</strong> {{ learning_resource.language|upper }}</li>
+                    <li><strong>Content type:</strong> {{ learning_resource.content_type }}</li>
+                    <li><strong>Original platform:</strong> {{ learning_resource.original_platform }}</li>
+                    <li><strong>General level:</strong> {{ learning_resource.general_level }}</li>
+                    <li><strong>Learning skills:</strong></li>
+                    {% for skill_level in learning_resource.learning_skills.all %}
+                    <li>➤ {{ skill_level.skill.name }} - Level {{ skill_level.level }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Review Section -->
+    <div class="review-section">
+        <h3>Write A Review</h3>
+        <form method="post" action="{% url 'learning_resource_create_review' learning_resource.id %}"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ review_form.as_p }}
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+                <input type="hidden" name="rate" id="rate" value="{{ review_form.rate.value|default:0 }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+        </form>
+
+        {% if learning_resource.reviews.all %}
+        <h3>Reviews</h3>
+        {% endif %}
+        {% for review in learning_resource.reviews.all %}
+        <div class="review">
+            <h4>
+                {% if review.user.image %}
+                <img class="user-image" src="{{ review.user.image.url }}" alt="Profile Picture">
+                {% else %}
+                <img class="user-image" src="{% static 'images/default-user.png' %}" alt="Profile Picture">
+                {% endif %}
+                {{ review.user.name }}
+            </h4>
+            <p>{{ review.comment }}</p>
+            <p>
+                {% for _ in review.rate_range %}
+                &#9733;
+                {% endfor %}
+                <span class="text-muted">- {{ review.created_at }}</span>
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        // JavaScript para la selección interactiva de estrellas
+        document.querySelectorAll('.star-rating .star').forEach(function (star) {
+            star.addEventListener('click', function () {
+                var rating = this.getAttribute('data-value');
+                document.getElementById('rate').value = rating;
+                document.querySelectorAll('.star-rating .star').forEach(function (s) {
+                    s.style.color = s.getAttribute('data-value') <= rating ? '#f1c40f' : '#ccc';
+                });
+            });
+        });
+    </script>
+    <!-- Asegúrate de que Bootstrap JS está incluido -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+{% endblock %}

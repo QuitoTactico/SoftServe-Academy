@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="card-container">
+    <a href="" class="card-link">
+        <div class="card">
+            <img src="{% static 'images/teban.jpg' %}" alt="Card Image">
+            <div class="card-content">
+                <h3>Esteban Vergara</h3>
+                <p>Desarrollador Backend</p>
+            </div>
+        </div>
+    </a>
+    <a href="" class="card-link">
+        <div class="card">
+            <img src="{% static 'images/jonathan.jpg' %}" alt="Card Image">
+            <div class="card-content">
+                <h3>Jonathan Betancur</h3>
+                <p>Desarrollador Frontend</p>
+            </div>
+        </div>
+    </a>
+    <a href="" class="card-link">
+        <div class="card">
+            <img src="{% static 'images/cock.jpg' %}" alt="Card Image">
+            <div class="card-content">
+                <h3>Miguel Cock</h3>
+                <p>Tester</p>
+            </div>
+        </div>
+    </a>
+    <a href="" class="card-link">
+        <div class="card">
+            <img src="{% static 'images/pablo.jpg' %}" alt="Card Image">
+            <div class="card-content">
+                <h3>Pablo Báez</h3>
+                <p>Diseñador UI/UX</p>
+            </div>
+        </div>
+    </a>
+    <a href="" class="card-link">
+        <div class="card">
+            <img src="{% static 'images/moises.jpg' %}" alt="Card Image">
+            <div class="card-content">
+                <h3>Moisés Arrieta</h3>
+                <p>Analista administrativo</p>
+            </div>
+        </div>
+    </a>
+
+</div>
+{% endblock %}

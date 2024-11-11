@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Learning Route Details{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/learningresourcedetail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-resource">
+    <!-- Course Information Section -->
+    <div class="course-header">
+        <h1>{{ learning_resource.name }}</h1>
+        <p>{{ learning_resource.details }}</p>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/mCdA4bJAGGk?si=3ej3z2vQ3M4l_7qE"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <button class="start-now">Open Content</button>
+    </div>
+
+
+    <div class="course-content">
+        <!-- Column 1: Course Rating -->
+        <div class="course-column">
+            <div class="course-rating">
+                <ul>
+                    <li><strong>Name</strong> {{ learning_resource.name }}</li>
+                    <li><strong>Media type</strong> {{ learning_resource.media_type }}</li>
+                    <li><strong>Original creator</strong> {{ learning_resource.original_author }}</li>
+                    <li><strong>Duration</strong> {{ learning_resource.duration }}</li>
+                    <li><strong>Required Skills</strong> No puede ser increíble</li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- Column 2: Course Details and Start Button -->
+        <div class="course-column">
+            <div class="course-details">
+                <ul>
+                    <li><strong>Language</strong> {{ learning_resource.language }}</li>
+                    <li><strong>Content type</strong> {{ learning_resource.content_type }}</li>
+                    <li><strong>Original platform</strong> {{ learning_resource.original_platform }}</li>
+                    <li><strong>General level</strong> {{ learning_resource.general_level }}</li>
+                    <li><strong>Learning Skills</strong> No puede ser increíble part2</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Review Section -->
+    <div class="review-section">
+        <h3>Write A Review</h3>
+        <textarea placeholder="Type Something..."></textarea>
+        <div class="review-rating">
+            <p>⭐ ⭐ ⭐ ⭐ ⭐</p>
+
+        </div>
+        <button>Submit Review</button>
+        <h3>Reviews</h3>
+        <div class="review">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque deserunt natus iure accusantium sequi,
+                maiores ex sunt, quas in corrupti molestiae facere voluptatibus autem reprehenderit unde vitae iusto
+                itaque! Consequatur.</p>
+        </div>
+    </div>
+    {% endblock %}

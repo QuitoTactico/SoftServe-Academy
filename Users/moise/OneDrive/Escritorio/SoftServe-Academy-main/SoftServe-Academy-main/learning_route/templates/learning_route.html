@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}LearningRoute{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/learningroute.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if user.target_skills.all and user.preference %}
+    <br>
+    <a href="{% url 'learning_route_generate' %}">
+        <button class="start-now">Generate Learning Routes</button>
+    </a>
+    <div class="card-container">
+        {% for learning_route in learning_routes %}
+            <a href="{% url 'learning_route_detail' learning_route.id %}" class="card-link">
+                <div class="card">
+                    <img src="{{ learning_route.skill_level.skill.image.url }}" alt="Card Image">
+                    <div class="card-content">
+                        <h3>{{ learning_route.skill_level.skill.name }}</h3>
+                        <p>Level {{ learning_route.skill_level.level }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="card-container">
+        <h3>
+            You don't have any route generated. 
+            <br>
+            Please set your <strong>preferences</strong> and <strong>target skills</strong> on your <strong><a href="{% url 'user' %}">user interface</a></strong>.
+        </h3>
+    </div>
+{% endif %}
+{% endblock %}

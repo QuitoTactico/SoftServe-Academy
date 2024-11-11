@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="background-color: #f8f9fa;">
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for skill in skills %}
+            <tr>
+                <td>{{ skill.id }}</td>
+                <td>{{ skill.name }}</td>
+                <td>{{ skill.skill_type }}</td>
+                <td>
+                    <img src="{{ skill.image.url }}" alt="{{ skill.name }}" style="max-width: 100px;">
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

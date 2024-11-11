@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/learningresourceform.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Learning Resource Creation</h1>
+<form method="post">
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="col-md-5 form-group">
+            <label for="{{ form.name.id_for_label }}">Name:</label>
+            {{ form.name }}
+        </div>
+        <div class="col-md-5 form-group">
+            <label for="{{ form.link.id_for_label }}">Link:</label>
+            {{ form.link }}
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 form-group">
+            <label for="{{ form.content_type.id_for_label }}">Content Type:</label>
+            {{ form.content_type }}
+        </div>
+
+        <div class="col-md-5 form-group">
+            <label for="{{ form.media_type.id_for_label }}">Media Type:</label>
+            {{ form.media_type }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 form-group">
+            <label for="{{ form.details.id_for_label }}">Details:</label>
+            {{ form.details }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 form-group">
+            <label for="{{ form.general_level.id_for_label }}">General resource level (1 to 5):</label>
+            {{ form.general_level }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 form-group">
+            <label for="{{ form.duration.id_for_label }}">Duration:</label>
+            {{ form.duration }}
+        </div>
+        <div class="col-md-5 form-group">
+            <label for="{{ form.language.id_for_label }}">Language:</label>
+            {{ form.language }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 form-group">
+            <label for="{{ form.original_platform.id_for_label }}">Original Platform:</label>
+            {{ form.original_platform }}
+        </div>
+        <div class="col-md-5 form-group">
+            <label for="{{ form.original_author.id_for_label }}">Original Author:</label>
+            {{ form.original_author }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 form-group">
+            <label for="{{ form.required_skills.id_for_label }}">Required Skills:</label>
+            {{ form.required_skills }}
+        </div>
+
+        <div class="col-md-5 form-group">
+            <label for="{{ form.learning_skills.id_for_label }}">Learning Skills:</label>
+            {{ form.learning_skills }}
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary form-submit">Create Resource</button>
+</form>
+<br>
+
+<script>
+    $(document).ready(function () {
+        $('#id_required_skills, #id_learning_skills').select2({
+            tokenSeparators: [',', ' '],
+            allowClear: true
+        });
+
+    });
+</script>
+{% endblock %}

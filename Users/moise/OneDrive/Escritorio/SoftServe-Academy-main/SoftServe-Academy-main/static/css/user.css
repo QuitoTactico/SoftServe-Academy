@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+}
+
+.container {
+    width: 100%;
+    margin: 10px auto;
+    background-color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+/* Contenedor principal reorganizado */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* Imagen de perfil */
+.profile-pic {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    object-fit: cover;
+    display: flex;
+
+}
+
+/* Información en la sección de la izquierda */
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.texts {
+    flex: 1;
+}
+
+.account-info,
+.learning-preferences {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.skill-button {
+    background-color: transparent;
+}
+
+.account-info h2,
+.learning-preferences h2,
+.skill-button h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.account-info p,
+.learning-preferences p,
+.skill-button p {
+    margin-left: 10px;
+    color: #333;
+}
+
+.learning-preferences {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account-info p,
+.learning-preferences p,
+.skill-button p {
+    margin-left: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.account-info p:hover,
+.learning-preferences p:hover,
+.skill-button p:hover {
+    color: #1a73e8;
+}
+
+.account-info {
+    width: 95%;
+    gap: 20px;
+}
+
+.learning-preferences {
+    width: 95%;
+    gap: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+
+.skills {
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.skills h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.skills a {
+    margin-left: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.skills a:hover {
+    color: #1a73e8;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.title-target a {
+    margin-left: 10px;
+    color: #333;
+}
+
+.title-target a:hover {
+    color: #1a73e8;
+}
+
+
+
+
+.skill-set {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Centrar las cajas en la fila */
+}
+
+/*cajas*/
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: fit-content;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.skill img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 5px;
+}
+
+.skill span {
+    font-size: 1.2em;
+    color: #333;
+    display: block;
+}
+
+
+.learning-route {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #0044cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #edebeb;
+}
+
+button a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #0044cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: left;
+    width: 100%;
+}
+
+button a:hover {
+    background-color: #003399;
+}

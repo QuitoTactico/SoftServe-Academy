@@ -1,0 +1,7 @@
+*.pyc
+*.sqlite3
+*pycache*
+db_backup
+*.log
+*.dot
+/scripts/data.json

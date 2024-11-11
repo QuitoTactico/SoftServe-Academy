@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Update Profile{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/update_profile.css' %}">
+{% endblock %}
+{% block content %}
+<br>
+<h1>Update Profile</h1>
+<div class="main-content">
+    <form method="post" enctype="multipart/form-data">
+        <div class="info">
+            <div class="texts">
+                {% csrf_token %}
+                {{ form.name }}
+                {{ form.email }}
+
+            </div>
+            <div class="image-section">
+                {% if user.image %}
+                <img class="profile-pic img-fluid" src="{{ user.image.url }}" alt="Profile Picture">
+                {% else %}
+                <img class="profile-pic img-fluid" src="{% static 'images/default-user.png' %}" alt="Profile Picture">
+                {% endif %}
+                {% csrf_token %}
+                {{ form.image }}
+
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+    </form>
+</div>
+<br>
+{% endblock %}

@@ -1,0 +1,83 @@
+name: Playwright E2E Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  e2e_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libwoff1 \
+          libvpx7 \
+          libevent-2.1-7 \
+          libopus0 \
+          gstreamer1.0-plugins-base \
+          gstreamer1.0-plugins-good \
+          gstreamer1.0-plugins-ugly \
+          gstreamer1.0-libav \
+          gstreamer1.0-tools \
+          gstreamer1.0-x \
+          gstreamer1.0-gl \
+          gstreamer1.0-alsa \
+          gstreamer1.0-pulseaudio \
+          gstreamer1.0-plugins-bad \
+          libharfbuzz-icu0 \
+          libhyphen0 \
+          libmanette-0.2-0 \
+          flite \
+          mesa-utils \
+          libx264-dev || true  # Ignorar errores de paquetes faltantes
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+
+    - name: Install Python dependencies
+      run: pip install -r requirements.txt
+
+    - name: Install Node.js dependencies
+      run:  |
+          npm install
+          npx playwright install
+      working-directory: testsE2E
+
+    - name: Run Django migrations
+      run: python manage.py migrate
+
+    - name: Start Django server
+      run: python manage.py runserver 127.0.0.1:8000 &
+      env:
+        DJANGO_SETTINGS_MODULE: SoftServeAcademy.settings
+
+    - name: Run Playwright tests
+      run: npx playwright test
+      working-directory: testsE2E
+
+    - name: Copy Playwright test report to /tests/
+      run: |
+        mkdir -p tests
+        cp -r testsE2E/playwright-report/* tests/
+
+    - name: Upload Playwright test report as artifact
+      if: always() # Se sube siempre, tanto en éxito como en fallo
+      uses: actions/upload-artifact@v3
+      with:
+        name: playwright-report
+        path: testsE2E/playwright-report

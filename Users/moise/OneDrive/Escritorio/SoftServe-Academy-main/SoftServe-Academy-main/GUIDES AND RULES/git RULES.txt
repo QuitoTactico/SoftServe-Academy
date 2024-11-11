@@ -1,0 +1,20 @@
+# Luego de terminar un progreso que quieras montar a la main, hacer:
+
+git add .
+git commit -m "Hice esto y esto"
+git push
+git checkout main
+git pull
+git merge develop
+git push
+git checkout develop
+
+
+# en caso de que uses la interfaz gráfica (como yo)
+(montas los cambios a tu misma rama con la interfaz, lo normal)
+git checkout main
+git pull
+git merge develop
+git push
+git checkout develop
+

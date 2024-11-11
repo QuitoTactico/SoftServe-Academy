@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Learning Route Details{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/learningroutedetail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="route-container">
+    <h2 class="route-title"><img height="65" src="{{ learning_route.skill_level.skill.image.url }}"
+            alt="learning route image"> <strong>{{ learning_route.skill_level.skill.name }} </strong> learning route
+        (level {{ learning_route.skill_level.level }})</h2>
+
+    <!-- Progress Bar -->
+    <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+        <span id="progress-percentage"></span>
+    </div>
+
+    <a href="{% url 'learning_route_update' learning_route.id %}">
+        <button class="btn btn-primary">Regenerate Learning Routes</button>
+    </a>
+
+    {% for level_resources in learning_route_resources_by_level %}
+    <table class="table-list-group">
+        <thead>
+            <tr>
+                <th>Level {{ level_resources.level }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <ul class="list-group">
+                        {% for learning_route_resource in level_resources.resources %}
+                        <a href="{% url 'learning_resource_detail' learning_route_resource.learning_resource.id learning_route_resource.id %}"
+                            target="_blank">
+                            {% if learning_route_resource.completed %}
+                            <li class="list-group-item disabled">{{ learning_route_resource.learning_resource.name }}
+                            </li>
+                            {% else %}
+                            <li class="list-group-item">{{ learning_route_resource.learning_resource.name }}</li>
+                            {% endif %}
+                        </a>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    {% endfor %}
+</div>
+
+<!-- Progress Bar -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const total = "{{ total_resources|default:0 }}";
+        const completed = "{{ completed_resources|default:0 }}";
+        const percentage = total ? (completed / total) * 100 : 0;
+        document.getElementById('progress-bar').style.width = percentage + '%';
+        document.getElementById('progress-percentage').innerText = Math.round(percentage) + '%';
+    });
+</script>
+{% endblock %}

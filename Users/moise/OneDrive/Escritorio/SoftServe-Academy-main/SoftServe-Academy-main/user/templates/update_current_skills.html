@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/learningresourceform.css' %}">
+{% endblock %}
+{% block content %}
+<br>
+<h1>Update Current Skills</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-10 form-group">
+            {{ form.as_p }}
+            <p>Only the biggest level of each skill will be selected</p>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary form-submit">Update Current Skills</button>
+</form>
+<br>
+<script>
+    $(document).ready(function () {
+        $('select').select2({
+            tokenSeparators: [',', ' '],
+            allowClear: true
+        });
+    });
+</script>
+{% endblock %}

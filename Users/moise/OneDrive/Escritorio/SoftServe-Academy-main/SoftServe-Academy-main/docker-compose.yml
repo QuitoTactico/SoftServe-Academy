@@ -1,0 +1,39 @@
+services:
+  web:
+    image: quitotactico/softserve-academy
+    command: ["sh", "/app/scripts/init.sh"]
+    environment:
+      - DJANGO_SETTINGS_MODULE=SoftServeAcademy.settings_deployment
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    networks:
+      - django-network
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 1234
+      MYSQL_DATABASE: softserve-bd
+    networks:
+      - django-network
+    volumes:
+      - db_data:/var/lib/mysql
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+
+networks:
+  django-network:
+
+volumes:
+  db_data:

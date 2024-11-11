@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/preferenceform.css' %}">
+{% endblock %}
+{% block content %}
+<br>
+<h1>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Preference</h1>
+<form method="post">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="{{ form.media_type.id_for_label }}">Media type:</label>
+        {{ form.media_type }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.content_type.id_for_label }}">Content type:</label>
+        {{ form.content_type }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.learning_type.id_for_label }}">Learning type:</label>
+        {{ form.learning_type }}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.time_per_week.id_for_label }}">Time per Week (Minutes):</label>
+        {{ form.time_per_week }}
+        {% if form.time_per_week.errors %}
+        <div class="alert alert-danger mt-2">
+            {{ form.time_per_week.errors|first }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.time_per_session.id_for_label }}">Time per Session (Minutes):</label>
+        {{ form.time_per_session }}
+        {% if form.time_per_session.errors %}
+        <div class="alert alert-danger mt-2">
+            {{ form.time_per_session.errors|first }}
+        </div>
+        {% endif %}
+    </div>
+
+    <p>This preferences will be used to filter the resources that will be selected to create your learning routes.</p>
+
+    <button type="submit" class="btn btn-primary">{% if form.instance.pk %}Update{% else %}Save{% endif %}
+        Preferences</button>
+</form>
+<br>
+{% endblock %}

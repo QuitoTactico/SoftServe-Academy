@@ -1,0 +1,19 @@
+{
+  "name": "testse2e",
+  "version": "1.0.0",
+  "description": "End-to-End tests for SoftServeAcademy using Playwright",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.5.4",
+    "playwright-chromium": "^1.47.0",
+    "playwright-firefox": "^1.47.0",
+    "playwright-webkit": "^1.47.0"
+  }
+}
