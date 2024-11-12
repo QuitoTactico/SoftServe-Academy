@@ -8,9 +8,9 @@
 
 {% block content %}
 <div class="route-container">
-    <h2 class="route-title"><img height="65" src="{{ learning_route.skill_level.skill.image.url }}"
-            alt="learning route image"> <strong>{{ learning_route.skill_level.skill.name }} </strong> learning route
-        (level {{ learning_route.skill_level.level }})</h2>
+<h2 class="route-title"><img height="65" src="{{ learning_route.skill_level.skill.image.url }}"
+        alt="learning route image"> <strong>{{ learning_route.skill_level.skill.name }} </strong> learning route (level {{ learning_route.skill_level.level }}){% if learning_route.completed %} (Completed){% endif %}
+    </h2>
 
     <!-- Progress Bar -->
     <div id="progress-bar-container">
@@ -37,10 +37,43 @@
                         <a href="{% url 'learning_resource_detail' learning_route_resource.learning_resource.id learning_route_resource.id %}"
                             target="_blank">
                             {% if learning_route_resource.completed %}
-                            <li class="list-group-item disabled">{{ learning_route_resource.learning_resource.name }}
+                            <li class="list-group-item disabled">
+                                <span class="resource-name">{{ learning_route_resource.learning_resource.name }}</span>
+                                <span class="icons">
+                                    <!-- Icon based on media type -->
+                                        <i class="fas fa-eye"></i>
+                                    {% if learning_route_resource.learning_resource.media_type == "Video" %}
+                                        <i class="fas fa-video"></i>
+                                    {% elif learning_route_resource.learning_resource.media_type == "Audio" %}
+                                        <i class="fas fa-music"></i>
+                                    {% else %}
+                                        <i class="fas fa-file-alt"></i>
+                                    {% endif %}
+                                    <!-- Icon for language -->
+                                    <i class="fas fa-language"></i>
+                                    <!-- Icon for duration -->
+                                    <i class="fas fa-clock"></i>
+                                </span>
                             </li>
                             {% else %}
-                            <li class="list-group-item">{{ learning_route_resource.learning_resource.name }}</li>
+                            <li class="list-group-item">
+                                <span class="resource-name">{{ learning_route_resource.learning_resource.name }}</span>
+                                <span class="icons">
+                                    <!-- Icon based on media type -->
+                                        <i class="fas fa-eye-slash"></i>
+                                    {% if learning_route_resource.learning_resource.media_type == "Video" %}
+                                        <i class="fas fa-video"></i>
+                                    {% elif learning_route_resource.learning_resource.media_type == "Audio" %}
+                                        <i class="fas fa-music"></i>
+                                    {% else %}
+                                        <i class="fas fa-file-alt"></i>
+                                    {% endif %}
+                                    <!-- Icon for language -->
+                                    <i class="fas fa-language"></i>
+                                    <!-- Icon for duration -->
+                                    <i class="fas fa-clock"></i>
+                                </span>
+                            </li>
                             {% endif %}
                         </a>
                         {% endfor %}

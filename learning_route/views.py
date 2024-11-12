@@ -76,6 +76,7 @@ def detail(request, id: int):
             "learning_route_resources_by_level": learning_resources_by_level,
             "total_resources": total_resources,
             "completed_resources": completed_resources,
+            # ...existing context...
         },
     )
 
