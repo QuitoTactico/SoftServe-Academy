@@ -36,13 +36,24 @@ body {
 
 
 /* Imagen de perfil */
+.profile-pic-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
 .profile-pic {
-    width: 20rem;
-    height: 20rem;
+    width: 20rem; /* Mantén el tamaño existente */
+    height: 20rem; /* Mantén el tamaño existente */
     border-radius: 50%;
     object-fit: cover;
     display: flex;
+    transition: filter 0.3s;
+}
 
+.profile-pic:hover {
+    filter: brightness(0.8);
 }
 
 /* Información en la sección de la izquierda */

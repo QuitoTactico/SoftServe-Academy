@@ -56,16 +56,18 @@ def create_review(request, id: int):
         if request.method == "POST":
             form = ReviewForm(request.POST)
             if form.is_valid():
-                previous_review = learning_resource.reviews.filter(user=request.user).first()
-                
+                previous_review = learning_resource.reviews.filter(
+                    user=request.user
+                ).first()
+
                 review = form.save(commit=False)
                 review.user = request.user
-                
+
                 if previous_review:
                     learning_resource.reviews.filter(user=request.user).delete()
                     if not review.comment.endswith(" (edited)"):
                         review.comment += " (edited)"
-                
+
                 review.save()
                 learning_resource.reviews.add(review)
                 return redirect("learning_resource_detail", id=id)
