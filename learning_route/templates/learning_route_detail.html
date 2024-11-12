@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load learning_resource_extras %} <!-- Correctly load the custom template filters -->
 {% block title %}{{ learning_route.skill_level.skill.name }} learning route (level {{ learning_route.skill_level.level }}){% if learning_route.completed %} (Completed){% endif %} - Learning Route Details{% endblock %}
 
 {% block extra_css %}
@@ -9,8 +10,8 @@
 {% block content %}
 <div class="route-container">
     <h2 class="route-title">
-        <img height="65" src="{{ learning_route.skill_level.skill.image.url }}"
-        alt="learning route image"> <strong>{{ learning_route.skill_level.skill.name }} </strong> learning route (level {{ learning_route.skill_level.level }}){% if learning_route.completed %} (Completed){% endif %}
+        <img height="65" src="{{ learning_route.skill_level.skill.image.url }}" alt="learning route image">
+        <strong>{{ learning_route.skill_level.skill.name }}</strong> learning route (level {{ learning_route.skill_level.level }}){% if learning_route.completed %} (Completed){% endif %}
     </h2>
 
     <!-- Progress Bar -->
@@ -20,11 +21,8 @@
     </div>
 
     <a href="{% url 'learning_route_update' learning_route.id %}">
-        <button class="btn btn-primary">Update Learning Route</button>
+        <button class="btn btn-primary">Regenerate Learning Routes</button>
     </a>
-
-    <br>
-    <br>
 
     {% for level_resources in learning_route_resources_by_level %}
     <table class="table-list-group">
@@ -38,11 +36,10 @@
                 <td>
                     <ul class="list-group">
                         {% for learning_route_resource in level_resources.resources %}
-                        <a href="{% url 'learning_resource_detail' learning_route_resource.learning_resource.id learning_route_resource.id %}"
-                            target="_blank">
+                        <a href="{% url 'learning_resource_detail' learning_route_resource.learning_resource.id learning_route_resource.id %}" target="_blank">
                             {% if learning_route_resource.completed %}
                             <li class="list-group-item disabled">
-                                <span class="resource-name">➤ {{ learning_route_resource.learning_resource.name }}</span>
+                                <span class="resource-name">{{ learning_route_resource.learning_resource.name }}</span>
                                 <span class="icons">
                                     <!-- Icon based on media type -->
                                         <i class="fas fa-eye"></i>
@@ -54,14 +51,14 @@
                                         <i class="fas fa-file-alt"></i>
                                     {% endif %}
                                     <!-- Icon for language -->
-                                    <i class="fas fa-language"></i>
+                                    <img src="{% static lang_flag|get_flag:learning_route_resource.learning_resource.language %}" alt="Flag" class="flag-icon">
                                     <!-- Icon for duration -->
                                     <i class="fas fa-clock"> {{ learning_route_resource.learning_resource.duration }} min.</i>
                                 </span>
                             </li>
                             {% else %}
                             <li class="list-group-item">
-                                <span class="resource-name">➤ {{ learning_route_resource.learning_resource.name }}</span>
+                                <span class="resource-name">{{ learning_route_resource.learning_resource.name }}</span>
                                 <span class="icons">
                                     <!-- Icon based on media type -->
                                         <i class="fas fa-eye-slash"></i>
@@ -73,7 +70,7 @@
                                         <i class="fas fa-file-alt"></i>
                                     {% endif %}
                                     <!-- Icon for language -->
-                                    <i class="fas fa-language"></i>
+                                    <img src="{% static lang_flag|get_flag:learning_route_resource.learning_resource.language %}" alt="Flag" class="flag-icon">
                                     <!-- Icon for duration -->
                                     <i class="fas fa-clock"> {{ learning_route_resource.learning_resource.duration }} min.</i>
                                 </span>

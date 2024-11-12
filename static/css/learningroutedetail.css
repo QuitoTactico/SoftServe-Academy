@@ -165,3 +165,11 @@ a .icons:hover {
     font-weight: bold;
     color: #fff;
 }
+
+/* Style for the flag icon */
+.flag-icon {
+    width: 20px;                /* Set the desired width */
+    height: auto;               /* Maintain aspect ratio */
+    margin-right: 5px;          /* Space between flag and other icons */
+    vertical-align: middle;     /* Align vertically with text/icons */
+}

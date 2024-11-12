@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import LearningRoute
 from user.models import User
+from enums.enums import LANG_FLAG  # Import LANG_FLAG
 
 
 @login_required
@@ -76,6 +77,7 @@ def detail(request, id: int):
             "learning_route_resources_by_level": learning_resources_by_level,
             "total_resources": total_resources,
             "completed_resources": completed_resources,
+            "lang_flag": LANG_FLAG,  # Add LANG_FLAG to context
             # ...existing context...
         },
     )
