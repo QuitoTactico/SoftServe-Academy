@@ -72,9 +72,9 @@
                 {% if user.is_authenticated %}
                 <a href="{% url 'user' %}">
                     {% if user.image %}
-                    <img src="{{ user.image.url }}" alt="User Photo" class="user-image">
+                    <img src="{{ user.image.url }}" alt="User Photo" class="user-image img-fluid">
                     {% else %}
-                    <img src="{% static 'images/default-user.png' %}" alt="Default User Photo" class="user-image">
+                    <img src="{% static 'images/default-user.png' %}" alt="Default User Photo" class="user-image img-fluid">
                     {% endif %}
                 </a>
                 <a href="{% url 'logout' %}" class="get-logout-btn">Logout</a>

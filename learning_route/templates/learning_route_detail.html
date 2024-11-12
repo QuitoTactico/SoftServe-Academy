@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Learning Route Details{% endblock %}
+{% block title %}{{ learning_route.skill_level.skill.name }} learning route (level {{ learning_route.skill_level.level }}){% if learning_route.completed %} (Completed){% endif %} - Learning Route Details{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/learningroutedetail.css' %}">
@@ -8,7 +8,8 @@
 
 {% block content %}
 <div class="route-container">
-    <h2 class="route-title"><img height="65" src="{{ learning_route.skill_level.skill.image.url }}"
+    <h2 class="route-title">
+        <img height="65" src="{{ learning_route.skill_level.skill.image.url }}"
         alt="learning route image"> <strong>{{ learning_route.skill_level.skill.name }} </strong> learning route (level {{ learning_route.skill_level.level }}){% if learning_route.completed %} (Completed){% endif %}
     </h2>
 
@@ -19,9 +20,10 @@
     </div>
 
     <a href="{% url 'learning_route_update' learning_route.id %}">
-        <button class="btn btn-primary">Regenerate Learning Routes</button>
+        <button class="btn btn-primary">Update Learning Route</button>
     </a>
 
+    <br>
     <br>
 
     {% for level_resources in learning_route_resources_by_level %}
