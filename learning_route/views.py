@@ -114,11 +114,15 @@ def update(request, id: int):
     else:
         return redirect("not_logged_in")
 
-    target_skill = learning_route.skill_level
+    target_skill = learning_route.skill_level.skill
+
+    user_target_skill = user.target_skills.filter(skill=target_skill).first()
+    if not user_target_skill:
+        return redirect("not_found")
 
     learning_route.delete()
 
-    new_learning_route = LearningRoute.generate(user, target_skill)
+    new_learning_route = LearningRoute.generate(user, user_target_skill)
     user.learning_routes.add(new_learning_route)
     user.save()
 
