@@ -35,14 +35,18 @@
     font-weight: bold;
 }
 
-/* Estilos para la lista */
+
 .list-group {
     list-style-type: none;
     padding-left: 0;
     z-index: 1;
+    flex: 1;
 }
 
 .list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: #fff;
     border: 1px solid #ddd;
     margin-bottom: 10px;
@@ -52,13 +56,71 @@
     color: #333;
 }
 
-.list-group-item.disabled {
-    color: #ccc;
+
+.list-group-item .resource-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.list-group-item .resource-name {
+    flex: 1;
+}
+
+
+.list-group-item .icons {
+    display: flex;
+    gap: 10px;
+    color: #1a73e8;
+    justify-content: flex-end;
     pointer-events: none;
 }
 
-.list-group-item:hover {
+.list-group-item .icons i {
+    pointer-events: auto;
+}
+
+.list-group-item.disabled {
+    color: #ccc;
+    pointer-events: none;
+    border: #1a73e8;
+}
+.list-group-item .resource-name:hover {
     background-color: #f9f9f9;
+}
+
+
+.resource-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.list-group-item .icons:hover,
+.list-group-item .icons i:hover {
+    text-decoration: none;
+    color: #1a73e8;
+}
+
+
+.list-group-item i {
+    margin-right: 8px;
+    color: #1a73e8;
+}
+
+.list-group-item i:hover {
+    color: #1a73e8;
+}
+
+a .icons {
+    text-decoration: none;
+}
+
+a .icons:hover {
+    text-decoration: none;
 }
 
 /* Responsive */
