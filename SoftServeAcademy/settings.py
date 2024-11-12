@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    "django_extensions",
     "admin_interface",
     "colorfield",  # Required dependency for theming
     "django.contrib.admin",

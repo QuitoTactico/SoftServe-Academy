@@ -7,3 +7,4 @@ django-suit
 django-admin-interface
 django-mysql
 mysqlclient
+pydotplus
