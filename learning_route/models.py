@@ -68,6 +68,9 @@ class LearningRoute(models.Model):
     # Used on learning_routes/views.py generate()
     @classmethod
     def generate(cls, user, user_target_skill: SkillLevel):
+        # We delete every other learning route with the same skill as target
+        user.learning_routes.filter(skill_level__skill=user_target_skill.skill).delete()
+
         learning_route = cls(skill_level=user_target_skill, duration=0)
         learning_route.save()
 
