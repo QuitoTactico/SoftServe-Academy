@@ -45,7 +45,7 @@ LANGUAGE_CHOICES = [
 LANG_FLAG = {
     "es": "images/flags/es.svg",
     "en": "images/flags/um.svg",
-    "uk": "images/flags/uk.png", # <a href="https://www.flaticon.com/free-icons/ukraine" title="ukraine icons">Ukraine icons created by Freepik - Flaticon</a>
+    "uk": "images/flags/uk.png",  # <a href="https://www.flaticon.com/free-icons/ukraine" title="ukraine icons">Ukraine icons created by Freepik - Flaticon</a>
     "pt": "images/flags/pt.svg",
     "zh": "images/flags/cn.svg",
     "hi": "images/flags/in.svg",

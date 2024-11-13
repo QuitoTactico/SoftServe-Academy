@@ -112,7 +112,9 @@ urlpatterns = [
     # Skill
     path("skill/", skillViews.home, name="skill"),
     path("skill/create/", skillViews.create, name="skill_create"),
-    path('i18n/', include('django.conf.urls.i18n')),  # Add this line to include i18n URLs
+    path(
+        "i18n/", include("django.conf.urls.i18n")
+    ),  # Add this line to include i18n URLs
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

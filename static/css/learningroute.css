@@ -31,6 +31,23 @@ body {
 
 }
 
+/* Estilos para las tarjetas completadas */
+.card-link.disabled {
+    opacity: 0.6; /* Hacer que la tarjeta se vea desactivada */
+    filter: grayscale(100%); /* Aplicar un filtro en escala de grises */
+    pointer-events: auto; /* Asegurar que aún sean clickeables */
+}
+
+.card-link.disabled .card {
+    background-color: #f0f0f0; /* Fondo gris claro */
+    border: 1px solid #ccc; /* Borde gris */
+}
+
+.card-link.disabled .card-content h3,
+.card-link.disabled .card-content p {
+    color: #999; /* Texto gris */
+}
+
 .card {
     background-color: #fff;
     border-radius: 15px;

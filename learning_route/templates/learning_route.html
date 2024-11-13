@@ -14,15 +14,33 @@
     </a>
     <div class="card-container">
         {% for learning_route in learning_routes %}
-            <a href="{% url 'learning_route_detail' learning_route.id %}" class="card-link">
-                <div class="card">
-                    <img src="{{ learning_route.skill_level.skill.image.url }}" alt="Card Image">
-                    <div class="card-content">
-                        <h3>{{ learning_route.skill_level.skill.name }}</h3>
-                        <p>Level {{ learning_route.skill_level.level }}</p>
+            {% if not learning_route.completed %}
+                <a href="{% url 'learning_route_detail' learning_route.id %}" class="card-link">
+                    <div class="card">
+                        <img src="{{ learning_route.skill_level.skill.image.url }}" alt="Card Image">
+                        <div class="card-content">
+                            <h3>{{ learning_route.skill_level.skill.name }}</h3>
+                            <p>Level {{ learning_route.skill_level.level }}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="card-container">
+        {% for learning_route in learning_routes %}
+            {% if learning_route.completed %}
+                <a href="{% url 'learning_route_detail' learning_route.id %}" class="card-link disabled">
+                    <div class="card">
+                        <img src="{{ learning_route.skill_level.skill.image.url }}" alt="Card Image">
+                        <div class="card-content">
+                            <h3>{{ learning_route.skill_level.skill.name }}</h3>
+                            <p>Level {{ learning_route.skill_level.level }}</p>
+                            <p>(Completed)</p>
+                        </div>
+                    </div>
+                </a>
+            {% endif %}
         {% endfor %}
     </div>
 {% else %}
