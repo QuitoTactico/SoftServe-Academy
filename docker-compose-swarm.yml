@@ -1,7 +1,7 @@
 services:
   web:
     image: quitotactico/softserve-academy
-    command: ["sh", "/app/scripts/init.sh"]
+    command: ["sh", "/scripts/init.sh"]
     environment:
       - DJANGO_SETTINGS_MODULE=SoftServeAcademy.settings_deployment
     depends_on:

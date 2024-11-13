@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Cambia al directorio del script
+cd "$(dirname "$0")"
+
 # Espera a que la base de datos esté lista antes de aplicar migraciones y cargar datos
 echo " "
 
@@ -17,10 +20,10 @@ done
 echo "MySQL está listo."
 
 # Verifica si el archivo data.json no existe ya en el contenedor para evitar múltiples cargas
-if [ ! -f "/app/scripts/data.json" ]; then
+if [ ! -f "data.json" ]; then
   echo "Generando data.json desde la base de datos SQLite."
   # Genera el archivo data.json usando settings.py (configurado con SQLite)
-  python manage.py dumpdata --settings=SoftServeAcademy.settings > /app/scripts/data.json
+  python manage.py dumpdata --settings=SoftServeAcademy.settings > data.json
   echo "Archivo data.json generado con éxito desde SQLite."
 else
   echo "Archivo data.json ya existe, omitiendo generación."
@@ -34,15 +37,15 @@ echo "Migraciones aplicadas con éxito."
 # Carga los datos en MySQL solo si la tabla de usuarios no existe
 if ! python manage.py inspectdb --settings=SoftServeAcademy.settings_deployment | grep -q "auth_user"; then
   echo "Base de datos vacía, cargando datos desde data.json."
-  python manage.py loaddata /app/scripts/data.json --settings=SoftServeAcademy.settings_deployment
+  python manage.py loaddata data.json --settings=SoftServeAcademy.settings_deployment
   echo "Datos cargados con éxito desde data.json."
 else
   echo "Base de datos ya inicializada, no se cargan datos."
 fi
 
 # Elimina el archivo data.json si fue cargado
-if [ -f "/app/scripts/data.json" ]; then
-  rm /app/scripts/data.json
+if [ -f "data.json" ]; then
+  rm data.json
   echo "Archivo data.json eliminado del contenedor."
 fi
 

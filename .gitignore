@@ -4,4 +4,3 @@
 db_backup
 *.log
 *.dot
-/scripts/data.json

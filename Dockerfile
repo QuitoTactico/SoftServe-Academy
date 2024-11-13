@@ -15,8 +15,8 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Copia los scripts y cambia el archivo de settings
-COPY scripts /app/scripts
-RUN chmod +x /app/scripts/init.sh
+COPY scripts /scripts
+RUN chmod +x /scripts/init.sh
 
 # Configura variables de entorno
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -26,4 +26,4 @@ ENV PYTHONUNBUFFERED 1
 EXPOSE 80
 
 # Ejecuta el script de inicialización
-CMD ["sh", "/app/scripts/init.sh"]
+CMD ["sh", "/scripts/init.sh"]
