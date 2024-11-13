@@ -22,6 +22,33 @@
 
     <div class="row">
         <div class="col-md-5 form-group">
+            <label for="{{ form.content_type.id_for_label }}">
+                Content Type:
+                <button type="button" class="info-button" onclick="toggleInfo('contentTypeInfo')">i</button>
+            </label>
+            {{ form.content_type }}
+            <div id="contentTypeInfo" class="info-text">
+                <!-- Explanation for Content Type -->
+                Describe the type of content that interests you for your learning route. <strong>This field is currently not used in the algorithm.</strong>
+
+            </div>
+        </div>
+
+        <div class="col-md-5 form-group">
+            <label for="{{ form.media_type.id_for_label }}">
+                Media Type:
+                <button type="button" class="info-button" onclick="toggleInfo('mediaTypeInfo')">i</button>
+            </label>
+            {{ form.media_type }}
+            <div id="mediaTypeInfo" class="info-text">
+                <!-- Explanation for Media Type -->
+                Select the type of media you prefer for your learning resources. <strong>This field is used in the algorithm to filter resources.</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 form-group">
             <label for="{{ form.content_type.id_for_label }}">Content Type:</label>
             {{ form.content_type }}
         </div>
@@ -40,7 +67,10 @@
     </div>
     <div class="row">
         <div class="col-md-10 form-group">
-            <label for="{{ form.general_level.id_for_label }}">General resource level (1 to 5):</label>
+            <label for="{{ form.general_level.id_for_label }}">
+                General resource level (1 to 5):
+                <button type="button" class="info-button" data-toggle="modal" data-target="#skillLevelsModal">i</button>
+            </label>
             {{ form.general_level }}
         </div>
     </div>
@@ -69,12 +99,18 @@
 
     <div class="row">
         <div class="col-md-5 form-group">
-            <label for="{{ form.required_skills.id_for_label }}">Required Skills:</label>
+            <label for="{{ form.required_skills.id_for_label }}">
+                Required Skills:
+                <button type="button" class="info-button" data-toggle="modal" data-target="#skillLevelsModal">i</button>
+            </label>
             {{ form.required_skills }}
         </div>
 
         <div class="col-md-5 form-group">
-            <label for="{{ form.learning_skills.id_for_label }}">Learning Skills:</label>
+            <label for="{{ form.learning_skills.id_for_label }}">
+                Learning Skills:
+                <button type="button" class="info-button" data-toggle="modal" data-target="#skillLevelsModal">i</button>
+            </label>
             {{ form.learning_skills }}
         </div>
     </div>
@@ -84,7 +120,65 @@
 </form>
 <br>
 
+<!-- Skills Explanation Modal -->
+<div class="modal fade" id="skillLevelsModal" tabindex="-1" role="dialog" aria-labelledby="skillLevelsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Skill Levels Explained</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>1. Beginner (Level 1)</h3>
+                <ul>
+                    <li><strong>Description:</strong> Basic understanding of concepts. Capable of performing simple tasks under supervision.</li>
+                    <li><strong>DigComp Example:</strong> "Basic Foundations" — can use digital tools in straightforward contexts.</li>
+                    <li><strong>EQF Example:</strong> Level 1-2.</li>
+                </ul>
+
+                <h3>2. Basic (Level 2)</h3>
+                <ul>
+                    <li><strong>Description:</strong> Able to perform routine tasks with some independence and practical knowledge.</li>
+                    <li><strong>DigComp Example:</strong> "Basic Usage" — understands concepts and tools and can use them to solve basic problems.</li>
+                    <li><strong>EQF Example:</strong> Level 3.</li>
+                </ul>
+
+                <h3>3. Intermediate (Level 3)</h3>
+                <ul>
+                    <li><strong>Description:</strong> Performs tasks autonomously in non-routine situations and can solve frequent problems.</li>
+                    <li><strong>DigComp Example:</strong> "Intermediate" — understands and applies knowledge in varied contexts.</li>
+                    <li><strong>EQF Example:</strong> Level 4.</li>
+                </ul>
+
+                <h3>4. Advanced (Level 4)</h3>
+                <ul>
+                    <li><strong>Description:</strong> High level of autonomy and ability to solve complex problems in their area of expertise.</li>
+                    <li><strong>DigComp Example:</strong> "Advanced" — adapts knowledge and tools to more complex situations.</li>
+                    <li><strong>EQF Example:</strong> Level 5.</li>
+                </ul>
+
+                <h3>5. Expert (Level 5)</h3>
+                <ul>
+                    <li><strong>Description:</strong> Full mastery of the skill, capable of innovating, teaching, and solving problems in complex areas.</li>
+                    <li><strong>DigComp Example:</strong> "Expert" — demonstrates leadership in their field, creating or evaluating content and advanced knowledge.</li>
+                    <li><strong>EQF Example:</strong> Level 6-7.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
 <script>
+    function toggleInfo(id) {
+        var info = document.getElementById(id);
+        info.classList.toggle('active');
+    }
     $(document).ready(function () {
         $('#id_required_skills, #id_learning_skills').select2({
             tokenSeparators: [',', ' '],
