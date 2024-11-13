@@ -22,7 +22,13 @@ def home(request):
         )  # No hay usuario en la sesión, devolver un queryset vacío
         return redirect("not_logged_in")
 
-    return render(request, "learning_route.html", {"learning_routes": learning_routes})
+    theres_completed = learning_routes.filter(completed=True).count()
+
+    return render(
+        request,
+        "learning_route.html",
+        {"learning_routes": learning_routes, "theres_completed": theres_completed},
+    )
 
 
 @login_required
