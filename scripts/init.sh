@@ -23,7 +23,7 @@ echo "MySQL está listo."
 if [ ! -f "data.json" ]; then
   echo "Generando data.json desde la base de datos SQLite."
   # Genera el archivo data.json usando settings.py (configurado con SQLite)
-  python manage.py dumpdata --settings=SoftServeAcademy.settings > data.json
+  python ../manage.py dumpdata --settings=SoftServeAcademy.settings > data.json
   echo "Archivo data.json generado con éxito desde SQLite."
 else
   echo "Archivo data.json ya existe, omitiendo generación."
@@ -31,13 +31,13 @@ fi
 
 # Cambia a settings_deployment (con MySQL) y ejecuta las migraciones
 echo "Aplicando migraciones en la base de datos MySQL..."
-python manage.py migrate --settings=SoftServeAcademy.settings_deployment
+python ../manage.py migrate --settings=SoftServeAcademy.settings_deployment
 echo "Migraciones aplicadas con éxito."
 
 # Carga los datos en MySQL solo si la tabla de usuarios no existe
-if ! python manage.py inspectdb --settings=SoftServeAcademy.settings_deployment | grep -q "auth_user"; then
+if ! python ../manage.py inspectdb --settings=SoftServeAcademy.settings_deployment | grep -q "auth_user"; then
   echo "Base de datos vacía, cargando datos desde data.json."
-  python manage.py loaddata data.json --settings=SoftServeAcademy.settings_deployment
+  python ../manage.py loaddata data.json --settings=SoftServeAcademy.settings_deployment
   echo "Datos cargados con éxito desde data.json."
 else
   echo "Base de datos ya inicializada, no se cargan datos."
@@ -51,4 +51,4 @@ fi
 
 # Inicia el servidor de Django usando settings_deployment (con MySQL)
 echo "Iniciando el servidor de Django..."
-exec python manage.py runserver 0.0.0.0:80 --settings=SoftServeAcademy.settings_deployment
+exec python ../manage.py runserver 0.0.0.0:80 --settings=SoftServeAcademy.settings_deployment
