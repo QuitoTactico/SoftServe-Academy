@@ -10,23 +10,62 @@
     {% csrf_token %}
 
     <div class="form-group">
-        <label for="{{ form.media_type.id_for_label }}">Media type:</label>
+        <label for="{{ form.media_type.id_for_label }}">
+            Media type:
+            <button type="button" class="info-button" onclick="toggleInfo('mediaTypeInfo')">i</button>
+        </label>
         {{ form.media_type }}
+        <div id="mediaTypeInfo" class="info-text">
+            Select the type of media you prefer for your learning resources. <strong>This field is used in the algorithm to filter resources.</strong>
+        </div>
+        {% if form.media_type.errors %}
+        <div class="alert alert-danger mt-2">
+            {{ form.media_type.errors|first }}
+        </div>
+        {% endif %}
     </div>
 
     <div class="form-group">
-        <label for="{{ form.content_type.id_for_label }}">Content type:</label>
+        <label for="{{ form.content_type.id_for_label }}">
+            Content type:
+            <button type="button" class="info-button" onclick="toggleInfo('contentTypeInfo')">i</button>
+        </label>
         {{ form.content_type }}
+        <div id="contentTypeInfo" class="info-text">
+            Describe the type of content that interests you for your learning route. <strong>This field is currently not used in the algorithm.</strong>
+        </div>
+        {% if form.content_type.errors %}
+        <div class="alert alert-danger mt-2">
+            {{ form.content_type.errors|first }}
+        </div>
+        {% endif %}
     </div>
 
     <div class="form-group">
-        <label for="{{ form.learning_type.id_for_label }}">Learning type:</label>
+        <label for="{{ form.learning_type.id_for_label }}">
+            Learning type:
+            <button type="button" class="info-button" onclick="toggleInfo('learningTypeInfo')">i</button>
+        </label>
         {{ form.learning_type }}
+        <div id="learningTypeInfo" class="info-text">
+            Indicate your preferred type of learning for your learning route. <strong>This field is not used in the current algorithm.</strong>
+        </div>
+        {% if form.learning_type.errors %}
+        <div class="alert alert-danger mt-2">
+            {{ form.learning_type.errors|first }}
+        </div>
+        {% endif %}
     </div>
 
     <div class="form-group">
-        <label for="{{ form.time_per_week.id_for_label }}">Time per Week (Minutes):</label>
+        <label for="{{ form.time_per_week.id_for_label }}">
+            Time per Week (Minutes):
+            <button type="button" class="info-button" onclick="toggleInfo('timePerWeekInfo')">i</button>
+        </label>
         {{ form.time_per_week }}
+        <div id="timePerWeekInfo" class="info-text">
+            Specify the amount of time you dedicate each week for your learning resources. <strong>This field is not directly used in the algorithm.</strong>
+        </div>
         {% if form.time_per_week.errors %}
         <div class="alert alert-danger mt-2">
             {{ form.time_per_week.errors|first }}
@@ -35,8 +74,14 @@
     </div>
 
     <div class="form-group">
-        <label for="{{ form.time_per_session.id_for_label }}">Time per Session (Minutes):</label>
+        <label for="{{ form.time_per_session.id_for_label }}">
+            Time per Session (Minutes):
+            <button type="button" class="info-button" onclick="toggleInfo('timePerSessionInfo')">i</button>
+        </label>
         {{ form.time_per_session }}
+        <div id="timePerSessionInfo" class="info-text">
+            Indicate the duration of each learning session. <strong>This field is used in the algorithm to filter resources based on session duration.</strong><b>Based on the session time, each resource will be or not be displayed in your learning resources</b>
+        </div>
         {% if form.time_per_session.errors %}
         <div class="alert alert-danger mt-2">
             {{ form.time_per_session.errors|first }}
@@ -50,4 +95,10 @@
         Preferences</button>
 </form>
 <br>
-{% endblock %}
+<script>
+    function toggleInfo(id) {
+        var info = document.getElementById(id);
+        info.classList.toggle('active');
+    }
+</script>
+{% endblock %} 

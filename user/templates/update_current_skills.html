@@ -4,8 +4,16 @@
 <link rel="stylesheet" href="{% static 'css/learningresourceform.css' %}">
 {% endblock %}
 {% block content %}
-<br>
-<h1>Update Current Skills</h1>
+<div class="container-info-button">
+    <h1>Update Current Skills</h1>
+    <button type="button" class="info-button" data-toggle="modal" data-target="#skillLevelsModal">
+        i
+    </button>
+</div>
+
+<!-- Skill Levels Information Button -->
+<!-- Replace the classic button with the info-button -->
+
 <form method="post">
     {% csrf_token %}
     <div class="row">
@@ -17,6 +25,65 @@
     <button type="submit" class="btn btn-primary form-submit">Update Current Skills</button>
 </form>
 <br>
+
+<!-- Skill Levels Modal -->
+<div class="modal fade" id="skillLevelsModal" tabindex="-1" role="dialog" aria-labelledby="skillLevelsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="skillLevelsModalLabel">Skill Levels Explained</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <p>The skill level examples are based on two widely used European standards for measuring competencies:</p>
+      <ol>
+        <li>DigComp (Digital Competence Framework for Citizens): Developed by the European Commission, this framework defines levels of digital competence covering skills in using tools and digital resources, understanding information, communication, content creation, safety, and problem-solving in digital environments. You can view the full documentation at the following link:<a target="_blank" href="https://joint-research-centre.ec.europa.eu/scientific-activities-z/education-and-training/digital-transformation-education/digital-competence-framework-citizens-digcomp_en">DigComp</a></li>
+        <li>EQF (European Qualifications Framework): This European framework facilitates the comparison of qualifications across different educational systems. The EQF defines competence levels from Level 1 (beginner) to Level 8 (advanced expert), covering knowledge, skills, and task autonomy. Its purpose is to provide a common reference for education and training in Europe. The EQF documentation is available at:<a target="_blank" href="https://europass.europa.eu/en/europass-digital-tools/european-qualifications-framework">EQF</a></li>
+      </ol>
+      <div class="modal-body">
+        <h3>1. Beginner (Level 1)</h3>
+        <ul>
+          <li><strong>Description:</strong> Basic understanding of concepts. Capable of performing simple tasks under supervision.</li>
+          <li><strong>DigComp Example:</strong> "Basic Foundations" — can use digital tools in straightforward contexts.</li>
+          <li><strong>EQF Example:</strong> Level 1-2.</li>
+        </ul>
+
+        <h3>2. Basic (Level 2)</h3>
+        <ul>
+          <li><strong>Description:</strong> Able to perform routine tasks with some independence and practical knowledge.</li>
+          <li><strong>DigComp Example:</strong> "Basic Usage" — understands concepts and tools and can use them to solve basic problems.</li>
+          <li><strong>EQF Example:</strong> Level 3.</li>
+        </ul>
+
+        <h3>3. Intermediate (Level 3)</h3>
+        <ul>
+          <li><strong>Description:</strong> Performs tasks autonomously in non-routine situations and can solve frequent problems.</li>
+          <li><strong>DigComp Example:</strong> "Intermediate" — understands and applies knowledge in varied contexts.</li>
+          <li><strong>EQF Example:</strong> Level 4.</li>
+        </ul>
+
+        <h3>4. Advanced (Level 4)</h3>
+        <ul>
+          <li><strong>Description:</strong> High level of autonomy and ability to solve complex problems in their area of expertise.</li>
+          <li><strong>DigComp Example:</strong> "Advanced" — adapts knowledge and tools to more complex situations.</li>
+          <li><strong>EQF Example:</strong> Level 5.</li>
+        </ul>
+
+        <h3>5. Expert (Level 5)</h3>
+        <ul>
+          <li><strong>Description:</strong> Full mastery of the skill, capable of innovating, teaching, and solving problems in complex areas.</li>
+          <li><strong>DigComp Example:</strong> "Expert" — demonstrates leadership in their field, creating or evaluating content and advanced knowledge.</li>
+          <li><strong>EQF Example:</strong> Level 6-7.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
 <script>
     $(document).ready(function () {
         $('select').select2({
@@ -24,5 +91,9 @@
             allowClear: true
         });
     });
+    function toggleInfo(id) {
+        var info = document.getElementById(id);
+        info.classList.toggle('active');
+    }
 </script>
 {% endblock %}
