@@ -2,6 +2,8 @@
 
 SoftServe Academy is a collaborative platform designed to create, evaluate, curate, organize, and share personalized learning paths tailored for the technology industry. In an era where continuous and autonomous learning is crucial, this platform bridges the gap by offering structured, curated, and user-specific educational resources that go beyond simple lists of links. By leveraging advanced algorithms, the platform generates customized learning paths based on individual users' knowledge, learning goals, time availability, and content preferences.
 
+[http://34.72.154.173/](http://34.72.154.173/)
+
 ## Key Users
 - Software Developers
 - Programmers
