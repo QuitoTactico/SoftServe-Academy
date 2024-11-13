@@ -30,7 +30,7 @@ test.describe('profileSetup', () => {
         await page.getByLabel('Time per Session (Minutes):').click();
         await page.getByLabel('Time per Session (Minutes):').fill(Math.floor(Math.random() * 600).toString());
 
-        await page.getByRole('button', { name: 'Save Preferences' }).click();
+        await page.getByRole('button', { name: 'Update Preferences' }).click();
     });
 
     test('update info', async ({ page }) => {

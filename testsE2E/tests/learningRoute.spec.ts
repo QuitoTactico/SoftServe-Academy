@@ -21,7 +21,7 @@ test.describe('learning route', () => {
         await page.getByLabel('Time per Week (Minutes):').fill('600');
         await page.getByLabel('Time per Session (Minutes):').click();
         await page.getByLabel('Time per Session (Minutes):').fill('600');
-        await page.getByRole('button', { name: 'Save Preferences' }).click();
+        await page.getByRole('button', { name: 'Update Preferences' }).click();
 
         await page.getByRole('link', { name: 'Target Skills ' }).click();
         await page.getByRole('combobox').getByRole('list').click();
