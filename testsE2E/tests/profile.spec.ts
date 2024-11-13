@@ -41,7 +41,7 @@ test.describe('profileSetup', () => {
     });
 
     test('current skill', async ({ page }) => {
-        await page.getByRole('link', { name: 'Current Skills ' }).click();
+        await page.getByRole('link', { name: 'Current Skills ' }).click();
         await page.getByRole('combobox').getByRole('list').click();
         await page.getByRole('option', { name: 'Python - 5' }).click();
         await page.getByRole('combobox').getByRole('list').click();
@@ -50,7 +50,7 @@ test.describe('profileSetup', () => {
     });
 
     test('target skill', async ({ page }) => {
-        await page.getByRole('link', { name: 'Target Skills ' }).click();
+        await page.getByRole('link', { name: 'Target Skills ' }).click();
         await page.getByRole('combobox').getByRole('list').click();
         await page.getByRole('option', { name: 'Python - 5' }).click();
         await page.getByRole('combobox').getByRole('list').click();
