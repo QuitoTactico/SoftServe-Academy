@@ -4,7 +4,7 @@ from user.models import User
 from learning_route.models import LearningRouteResource
 from .models import LearningResource
 from .forms import LearningResourceForm, ReviewForm
-
+from enums.enums import LANG_FLAG  # Import LANG_FLAG
 
 def home(request):
     learning_resources = LearningResource.objects.all()
@@ -28,6 +28,7 @@ def create(request):
 
 
 # Second parameter is optional, to mark the resource as completed
+@login_required
 def detail(request, id: int, route_resource_id: int = None):
     try:
         learning_resource = LearningResource.objects.get(pk=id)
@@ -43,7 +44,12 @@ def detail(request, id: int, route_resource_id: int = None):
         return render(
             request,
             "learning_resource_detail.html",
-            {"learning_resource": learning_resource, "review_form": review_form},
+            {
+                "learning_resource": learning_resource,
+                "review_form": review_form,
+                "lang_flag": LANG_FLAG,  # Add LANG_FLAG to context
+                # ...existing context...
+            },
         )
     except LearningResource.DoesNotExist:
         return redirect("not_found")

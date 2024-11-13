@@ -42,6 +42,7 @@ LANGUAGE_CHOICES = [
     ("hi", "Hindi"),
     ("ja", "Japanese"),
 ]
+
 LANG_FLAG = {
     "es": "images/flags/es.svg",
     "en": "images/flags/um.svg",

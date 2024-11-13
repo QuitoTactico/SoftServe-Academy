@@ -7,5 +7,5 @@ register = template.Library()
 def get_flag(lang_flag, language_code):
     """Retrieve the flag image path based on the language code."""
     return lang_flag.get(
-        language_code, "images/flags/xx.svg"
-    )  # Provide a default flag if not found
+        language_code, "images/flags/xx.svg" # Provide a default flag if not found
+    )  

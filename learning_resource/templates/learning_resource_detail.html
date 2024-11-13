@@ -3,6 +3,8 @@
 {% block title %}{{ learning_resource.name }} - Learning Route Details{% endblock %}
 
 {% block extra_css %}
+
+{% load learning_resource_extras %}
 <link rel="stylesheet" href="{% static 'css/learningresourcedetail.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 {% endblock %}
@@ -41,7 +43,13 @@
             <div class="course-rating">
                 <ul>
                     <li><i class="fas fa-book"></i><strong>Name:</strong> {{ learning_resource.name }}</li>
-                    <li><i class="fas fa-file-alt"></i><strong>Media type: </strong> {{ learning_resource.media_type }}
+                    {% if learning_resource.media_type == "Video" %}
+                    <li><i class="fas fa-video"></i><strong>Media type: </strong> {{ learning_resource.media_type }}</li>
+                    {% elif learning_resource.media_type == "Audio" %}
+                    <li><i class="fas fa-music"></i><strong>Media type: </strong> {{ learning_resource.media_type }}</li>
+                    {% else %}
+                    <li><i class="fas fa-file-alt"></i><strong>Media type: </strong> {{ learning_resource.media_type }}</li>
+                    {% endif %}
                     </li>
                     {% if learning_resource.original_author %}
                     <li><i class="fas fa-user"></i><strong>Original author:</strong>
@@ -68,8 +76,7 @@
         <div class="course-column">
             <div class="course-details">
                 <ul>
-                    <li><i class="fas fa-language"></i><strong>Language:</strong> {{ learning_resource.language|upper }}
-                    </li>
+                    <li><img src="{% static lang_flag|get_flag:learning_resource.language %}" alt="Flag" class="flag-icon"><strong>Language:</strong>{{ learning_resource.language }}</li>
                     <li><i class="fas fa-file-signature"></i><strong>Content type:</strong>
                         {{ learning_resource.content_type }}</li>
                     <li><i class="fas fa-globe"></i><strong>Original platform:</strong> 
