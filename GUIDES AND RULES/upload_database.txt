@@ -1,0 +1,16 @@
+#### EC2
+docker ps
+docker exec -it <container-name> /bin/bash
+
+#### container
+python manage.py dumpdata --settings=SoftServeAcademy.settings > data.json
+python manage.py migrate --settings=SoftServeAcademy.settings_deployment
+python manage.py shell --settings=SoftServeAcademy.settings_deployment
+
+#### py console
+from django.contrib.contenttypes.models import ContentType
+ContentType.objects.all().delete()
+exit()
+
+#### container again
+python manage.py loaddata data.json --settings=SoftServeAcademy.settings_deployment
